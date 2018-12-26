@@ -45,7 +45,7 @@
         android:id="@+id/activity_login_btn_login"
         android:layout_height="50dp"
         android:background="@drawable/button_main_background"
-        android:text="ورود"
+        android:text="@string/Login"
         android:textColor="#ffffff"
         android:textSize="18dp"
         android:layout_marginTop="9dp"
@@ -65,19 +65,35 @@
         android:layout_marginTop="44dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        android:text="ثبت نام"
+        android:text="@string/signup"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/activity_login_btn_login" />
 
-    <TextView
-        android:id="@+id/activity_login_tv_change_lang"
+    <Spinner
+        android:id="@+id/spinner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toEndOf="@+id/activity_login_et_email"
+        app:layout_constraintTop_toTopOf="parent"></Spinner>
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:text="@string/changeLanguage"
+        android:layout_marginBottom="8dp"
+        android:text="@string/forgetPassword"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/activity_login_tv_register"
+        app:layout_constraintVertical_bias="0.246" />
+
 
 </android.support.constraint.ConstraintLayout>

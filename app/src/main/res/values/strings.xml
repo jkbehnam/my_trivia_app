@@ -23,5 +23,14 @@
     <string name="changeLanguage">تغییر زبان</string>
     <string name="enterYourMobileNumber">شماره موبایل خود را وارد کنید</string>
     <string name="next">ادامه</string>
+    <string name="messageWasSend">کد ارسال شده با شماره زیر را وارد نمایید</string>
+    <string name="didntGetCode">کدی دریافت نکردم</string>
+    <string name="forgetPassword">فراموشی رمز عبور</string>
+    <string name="signup">ثبت نام</string>
+    <string name="Login">ورود</string>
 
+    <string name="Tap_Next_to_verify_your_account_with_your_phone_number">برای تایید شماره موبایل شما یک پیامک حاوی کد برایتان ارسال میشود</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

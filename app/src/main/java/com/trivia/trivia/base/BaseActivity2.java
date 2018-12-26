@@ -38,7 +38,6 @@ public abstract class BaseActivity2 extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(getLayout());
-        init();
         Log.d(TAG, "onCreate");
         Utils.resetActivityTitle(this);
         CalligraphyConfig.initDefault(new CalligraphyConfig.Builder()

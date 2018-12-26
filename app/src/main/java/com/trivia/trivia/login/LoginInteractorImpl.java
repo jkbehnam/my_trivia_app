@@ -4,15 +4,6 @@ import android.text.TextUtils;
 
 import com.trivia.trivia.util.ErrorCode;
 import com.trivia.trivia.util.Utils;
-import com.trivia.trivia.webservice.APIError;
-import com.trivia.trivia.webservice.ErrorUtils;
-import com.trivia.trivia.webservice.ServiceWrapper;
-import com.trivia.trivia.webservice.model.request.Login;
-import com.trivia.trivia.webservice.model.response.ResponseLogin;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 /**
  * Created by cstudioo on 06/01/17.
@@ -20,38 +11,38 @@ import retrofit2.Response;
 
 public class LoginInteractorImpl implements ILoginInteractor {
 
-    private ServiceWrapper serviceInstance;
+
 
     @Override
     public void login(String userName, String passWord, IValidationErrorListener validationErrorListener, final IOnLoginFinishedListener loginFinishedListener) {
         if (isDataValid(userName, passWord, validationErrorListener)) {
+          /*  StringRequest stringRequest = new StringRequest(Request.Method.POST, URLs.URL_LOGIN,
+                    new com.android.volley.Response.Listener<String>() {
 
-            serviceInstance = new ServiceWrapper(null);
+                        @Override
+                        public void onResponse(String response) {
 
-            Call<ResponseLogin> responseLoginCallback = serviceInstance.login(new Login(userName, passWord, ""));
-
-            responseLoginCallback.enqueue(new Callback<ResponseLogin>() {
-                @Override
-                public void onResponse(Call<ResponseLogin> call, Response<ResponseLogin> response) {
-
-                    if (response.body() != null ) {
-                        loginFinishedListener.getUserData(response.body());
-                    } else {
-
-                        if(response.errorBody() != null) {
-                            APIError error = ErrorUtils.parseError(response);
-                            loginFinishedListener.errorMsg(error.getMessage());
-                        } else {
-                            loginFinishedListener.errorMsg("Problem getting user !! Try again later.");
+                          //  loginFinishedListener.getUserData(response.body());
                         }
-                    }
-                }
-
+                    },
+                    new com.android.volley.Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                          //  Toast.makeText(getApplicationContext(), "خطا در اتصال به اینترنت", Toast.LENGTH_SHORT).show();
+                            loginFinishedListener.errorMsg(error.getMessage());
+                        }
+                    }) {
                 @Override
-                public void onFailure(Call<ResponseLogin> call, Throwable t) {
-                    loginFinishedListener.errorMsg("Problem getting user !! Try again later.");
+                protected Map<String, String> getParams() throws AuthFailureError {
+                    Map<String, String> params = new HashMap<>();
+                 //   params.put("username", faToEn(username));
+                 //   params.put("password", faToEn(password));
+                    return params;
                 }
-            });
+            };
+
+       //     VolleySingleton.getInstance(this).addToRequestQueue(stringRequest);
+*/
         }
     }
 
