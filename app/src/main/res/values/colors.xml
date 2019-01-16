@@ -7,4 +7,8 @@
     <color name="triviaColorPrimary">#ffffff</color>
     <color name="triviaColorPrimaryDark">#e6e6e6</color>
     <color name="tvToolbarAllPage">#000000</color>
-    <color name="triviaColorAccent">#FF4081</color></resources>
+    <color name="triviaColorAccent">#FF4081</color>
+<color name="mainBackground">#cacaca</color>
+</resources>
+
+

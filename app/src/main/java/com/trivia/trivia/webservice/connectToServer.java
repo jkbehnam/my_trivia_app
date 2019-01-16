@@ -1,18 +1,21 @@
 package com.trivia.trivia.webservice;
 
-import android.content.Intent;
+import android.content.Context;
 import android.util.Log;
-import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.RetryPolicy;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-import com.trivia.trivia.home.RegistrationPresenter;
+import com.trivia.trivia.home.Events.FragmentEventPresenter;
+import com.trivia.trivia.home.Registration.RegistrationPresenter;
+import com.trivia.trivia.util.Gamer;
 import com.trivia.trivia.util.URLs;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -20,10 +23,63 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static com.android.volley.VolleyLog.TAG;
+import static com.trivia.trivia.home.HomeBase.Home.homecontext;
 import static com.trivia.trivia.login.LoginActivity.maincontext;
 
 public class connectToServer {
+    public static void get_questions(final Context context, final String id, final Object a) {
 
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URLs.URL_GET_QUESTIONS,
+                new Response.Listener<String>() {
+
+                    @Override
+                    public void onResponse(String response) {
+                        //progressBar.setVisibility(View.GONE);
+
+                        try {
+
+                            //converting response to json object
+
+                            String p_name = "";
+                            String p_score = "";
+                            int answerd_questions = 0;
+                           // DataBase.getInstance(context).getDb().execSQL("delete from " + "Question");
+
+                            JSONArray us = new JSONArray(response);
+                            for (int i = 0; i < us.length(); i++) {
+                                JSONObject e = us.getJSONObject(i);
+
+
+                            }
+
+                            //Toast.makeText(context, String.valueOf(q_list.size()), Toast.LENGTH_SHORT).show();
+
+
+                            //if no error in response
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                    }
+                }) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                params.put("p_Code", id);
+              //  params.put("c_Code", comp.getC_code());
+
+                return params;
+            }
+        };
+
+        VolleySingleton.getInstance(context).addToRequestQueue(stringRequest);
+        //return q_list;
+    }
    public static void sendSms(RegistrationPresenter registrationPresenter, String phone) {
         StringRequest strReq = new StringRequest(Request.Method.POST,
                 URLs.URL_REQUEST_SMS, new Response.Listener<String>() {
@@ -31,32 +87,6 @@ public class connectToServer {
             public void onResponse(String response) {
                 Log.d(TAG, response.toString());
                 registrationPresenter.smsRequestRecived(response);
-                //     JSONObject responseObj = new JSONObject(response);
-
-                // Parsing json object response
-                // response will be a json object
-                //      boolean error = responseObj.getBoolean("error");
-                //     String message = responseObj.getString("message");
-
-                // checking for error, if not error SMS is initiated
-                // device should receive it shortly
-                //  if (!error) {
-                // boolean flag saying device is waiting for sms
-
-
-                // moving the screen to next pager item i.e otp screen
-
-                //   Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
-
-                //  } else {
-                //      Toast.makeText(getApplicationContext(),
-                //              "Error1: " + message,
-                //               Toast.LENGTH_LONG).show();
-                //   }
-
-                // hiding the progress bar
-
-
             }
         }, new Response.ErrorListener() {
             @Override
@@ -73,8 +103,6 @@ public class connectToServer {
             @Override
             protected Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<String, String>();
-                params.put("name", "");
-                params.put("email", "");
                 params.put("mobile", phone);
 
                 Log.e(TAG, "Posting params: " + params.toString());
@@ -102,43 +130,7 @@ public class connectToServer {
             public void onResponse(String response) {
                 Log.d(TAG, response.toString());
                registrationPresenter.optRequestRecived(response);
-/*
-                try {
 
-                   JSONObject responseObj = new JSONObject(response);
-
-                    // Parsing json object response
-                    // response will be a json object
-                    boolean error = responseObj.getBoolean("error");
-                    String message = responseObj.getString("message");
-
-                    if (!error) {
-                        // parsing the user profile information
-                        JSONObject profileObj = responseObj.getJSONObject("profile");
-
-                        String name = profileObj.getString("name");
-                        String email = profileObj.getString("email");
-                        String mobile = profileObj.getString("mobile");
-
-                        PrefManager pref = new PrefManager(getApplicationContext());
-                        pref.createLogin(name, email, mobile);
-
-                        Intent intent = new Intent(HttpService.this, MainActivity.class);
-                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                        startActivity(intent);
-
-                        Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
-
-                    } else {
-                        Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
-                    }
-
-                } catch (JSONException e) {
-                    Toast.makeText(getApplicationContext(),
-                            "Error: " + e.getMessage(),
-                            Toast.LENGTH_LONG).show();
-                }
-*/
             }
         }, new Response.ErrorListener() {
 
@@ -162,5 +154,92 @@ public class connectToServer {
 
         // Adding request to request queue
         VolleySingleton.getInstance(maincontext).addToRequestQueue(strReq);
+    }
+    public static void sendGamerData(JSONArray jArrayActionLog,Context maincontext) {
+
+        final String newDataArray = jArrayActionLog.toString();
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URLs.URL_REG_GAMER,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+
+                        final String result = response.toString();
+                        Log.d("response", "result : " + result); //when response come i will log it
+
+
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        error.printStackTrace();
+                        error.getMessage(); // when error come i will log it
+                    }
+                }
+        ) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> param = new HashMap<String, String>();
+                param.put("array", newDataArray); // array is key which we will use on server side
+                return param;
+            }
+        };
+
+
+        VolleySingleton.getInstance(maincontext).addToRequestQueue(stringRequest);
+    }
+    public static void getEventsList(FragmentEventPresenter fragmentEventPresenter) {
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URLs.URL_EVENT_LIST,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+
+                        final String result = response.toString();
+                        Log.d("response", "result : " + result); //when response come i will log it
+                        try {
+                            fragmentEventPresenter.reciveRequeset(response);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        error.printStackTrace();
+                        error.getMessage(); // when error come i will log it
+                    }
+                }
+        ) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> param = new HashMap<String, String>();
+                return param;
+            }
+        };
+
+
+        VolleySingleton.getInstance(homecontext).addToRequestQueue(stringRequest);
+    }
+    public static JSONArray createjArrayGamer(Gamer gamer) {
+        JSONArray jArrayActionLog = new JSONArray();
+        //Log.e(LOG, selectQuery);
+        //  ArrayList<Gamer> g = DataBase_read.give_gamers_list(context);
+
+
+            try {
+                JSONObject jObjectPatientQuestion = new JSONObject();
+                jObjectPatientQuestion.put("pname", String.valueOf(gamer.getName()));
+                jObjectPatientQuestion.put("pphonenum", String.valueOf(gamer.getPhone_number()));
+                jObjectPatientQuestion.put("ppassword", String.valueOf(gamer.getPassword()));
+
+                jArrayActionLog.put(jObjectPatientQuestion);
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+        return jArrayActionLog;
     }
 }

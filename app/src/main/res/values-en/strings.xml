@@ -29,4 +29,7 @@
     <string name="Tap_Next_to_verify_your_account_with_your_phone_number">Tap Next to verify your account with your phone number</string>
     <string name="messageWasSend">Enter the code that was send to</string>
     <string name="didntGetCode">I didn\'t get a code</string>
+    <string name="hard">hard</string>
+    <string name="medium">medium</string>
+    <string name="easy">easy</string>
 </resources>

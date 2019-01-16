@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:id="@+id/item_main_layout" xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:fbutton="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        card_view:cardCornerRadius="2dp"
+        card_view:cardElevation="5sp"
+
+        card_view:cardUseCompatPadding="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:foregroundGravity="right"
+                android:gravity="center|right"
+                android:paddingLeft="5sp"
+                android:paddingRight="5sp">
+
+
+                <TableRow
+                    android:layout_gravity="right"
+                    android:foregroundGravity="right"
+                    android:gravity="center_vertical|right"
+                    android:padding="3sp">
+
+                    <TextView
+                        android:id="@+id/tv_name"
+                        android:layout_width="fill_parent"
+                        android:layout_weight="0.9"
+
+                        android:gravity="right"
+                        android:text=""
+                        android:textIsSelectable="false"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_weight="0.3"
+                        android:text="@string/questionTitle"
+                        android:textIsSelectable="false"
+                        android:textSize="16sp" />
+
+
+                </TableRow>
+
+
+
+                <TableRow
+                    android:layout_gravity="right"
+                    android:foregroundGravity="right"
+                    android:gravity="center_vertical|right"
+                    android:padding="3sp">
+
+                    <TextView
+                        android:id="@+id/item_multichoise_title"
+                        android:layout_width="fill_parent"
+                        android:layout_weight="0.9"
+                        android:gravity="right"
+                        android:text=" "
+                        android:textIsSelectable="false"
+                        android:textSize="16sp" />
+
+
+                </TableRow>
+
+
+
+
+
+
+            </TableLayout>
+
+
+</LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
+
+</LinearLayout>

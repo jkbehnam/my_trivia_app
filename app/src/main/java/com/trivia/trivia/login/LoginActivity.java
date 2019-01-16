@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -16,8 +15,8 @@ import android.widget.Toast;
 import com.trivia.trivia.R;
 import com.trivia.trivia.adapter.SpinnerAdapter;
 import com.trivia.trivia.base.BaseActivity2;
-import com.trivia.trivia.home.HomeActivity;
-import com.trivia.trivia.home.RegisterationActivity;
+import com.trivia.trivia.home.HomeBase.Home;
+import com.trivia.trivia.home.Registration.RegisterationActivity;
 import com.trivia.trivia.util.App;
 
 import com.trivia.trivia.util.Constant;
@@ -27,18 +26,13 @@ import com.trivia.trivia.util.Utils;
 import com.trivia.trivia.webservice.model.response.ResponseLogin;
 
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import butterknife.BindView;
 import butterknife.ButterKnife;
 
-import static com.trivia.trivia.util.LocaleManager.LANGUAGE_ENGLISH;
-
 public class LoginActivity extends BaseActivity2 implements ILoginView, View.OnClickListener {
-public static Context maincontext;
+    public static Context maincontext;
 
     private EditText etEmail;
     private EditText etPassword;
@@ -59,7 +53,7 @@ public static Context maincontext;
         setContentView(getLayout());
         maincontext = this;
         ButterKnife.bind(this);
-init();
+        init();
 
         spinner.setSelection(2);
         String lng = App.localeManager.getLanguage();
@@ -105,10 +99,8 @@ init();
         mPresenter = new LoginPresenterImpl(this, new LoginInteractorImpl());
         tvRegister = (TextView) findViewById(R.id.activity_login_tv_register);
         tvRegister.setOnClickListener(this);
-
         spinner = findViewById(R.id.spinner);
         langList = Arrays.asList(new Languages("فارسی", "fa", 11), new Languages("English", "en", 11));
-
         spinnerAdapter = new SpinnerAdapter(this, langList);
         spinner.setAdapter(spinnerAdapter);
 
@@ -152,7 +144,7 @@ init();
 
     @Override
     public void loginSuccess(ResponseLogin responseLogin) {
-        Intent openHomeScreen = new Intent(LoginActivity.this, HomeActivity.class);
+        Intent openHomeScreen = new Intent(LoginActivity.this, Home.class);
         openHomeScreen.putExtra(Constant.PASS_TO_HOME_MSG, "This is HOME");
         startActivity(openHomeScreen);
         finish();

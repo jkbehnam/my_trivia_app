@@ -2,7 +2,9 @@ package com.trivia.trivia.util;
 
 public class MultipleChoiceItems {
     private String title;
-    public MultipleChoiceItems(String title1){
+    private int state;
+    public MultipleChoiceItems(String title1,int state){
+        this.setState(state);
         title=title1;
     }
     public String getTitle() {
@@ -14,4 +16,11 @@ public class MultipleChoiceItems {
     }
 
 
+    public int getState() {
+        return state;
+    }
+
+    public void setState(int state) {
+        this.state = state;
+    }
 }

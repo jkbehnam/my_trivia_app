@@ -6,17 +6,15 @@ import com.google.gson.annotations.SerializedName;
 
 public class ResponseLogin {
 
-    @SerializedName("id")
+    @SerializedName("Name")
     @Expose
     private String id;
 
-    @SerializedName("nickname")
+    @SerializedName("phone")
     @Expose
     private String nickname;
 
-    @SerializedName("email")
-    @Expose
-    private String email;
+
 
     /**
      *
@@ -59,17 +57,6 @@ public class ResponseLogin {
      * @return
      * The email
      */
-    public String getEmail() {
-        return email;
-    }
 
-    /**
-     *
-     * @param email
-     * The email
-     */
-    public void setEmail(String email) {
-        this.email = email;
-    }
 
 }

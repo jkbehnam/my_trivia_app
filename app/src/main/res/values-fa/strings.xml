@@ -4,16 +4,18 @@
     <string name="password">رمز عبور</string>
     <string name="changeLanguage">تغییر زبان</string>
     <string name="app_name">trivia_login</string>
-<string name="messageWasSend">کد ارسال شده با شماره زیر را وارد نمایید</string>
+    <string name="messageWasSend">کد ارسال شده با شماره زیر را وارد نمایید</string>
     <string name="forgetPassword">فراموشی رمز عبور</string>
     <string name="signup">ثبت نام</string>
     <string name="Login">ورود</string>
     <string name="enterYourMobileNumber">شماره موبایل خود را وارد کنید</string>
-
+    <string name="questionTitle">صورت سوال</string>
     <string name="Tap_Next_to_verify_your_account_with_your_phone_number">برای تایید شماره موبایل شما یک پیامک حاوی کد برایتان ارسال میشود</string>
     <string name="didntGetCode">کدی دریافت نکردم</string>
     <string name="next">ادامه</string>
-
+    <string name="hard">سخت</string>
+    <string name="medium">متوسط</string>
+    <string name="easy">آسان</string>
 
     <string name="activity_login_loading_msg">Please wait, Loading ...</string>
 

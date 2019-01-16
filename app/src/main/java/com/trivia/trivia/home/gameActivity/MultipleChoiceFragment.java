@@ -1,7 +1,5 @@
 package com.trivia.trivia.home.gameActivity;
 
-import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
@@ -10,20 +8,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.trivia.trivia.R;
 import com.trivia.trivia.adapter.adapter_multiple_choice_game;
-import com.trivia.trivia.util.MultipleChoiceItems;
 import com.trivia.trivia.util.MultipleChoicePage;
-
-import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 
-
-public class MultipleChoiceFragment extends Fragment {
+public class MultipleChoiceFragment extends Fragment implements IGameMultipleChoice {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -35,8 +30,14 @@ public class MultipleChoiceFragment extends Fragment {
 
     @BindView(R.id.rcyc_multichoise)
     RecyclerView rcye_qustions;
-@BindView(R.id.fragment_multi_choice_tv)
+    @BindView(R.id.fragment_multi_choice_tv_question)
     TextView tvQTitle;
+    @BindView(R.id.fragment_multi_choice_tv_score)
+    TextView tvScore;
+    adapter_multiple_choice_game madapter;
+    MultipleChoicePresenter multipleChoicePresenter;
+    MultipleChoicePage mpcp;
+int first_score=300;
     public MultipleChoiceFragment() {
         // Required empty public constructor
     }
@@ -72,32 +73,61 @@ public class MultipleChoiceFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view=inflater.inflate(R.layout.fragment_multiple_choice, container, false);
+        View view = inflater.inflate(R.layout.fragment_multiple_choice, container, false);
         ButterKnife.bind(this, view);
-        MultipleChoicePage mpcp=new MultipleChoicePage();
-        mpcp.setTitle("آیا میدانید");
-
-        ArrayList<MultipleChoiceItems> mci=new ArrayList<>();
-        mci.add(new MultipleChoiceItems("سلام"));
-        mci.add(new MultipleChoiceItems("خداحافظ"));
-        mci.add(new MultipleChoiceItems("خوبی"));
-        mci.add(new MultipleChoiceItems("چطوری"));
-        mpcp.setMpi(mci);
-        tvQTitle.setText(mpcp.getTitle());
-        GridLayoutManager layoutManager = new GridLayoutManager(getContext(), 1);
-        rcye_qustions.setLayoutManager(layoutManager);
-        adapter_multiple_choice_game madapter = new adapter_multiple_choice_game(mpcp.getMpi());
-       // SlideInBottomAnimationAdapter alphaAdapter = new SlideInBottomAnimationAdapter(madapter);
-       // alphaAdapter.setFirstOnly(true);
-        rcye_qustions.setAdapter(madapter);
+        multipleChoicePresenter = new MultipleChoicePresenter(this);
+        multipleChoicePresenter.settiems("");
 
         return view;
     }
 
+    @Override
+    public void correcAnswer(int item) {
+        mpcp.getMpi().get(item).setState(1);
+        madapter.notifyItemChanged(item);
+        Toast.makeText(getContext(), "جواب صحیح است", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void wrongAnswer(int item) {
+        mpcp.getMpi().get(item).setState(2);
+        madapter.notifyItemChanged(item);
+        Toast.makeText(getContext(), "جواب غلط است", Toast.LENGTH_SHORT).show();
+        first_score-=100;
+        tvScore.setText(String.valueOf(first_score)+"امتیاز سوال");
+        if(first_score==100){
+            Toast.makeText(getContext(), "امکان پاسخ گویی نیست", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    @Override
+    public void setScore() {
+
+    }
+
+
+    @Override
+    public void setItems(MultipleChoicePage mpcp2) {
+
+        mpcp = mpcp2;
+        tvQTitle.setText(mpcp.getQ_title());
+        GridLayoutManager layoutManager = new GridLayoutManager(getContext(), 1);
+        rcye_qustions.setLayoutManager(layoutManager);
+        madapter = new adapter_multiple_choice_game(mpcp.getMpi());
+        // SlideInBottomAnimationAdapter alphaAdapter = new SlideInBottomAnimationAdapter(madapter);
+        // alphaAdapter.setFirstOnly(true);
+        rcye_qustions.setAdapter(madapter);
+        madapter.setOnCardClickListner(new adapter_multiple_choice_game.OnCardClickListner() {
+            @Override
+            public void OnCardClicked(View view, int position) {
+                multipleChoicePresenter.checkAnswer(mpcp.getMpi().get(position).getTitle(), "", position);
+            }
+        });
+    }
+
+
+    ;
     // TODO: Rename method, update argument and hook method into UI event
-
-
-
 
 
     /**

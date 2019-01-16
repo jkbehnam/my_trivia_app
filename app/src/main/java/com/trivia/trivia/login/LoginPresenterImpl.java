@@ -1,7 +1,16 @@
 package com.trivia.trivia.login;
 
+import android.widget.Toast;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.trivia.trivia.util.ErrorCode;
 import com.trivia.trivia.webservice.model.response.ResponseLogin;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import static com.trivia.trivia.login.LoginActivity.maincontext;
 
 /**
  * Created by cstudioo on 06/01/17.
@@ -37,13 +46,23 @@ public class LoginPresenterImpl implements ILoginPresenter {
 
         }, new ILoginInteractor.IOnLoginFinishedListener() {
             @Override
-            public void getUserData(ResponseLogin user) {
-                mILoginView.hideLoading();
-                if (user != null) {
+            public void getUserData(String response) throws JSONException {
+                final GsonBuilder builder = new GsonBuilder();
+
+                final Gson gson = builder.create();
+
+                // final Reader data = new InputStreamReader(LoginActivity.class.getResourceAsStream("user"), "UTF-8");
+                JSONObject obj = new JSONObject(response);
+                if (obj.getString("message").equals("Login successfull")) {
+                    final ResponseLogin user = gson.fromJson(obj.getString("user"), ResponseLogin.class);
                     mILoginView.loginSuccess(user);
-                } else {
+                } else if (obj.getString("message").equals("not register phonenum")) {
+                    mILoginView.loginFailure(ErrorCode.LOGIN_FAILED);
+                } else if (obj.getString("message").equals("Invalid username or password")) {
                     mILoginView.loginFailure(ErrorCode.LOGIN_FAILED);
                 }
+                mILoginView.hideLoading();
+
             }
 
             @Override

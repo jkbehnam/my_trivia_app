@@ -3,28 +3,17 @@ package com.trivia.trivia.util;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
-public class MultipleChoicePage {
-    private String title;
-    private String photo;
+public class MultipleChoicePage extends Question{
+
+
     private ArrayList<MultipleChoiceItems> mpi;
 
-
-
-    public String getTitle() {
-        return title;
+    public MultipleChoicePage(String Q_title, String Q_type, String Q_lang, String Q_id, String Q_img) {
+        super(Q_title, Q_type, Q_lang, Q_id, Q_img);
     }
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
 
-    public String getPhoto() {
-        return photo;
-    }
 
-    public void setPhoto(String photo) {
-        this.photo = photo;
-    }
 
     public ArrayList<MultipleChoiceItems> getMpi() {
         return mpi;

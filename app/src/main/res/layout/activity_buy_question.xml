@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="#fff"
+    android:layout_gravity="right"
+    android:layout_height="match_parent"
+    >
+
+    <TableRow
+        android:id="@+id/tableRow5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+
+        android:gravity="right"
+        app:layout_constraintTop_toBottomOf="@+id/tableRow"
+        tools:layout_editor_absoluteX="16dp">
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="نوع سوال" />
+    </TableRow>
+
+    <TableRow
+        android:id="@+id/tableRow4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="52dp"
+        android:gravity="right"
+        app:layout_constraintTop_toBottomOf="@+id/textView6"
+        tools:layout_editor_absoluteX="0dp">
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="سطح سوال" />
+    </TableRow>
+
+    <TableRow
+        android:id="@+id/tableRow"
+        android:layout_width="379dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        app:layout_constraintTop_toBottomOf="@+id/tableRow4"
+        tools:layout_editor_absoluteX="3dp">
+
+        <Button
+            android:id="@+id/button3"
+            android:background="@drawable/button_question_red_background"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/hard" />
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="match_parent"
+android:background="@drawable/button_question_yellow_background"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/medium" />
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="match_parent"
+            android:background="@drawable/button_question_grean_background"
+
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/easy" />
+
+    </TableRow>
+
+    <TableRow
+        android:id="@+id/tableRow2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        app:layout_constraintTop_toBottomOf="@+id/tableRow5"
+        tools:layout_editor_absoluteX="0dp">
+
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/button_question_red_background"
+            android:text="تشریحی" />
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="match_parent"
+android:background="@drawable/button_question_yellow_background"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="جواب کوتاه" />
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="match_parent"
+android:background="@drawable/button_question_grean_background"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="چند گزینه ای" />
+
+    </TableRow>
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="16dp"
+        android:text="موجودی"
+        tools:layout_editor_absoluteX="171dp"
+        tools:layout_editor_absoluteY="34dp" />
+
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/button_main_background"
+        android:text="خرید"
+        android:textColor="#ffffff"
+        app:layout_constraintTop_toBottomOf="@+id/tableRow2"
+        tools:layout_editor_absoluteX="148dp" />
+
+</android.support.constraint.ConstraintLayout>

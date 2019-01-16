@@ -3,6 +3,8 @@ package com.trivia.trivia.login;
 import com.trivia.trivia.util.ErrorCode;
 import com.trivia.trivia.webservice.model.response.ResponseLogin;
 
+import org.json.JSONException;
+
 /**
  * Created by cstudioo on 05/01/17.
  */
@@ -13,7 +15,7 @@ public interface ILoginInteractor {
 
     interface IOnLoginFinishedListener {
 
-        void getUserData(ResponseLogin user);
+        void getUserData(String user) throws JSONException;
 
         void errorMsg(String errorMsg);
     }

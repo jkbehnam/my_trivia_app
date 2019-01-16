@@ -1,4 +1,4 @@
-package com.trivia.trivia.home;
+package com.trivia.trivia.home.Registration;
 
 public interface IRegistrationPresenter {
     void sendPhoneNumber();

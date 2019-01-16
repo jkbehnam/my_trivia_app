@@ -18,6 +18,7 @@ import com.trivia.trivia.util.Utils;
 
 import java.util.Locale;
 
+import butterknife.ButterKnife;
 import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
@@ -38,6 +39,7 @@ public abstract class BaseActivity2 extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(getLayout());
+
         Log.d(TAG, "onCreate");
         Utils.resetActivityTitle(this);
         CalligraphyConfig.initDefault(new CalligraphyConfig.Builder()
