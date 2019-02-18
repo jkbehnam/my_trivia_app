@@ -16,7 +16,12 @@
     <string name="hard">سخت</string>
     <string name="medium">متوسط</string>
     <string name="easy">آسان</string>
-
+    <string name="descriptive">تشریحی</string>
+    <string name="short_answer">جواب کوتاه</string>
+    <string name="multiple_choice">چند گزینه ای</string>
+    <string name="events">رویداد ها</string>
+    <string name="messgaes">خبر ها</string>
+    <string name="pofile">صفحه شخصی</string>
     <string name="activity_login_loading_msg">Please wait, Loading ...</string>
 
     <string name="activity_login_fail_msg">Login Failed !! Try again later.</string>

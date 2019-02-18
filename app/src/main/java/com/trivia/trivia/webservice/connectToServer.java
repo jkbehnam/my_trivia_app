@@ -2,6 +2,7 @@ package com.trivia.trivia.webservice;
 
 import android.content.Context;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.DefaultRetryPolicy;
@@ -12,10 +13,11 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.trivia.trivia.home.Events.FragmentEventPresenter;
 import com.trivia.trivia.home.Registration.RegistrationPresenter;
+import com.trivia.trivia.home.gameActivity.MultipleChoicePresenter;
+import com.trivia.trivia.home.questionList.FragmentQuestionsPresenter;
 import com.trivia.trivia.util.Gamer;
 import com.trivia.trivia.util.URLs;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -27,59 +29,6 @@ import static com.trivia.trivia.home.HomeBase.Home.homecontext;
 import static com.trivia.trivia.login.LoginActivity.maincontext;
 
 public class connectToServer {
-    public static void get_questions(final Context context, final String id, final Object a) {
-
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, URLs.URL_GET_QUESTIONS,
-                new Response.Listener<String>() {
-
-                    @Override
-                    public void onResponse(String response) {
-                        //progressBar.setVisibility(View.GONE);
-
-                        try {
-
-                            //converting response to json object
-
-                            String p_name = "";
-                            String p_score = "";
-                            int answerd_questions = 0;
-                           // DataBase.getInstance(context).getDb().execSQL("delete from " + "Question");
-
-                            JSONArray us = new JSONArray(response);
-                            for (int i = 0; i < us.length(); i++) {
-                                JSONObject e = us.getJSONObject(i);
-
-
-                            }
-
-                            //Toast.makeText(context, String.valueOf(q_list.size()), Toast.LENGTH_SHORT).show();
-
-
-                            //if no error in response
-
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                    }
-                }) {
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String, String> params = new HashMap<>();
-                params.put("p_Code", id);
-              //  params.put("c_Code", comp.getC_code());
-
-                return params;
-            }
-        };
-
-        VolleySingleton.getInstance(context).addToRequestQueue(stringRequest);
-        //return q_list;
-    }
    public static void sendSms(RegistrationPresenter registrationPresenter, String phone) {
         StringRequest strReq = new StringRequest(Request.Method.POST,
                 URLs.URL_REQUEST_SMS, new Response.Listener<String>() {
@@ -122,7 +71,7 @@ public class connectToServer {
         VolleySingleton.getInstance(maincontext).addToRequestQueue(strReq);
     }
 
-    public static void sendOtp(RegistrationPresenter registrationPresenter,String code){
+    public static void sendOtp(RegistrationPresenter registrationPresenter,String code,String phone){
         StringRequest strReq = new StringRequest(Request.Method.POST,
                 URLs.URL_VERIFY_OTP, new Response.Listener<String>() {
 
@@ -155,9 +104,9 @@ public class connectToServer {
         // Adding request to request queue
         VolleySingleton.getInstance(maincontext).addToRequestQueue(strReq);
     }
-    public static void sendGamerData(JSONArray jArrayActionLog,Context maincontext) {
+    public static void sendGamerData(Gamer gamer,Context maincontext) {
 
-        final String newDataArray = jArrayActionLog.toString();
+
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URLs.URL_REG_GAMER,
                 new Response.Listener<String>() {
                     @Override
@@ -180,7 +129,10 @@ public class connectToServer {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> param = new HashMap<String, String>();
-                param.put("array", newDataArray); // array is key which we will use on server side
+                param.put("username", gamer.getName()); // array is key which we will use on server side
+                param.put("password", gamer.getPassword());
+                param.put("phonenum", gamer.getPhone_number());
+
                 return param;
             }
         };
@@ -188,7 +140,48 @@ public class connectToServer {
 
         VolleySingleton.getInstance(maincontext).addToRequestQueue(stringRequest);
     }
-    public static void getEventsList(FragmentEventPresenter fragmentEventPresenter) {
+    public static void check_username(String username, Context maincontext, RegistrationPresenter.checkUserName checkUserName) {
+
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URLs.URL_CHECK_USERNAME,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+
+
+                        try {
+                            JSONObject responseObj = new JSONObject(response);
+                            boolean error = responseObj.getBoolean("message");
+                            if(error) checkUserName.exist();
+                            else checkUserName.notexist();
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                            Toast.makeText(maincontext, "wrong", Toast.LENGTH_SHORT).show();
+                        }
+
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        error.printStackTrace();
+                        error.getMessage(); // when error come i will log it
+                    }
+                }
+        ) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> param = new HashMap<String, String>();
+                param.put("username", username); // array is key which we will use on server side
+                return param;
+            }
+        };
+
+
+        VolleySingleton.getInstance(maincontext).addToRequestQueue(stringRequest);
+
+    }
+    public static void getEventsList(FragmentEventPresenter fragmentEventPresenter,String u_id) {
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URLs.URL_EVENT_LIST,
                 new Response.Listener<String>() {
                     @Override
@@ -215,6 +208,7 @@ public class connectToServer {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> param = new HashMap<String, String>();
+                param.put("u_id", u_id);
                 return param;
             }
         };
@@ -222,24 +216,144 @@ public class connectToServer {
 
         VolleySingleton.getInstance(homecontext).addToRequestQueue(stringRequest);
     }
-    public static JSONArray createjArrayGamer(Gamer gamer) {
-        JSONArray jArrayActionLog = new JSONArray();
-        //Log.e(LOG, selectQuery);
-        //  ArrayList<Gamer> g = DataBase_read.give_gamers_list(context);
+    public static void getEventsList_reg(FragmentEventPresenter fragmentEventPresenter,String u_id) {
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URLs.URL_EVENT_LIST_REG,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
 
+                        final String result = response.toString();
+                        Log.d("response", "result : " + result); //when response come i will log it
+                        try {
+                            fragmentEventPresenter.reciveRequeset(response);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
 
-            try {
-                JSONObject jObjectPatientQuestion = new JSONObject();
-                jObjectPatientQuestion.put("pname", String.valueOf(gamer.getName()));
-                jObjectPatientQuestion.put("pphonenum", String.valueOf(gamer.getPhone_number()));
-                jObjectPatientQuestion.put("ppassword", String.valueOf(gamer.getPassword()));
-
-                jArrayActionLog.put(jObjectPatientQuestion);
-
-            } catch (JSONException e) {
-                e.printStackTrace();
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        error.printStackTrace();
+                        error.getMessage(); // when error come i will log it
+                    }
+                }
+        ) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> param = new HashMap<String, String>();
+                param.put("u_id", u_id);
+                return param;
             }
+        };
 
-        return jArrayActionLog;
+
+        VolleySingleton.getInstance(homecontext).addToRequestQueue(stringRequest);
     }
+    public static void regUserEvent(FragmentEventPresenter fragmentEventPresenter,String u_id,String e_id) {
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URLs.URL_GAMER_EVENT_REG,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+
+                        final String result = response.toString();
+                        Log.d("response", "result : " + result); //when response come i will log it
+                       fragmentEventPresenter.refreshEventList(u_id);
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        error.printStackTrace();
+                        error.getMessage(); // when error come i will log it
+                    }
+                }
+        ) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> param = new HashMap<String, String>();
+                param.put("e_id", e_id);
+                param.put("u_id", u_id);
+
+                return param;
+            }
+        };
+
+
+        VolleySingleton.getInstance(homecontext).addToRequestQueue(stringRequest);
+    }
+    public static void getQuestionsList(FragmentQuestionsPresenter fragmentQestionsPresenter) {
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URLs.URL_GET_QUESTIONS_LIST,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+
+                        final String result = response.toString();
+                        Log.d("response", "result : " + result); //when response come i will log it
+                        try {
+                            fragmentQestionsPresenter.reciveRequeset(response);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        error.printStackTrace();
+                        error.getMessage(); // when error come i will log it
+                    }
+                }
+        ) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> param = new HashMap<String, String>();
+                param.put("u_id", "45");
+                param.put("e_id", "1");
+                return param;
+            }
+        };
+
+
+        VolleySingleton.getInstance(homecontext).addToRequestQueue(stringRequest);
+    }
+    public static void getMultiplechoiceQuestion(MultipleChoicePresenter multipleChoicePresenter,String q_id) {
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URLs.URL_GET_MULTIPLECHOICE,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+
+                        final String result = response.toString();
+                        Log.d("response", "result : " + result); //when response come i will log it
+                        try {
+                            multipleChoicePresenter.reciveRequeset(response);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        error.printStackTrace();
+                        error.getMessage(); // when error come i will log it
+                    }
+                }
+        ) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> param = new HashMap<String, String>();
+                param.put("q_id", q_id);
+
+                return param;
+            }
+        };
+
+
+        VolleySingleton.getInstance(homecontext).addToRequestQueue(stringRequest);
+    }
+
 }

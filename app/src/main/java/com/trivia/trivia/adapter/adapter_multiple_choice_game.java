@@ -2,21 +2,14 @@ package com.trivia.trivia.adapter;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.support.annotation.NonNull;
-import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.CompoundButton;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.trivia.trivia.R;
 import com.trivia.trivia.util.MultipleChoiceItems;
-import com.trivia.trivia.util.MultipleChoicePage;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -70,14 +63,13 @@ public class adapter_multiple_choice_game extends RecyclerView.Adapter<adapter_m
         });
         switch (data_service.getState()){
             case 0:
-
                 holder.btn_q.setBackgroundResource(R.drawable.button_question_unselected_background);
                 break;
             case 1:
-                holder.btn_q.setBackgroundResource(R.drawable.button_question_grean_background);
+                holder.btn_q.setBackgroundResource(R.drawable.button_grean_background);
                 break;
             case 2:
-                holder.btn_q.setBackgroundResource(R.drawable.button_question_red_background);
+                holder.btn_q.setBackgroundResource(R.drawable.button_red_background);
                 break;
         }
 

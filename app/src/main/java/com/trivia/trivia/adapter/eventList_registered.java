@@ -2,6 +2,7 @@ package com.trivia.trivia.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.CardView;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +13,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.trivia.trivia.R;
 import com.trivia.trivia.util.Event;
+import com.trivia.trivia.util.list_item;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,14 +39,8 @@ public class eventList_registered extends RecyclerView.Adapter<eventList_registe
         TextView tv_main;
         @BindView(R.id.item_event_iv_main)
         ImageView iv_main;
-        @BindView(R.id.item_event_iv_1)
-        ImageView iv_1;
-        @BindView(R.id.item_event_iv_2)
-        ImageView iv_2;
-        @BindView(R.id.item_event_tv_1)
-        TextView tv_1;
-        @BindView(R.id.item_event_tv_2)
-        TextView tv_2;
+        @BindView(R.id.event_list_rcle)
+        RecyclerView rv_event;
         @BindView(R.id.item_event_card)
         CardView cv_event;
 
@@ -76,8 +72,23 @@ public class eventList_registered extends RecyclerView.Adapter<eventList_registe
         final Event data_event = data_event_list.get(position);
 
         holder.tv_main.setText(data_event.getE_name());
-        holder.tv_1.setText(data_event.getE_province());
-        holder.tv_2.setText(data_event.getE_start_time());
+
+        GridLayoutManager layoutManager = new GridLayoutManager(context1, 2);
+        holder.rv_event.setLayoutManager(layoutManager);
+        ArrayList<list_item> uel=new ArrayList<list_item>();
+        uel.add(new list_item(data_event.getE_type(),"game","نوع رویداد"));
+        uel.add(new list_item(data_event.getE_city(),"placeholder","شهر برگزاری"));
+        adapter_list_event_unreg madapter = new adapter_list_event_unreg(uel);
+        // SlideInBottomAnimationAdapter alphaAdapter = new SlideInBottomAnimationAdapter(madapter);
+        // alphaAdapter.setFirstOnly(true);
+        holder. rv_event.setAdapter(madapter);
+madapter.setOnCardClickListner(new adapter_list_event_unreg.OnCardClickListner() {
+    @Override
+    public void OnCardClicked(View view, int position) {
+
+    }
+});
+
         Glide.with(context1).load(data_event.getE_img()).into(holder.iv_main);
         holder.cv_event.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -11,10 +11,10 @@ public class SolvingListFragmentPresenter {
     }
    void setList(){
        ArrayList<Question> q=new ArrayList<>();
-       q.add(new Question("سوال 1","","","",""));
-       q.add(new Question("سوال 2","","","",""));
-       q.add(new Question("سوال 3","","","",""));
-       q.add(new Question("سوال 4","","","",""));
+       q.add(new Question("سوال 1","","","","",""));
+       q.add(new Question("سوال 2","","","","", ""));
+       q.add(new Question("سوال 3","","","","",""));
+       q.add(new Question("سوال 4","","","","",""));
        solvingListFragment.setList(q);
 
     }

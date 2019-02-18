@@ -1,26 +1,21 @@
 package com.trivia.trivia.home.buyQuestion;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.trivia.trivia.R;
-import com.trivia.trivia.adapter.adapter_multiple_choice_game;
-import com.trivia.trivia.home.gameActivity.IGameMultipleChoice;
-import com.trivia.trivia.home.gameActivity.MultipleChoicePresenter;
-import com.trivia.trivia.util.MultipleChoicePage;
+import com.trivia.trivia.base.myFragment;
+import com.trivia.trivia.home.gameActivity.getLocation.getlocation;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 
-public class BuyQuestionFragment extends Fragment  {
+public class BuyQuestionFragment extends myFragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -29,11 +24,18 @@ public class BuyQuestionFragment extends Fragment  {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-
-
-    public BuyQuestionFragment() {
-        // Required empty public constructor
-    }
+    /* @BindView(R.id.radioRealButtonGroup_1)
+     RadioRealButtonGroup radioRealButtonGroup_level;
+     @BindView(R.id.radioRealButtonGroup_2)
+     RadioRealButtonGroup radioRealButtonGroup_type;
+     */
+    @BindView(R.id.buy_question_score_tv)
+    TextView tv_score;
+    @BindView(R.id.buy_question_btn)
+    Button btn_buy;
+    @BindView(R.id.buy_question_get_location_btn)
+    Button btn_location;
+    BuyQuestionPresenter buyQuestionPresenter;
 
     /**
      * Use this factory method to create a new instance of
@@ -67,31 +69,39 @@ public class BuyQuestionFragment extends Fragment  {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.activity_buy_question, container, false);
+        ButterKnife.bind(this, view);
+        buyQuestionPresenter = new BuyQuestionPresenter(this);
+
+        init();
+        setToolbar(view, "خرید سوال");
 
         return view;
     }
 
+    void init() {
 
+        btn_buy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //buyQuestionPresenter.buyQuestion(radioRealButtonGroup_level.getPosition(), radioRealButtonGroup_type.getPosition());
+            }
+        });
+        btn_location.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                get_location();
+            }
+        });
+    }
 
+    void setPlayerScore(int i) {
+        tv_score.setText(String.valueOf(i));
 
+    }
 
-
-
-
-
-    ;
-    // TODO: Rename method, update argument and hook method into UI event
-
-
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
+    void get_location() {
+        getlocation getlocation = new getlocation();
+        getlocation.getlocation3(getContext());
+    }
 
 }

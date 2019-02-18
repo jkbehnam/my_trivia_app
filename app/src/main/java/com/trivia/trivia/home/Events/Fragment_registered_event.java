@@ -1,21 +1,20 @@
 
 package com.trivia.trivia.home.Events;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.trivia.trivia.R;
 import com.trivia.trivia.adapter.eventList_registered;
 import com.trivia.trivia.base.myFragment;
-import com.trivia.trivia.home.HomeBase.Home;
+import com.trivia.trivia.helper.PrefManager;
 import com.trivia.trivia.util.Event;
 
 
@@ -25,8 +24,8 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 
-public class Fragment_registered_event extends myFragment {
-
+public class Fragment_registered_event extends myFragment implements Ieventview{
+    ProgressDialog mProgressDialog;
     FragmentActivity c;
     eventList_registered madapter;
     @BindView(R.id.event_list_rcle)
@@ -38,11 +37,16 @@ public class Fragment_registered_event extends myFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.activity_registered_events, container, false);
         ButterKnife.bind(this, rootView);
+
         setRetainInstance(true);
         c = getActivity();
+        mProgressDialog =new ProgressDialog(c);
         setFragmentActivity(getActivity());
         fragmentEventPresenter = new FragmentEventPresenter(this);
-        fragmentEventPresenter.refreshEventList();
+        setFragmentActivity(c);
+
+        PrefManager pm=new PrefManager(c);
+        fragmentEventPresenter.refreshEventList_registerd(pm.getUserDetails().get("u_id"));
 
         return rootView;
 
@@ -64,6 +68,14 @@ public class Fragment_registered_event extends myFragment {
             }
         });
 
+    }
+
+    public void showLoading() {
+showLoading_base();
+    }
+
+    public void hideLoading() {
+        hideLoading_base();
     }
 
 

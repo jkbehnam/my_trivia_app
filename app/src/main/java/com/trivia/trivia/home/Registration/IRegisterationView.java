@@ -12,7 +12,9 @@ public interface IRegisterationView {
 void optVerified();
     void showEndTimerDialog();
     void numberNotExist();
-    void toastMessage(String message);
-
-
+    void toastSuccessMessage(String message);
+    void toastFailMessage(String message);
+    void gotoNextPage();
+     void uniqueUsername() ;
+    void repetitiousUsername();
 }

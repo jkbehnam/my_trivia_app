@@ -12,9 +12,11 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.crashlytics.android.Crashlytics;
 import com.trivia.trivia.R;
 import com.trivia.trivia.adapter.SpinnerAdapter;
 import com.trivia.trivia.base.BaseActivity2;
+import com.trivia.trivia.helper.PrefManager;
 import com.trivia.trivia.home.HomeBase.Home;
 import com.trivia.trivia.home.Registration.RegisterationActivity;
 import com.trivia.trivia.util.App;
@@ -30,6 +32,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import butterknife.ButterKnife;
+import io.fabric.sdk.android.Fabric;
 
 public class LoginActivity extends BaseActivity2 implements ILoginView, View.OnClickListener {
     public static Context maincontext;
@@ -47,15 +50,26 @@ public class LoginActivity extends BaseActivity2 implements ILoginView, View.OnC
     int check = 0;
     // @BindView(R.id.activity_login_tv_change_lang) TextView tvChangeLang;
 
+    private void logUser() {
+        // TODO: Use the current user's information
+        // You can call any combination of these three methods
+        Crashlytics.setUserIdentifier("12345");
+        Crashlytics.setUserEmail("jkbehnam@gmail.com");
+        Crashlytics.setUserName("Test User");
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(getLayout());
         maincontext = this;
         ButterKnife.bind(this);
+
         init();
 
-        spinner.setSelection(2);
+        // TODO: Move this to where you establish a user session
+        logUser();
+
         String lng = App.localeManager.getLanguage();
         for (Languages l : langList
                 ) {
@@ -80,7 +94,7 @@ public class LoginActivity extends BaseActivity2 implements ILoginView, View.OnC
 
 
         Toast.makeText(this, App.localeManager.getLanguage(), Toast.LENGTH_SHORT).show();
-
+        Fabric.with(this, new Crashlytics());
     }
 
     @Override
@@ -144,6 +158,9 @@ public class LoginActivity extends BaseActivity2 implements ILoginView, View.OnC
 
     @Override
     public void loginSuccess(ResponseLogin responseLogin) {
+
+        PrefManager pm=new PrefManager(this);
+        pm.createLogin(responseLogin.getUsername(),responseLogin.getPhone(),responseLogin.getU_id());
         Intent openHomeScreen = new Intent(LoginActivity.this, Home.class);
         openHomeScreen.putExtra(Constant.PASS_TO_HOME_MSG, "This is HOME");
         startActivity(openHomeScreen);

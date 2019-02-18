@@ -4,6 +4,7 @@ import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.trivia.trivia.helper.HashedPassword;
 import com.trivia.trivia.util.ErrorCode;
 import com.trivia.trivia.webservice.model.response.ResponseLogin;
 
@@ -31,7 +32,7 @@ public class LoginPresenterImpl implements ILoginPresenter {
     @Override
     public void callLogin(String username, String password) {
         mILoginView.showLoading();
-        mILoginInteractor.login(username, password, new ILoginInteractor.IValidationErrorListener() {
+        mILoginInteractor.login(username,  HashedPassword.create(faToEn(password),"dfdf").toString(), new ILoginInteractor.IValidationErrorListener() {
             @Override
             public void emailError(ErrorCode code) {
                 mILoginView.hideLoading();
@@ -72,5 +73,18 @@ public class LoginPresenterImpl implements ILoginPresenter {
             }
 
         });
+    }
+    public static String faToEn(String num) {
+        return num
+                .replace("۰", "0")
+                .replace("۱", "1")
+                .replace("۲", "2")
+                .replace("۳", "3")
+                .replace("۴", "4")
+                .replace("۵", "5")
+                .replace("۶", "6")
+                .replace("۷", "7")
+                .replace("۸", "8")
+                .replace("۹", "9");
     }
 }

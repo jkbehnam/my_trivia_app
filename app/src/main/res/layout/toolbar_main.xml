@@ -4,15 +4,25 @@
     android:layout_width="match_parent"
     android:theme="@style/tlb"
     android:layoutDirection="ltr"
-
+    android:clipToPadding="false"
+    app:contentInsetStart="0dp"
     android:layout_height="?attr/actionBarSize"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/colorPrimary">
+    >
 
     <RelativeLayout
+
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentStart="true"
+            android:scaleType="centerCrop"
+            app:srcCompat="@drawable/backblue" />
 
         <TextView
             android:id="@+id/tvToolbarAllPage"
@@ -24,8 +34,9 @@
             android:layout_marginEnd="19dp"
             android:layout_marginRight="19dp"
             android:text="تیتر تولبار"
-            android:textColor="@color/tvToolbarAllPage"
-             />
+            android:textSize="@dimen/toolbar_all_page"
+            android:textColor="@color/white"
+            />
 
     </RelativeLayout>
 

@@ -1,7 +1,11 @@
 package com.trivia.trivia.home.Registration;
 
+import android.content.Context;
 import android.text.TextUtils;
+import android.widget.Toast;
 
+import com.trivia.trivia.helper.HashedPassword;
+import com.trivia.trivia.util.Gamer;
 import com.trivia.trivia.webservice.connectToServer;
 
 import org.json.JSONException;
@@ -9,9 +13,11 @@ import org.json.JSONObject;
 
 public class RegistrationPresenter {
     IRegisterationView mlIRegisterationView;
+    Context context;
 
     public RegistrationPresenter(IRegisterationView IRV) {
         this.mlIRegisterationView = IRV;
+        this.context = (Context) IRV;
     }
 
     void sendPhoneNumber(String phone) {
@@ -35,9 +41,9 @@ public class RegistrationPresenter {
         }
     }
 
-    public void sendOptCode(String code) {
+    public void sendOptCode(String code, String phone) {
         mlIRegisterationView.showLoading();
-        connectToServer.sendOtp(this, code);
+        connectToServer.sendOtp(this, code, phone);
 
     }
 
@@ -48,10 +54,10 @@ public class RegistrationPresenter {
             responseObj = new JSONObject(response);
             boolean error = responseObj.getBoolean("error");
             if (!error) {
-                mlIRegisterationView.toastMessage("کد ارسال شد");
+                mlIRegisterationView.toastSuccessMessage("کد ارسال شد");
                 mlIRegisterationView.numberNotExist();
-            }else if(responseObj.getString("message").equals("Mobile number already existed!")){
-                mlIRegisterationView.toastMessage("شماره تکراری است");
+            } else if (responseObj.getString("message").equals("Mobile number already existed!")) {
+                mlIRegisterationView.toastFailMessage("این شماره قبلا در سیستم ثبت شده است");
             }
         } catch (JSONException e) {
             e.printStackTrace();
@@ -67,18 +73,71 @@ public class RegistrationPresenter {
             responseObj = new JSONObject(response);
             boolean error = responseObj.getBoolean("error");
             if (!error) {
-                //mlIRegisterationView.toastMessage("کد دریافت شد");
-                 if(responseObj.getString("message").equals("User created successfully!")){
+                //mlIRegisterationView.toastSuccessMessage("کد دریافت شد");
+                if (responseObj.getString("message").equals("User created successfully!")) {
                     mlIRegisterationView.optVerified();
                 }
             }
         } catch (JSONException e) {
             e.printStackTrace();
+            Toast.makeText(context, "wrong", Toast.LENGTH_SHORT).show();
         }
 
         // Parsing json object response
         // response will be a json object
 
+    }
+
+    public void setUserPass(String username, String Password, String passwordRep, String phone) {
+
+        // checkUserName();
+        if (passwordRep.equals(Password)) {
+
+
+            connectToServer.check_username(username, context, new checkUserName() {
+                @Override
+                public void exist() {
+                    mlIRegisterationView.toastFailMessage("این نام کاربری در سیستم موجود است. لطفا نام دیگری را انتخاب کنید.");
+                }
+
+                @Override
+                public void notexist() {
+                    mlIRegisterationView.toastSuccessMessage("نام کاربری یکتا است");
+
+                    Gamer g = null;
+
+                    g = new Gamer(username, phone, HashedPassword.create(passwordRep, "dfdf").toString(), "sdfds");
+
+                    connectToServer.sendGamerData(g, context);
+                    mlIRegisterationView.gotoNextPage();
+                }
+            });
+        } else {
+            mlIRegisterationView.toastFailMessage("رمز عبور و تکرار آن یکسان نیستند.");
+        }
+
+    }
+
+    public void username_check(String username) {
+        connectToServer.check_username(username, context, new checkUserName() {
+            @Override
+            public void exist() {
+                mlIRegisterationView.toastFailMessage("این نام کاربری در سیستم موجود است. لطفا نام دیگری را انتخاب کنید.");
+                mlIRegisterationView.repetitiousUsername();
+            }
+
+            @Override
+            public void notexist() {
+                mlIRegisterationView.toastSuccessMessage("نام کاربری یکتا است");
+                mlIRegisterationView.uniqueUsername();
+            }
+        });
+    }
+
+    public interface checkUserName {
+        void exist();
+
+        void notexist();
     }
 
 }

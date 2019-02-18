@@ -7,5 +7,6 @@ public interface IGames {
     void wrongAnswer(int item);
     void setScore();
     void setItems(MultipleChoicePage mpcp);
-
+    public void  showLoading();
+    public void hideLoading();
 }

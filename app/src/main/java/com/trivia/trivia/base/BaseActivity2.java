@@ -5,7 +5,9 @@ import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 
+
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 import android.widget.TextView;
@@ -17,6 +19,7 @@ import com.trivia.trivia.util.LocaleManager;
 import com.trivia.trivia.util.Utils;
 
 import java.util.Locale;
+
 
 import butterknife.ButterKnife;
 import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
@@ -107,5 +110,10 @@ public abstract class BaseActivity2 extends AppCompatActivity {
     public abstract int getLayout();
 
     public abstract void init();
-
+public void setToolbar(String title){
+    Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+    this.setSupportActionBar(toolbar);
+    TextView tvToolbarTitle = (TextView) findViewById(R.id.tvToolbarAllPage);
+    tvToolbarTitle.setText(title);
+}
 }

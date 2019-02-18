@@ -4,12 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:background="#fff"
+    android:windowSoftInputMode="adjustNothing"
     android:layout_height="match_parent"
     >
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
+        <include
+            android:id="@+id/toolbar"
+
+            layout="@layout/toolbar_main"
+            android:layout_above="@+id/tabs"
+            tools:ignore="IncludeLayoutParam"></include>
         <LinearLayout
             android:id="@+id/first"
             android:layout_width="match_parent"
@@ -203,30 +210,32 @@
                     android:layout_marginTop="40dp"
                     android:background="@drawable/button_main_background"
                     android:text="ثبت"
-                    app:layout_constraintEnd_toEndOf="@+id/editText4"
-                    app:layout_constraintStart_toStartOf="@+id/editText4"
-                    app:layout_constraintTop_toBottomOf="@+id/editText4" />
+                    android:textColor="@color/white"
+                    android:textSize="18dp"
+                    app:layout_constraintEnd_toEndOf="@+id/activity_register_et_password_rep"
+                    app:layout_constraintStart_toStartOf="@+id/activity_register_et_password_rep"
+                    app:layout_constraintTop_toBottomOf="@+id/activity_register_et_password_rep" />
 
                 <EditText
-                    android:id="@+id/editText4"
+                    android:id="@+id/activity_register_et_password_rep"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="32dp"
                     android:ems="10"
                     android:inputType="textPersonName"
-                    android:text="تکرار رمز عبور"
-                    app:layout_constraintEnd_toEndOf="@+id/editText3"
-                    app:layout_constraintStart_toStartOf="@+id/editText3"
-                    app:layout_constraintTop_toBottomOf="@+id/editText3" />
+                    android:hint="تکرار رمز عبور"
+                    app:layout_constraintEnd_toEndOf="@+id/activity_register_et_password"
+                    app:layout_constraintStart_toStartOf="@+id/activity_register_et_password"
+                    app:layout_constraintTop_toBottomOf="@+id/activity_register_et_password" />
 
                 <EditText
-                    android:id="@+id/editText3"
+                    android:id="@+id/activity_register_et_password"
                     android:layout_width="0dp"
                     android:layout_height="49dp"
                     android:layout_marginTop="32dp"
                     android:ems="10"
                     android:inputType="textPersonName"
-                    android:text="رمز عبور"
+                    android:hint="رمز عبور"
                     app:layout_constraintEnd_toEndOf="@+id/activity_register_et_username"
                     app:layout_constraintStart_toStartOf="@+id/activity_register_et_username"
                     app:layout_constraintTop_toBottomOf="@+id/activity_register_et_username" />
@@ -235,17 +244,18 @@
                     android:id="@+id/activity_register_et_username"
                     android:layout_width="0dp"
 
+                    android:layout_height="wrap_content"
                     android:layout_marginLeft="30dp"
                     android:layout_marginRight="30dp"
-                    android:layout_height="wrap_content"
 
                     android:ems="10"
 
                     android:inputType="textPersonName"
-                    android:text="نام کاربری"
+                    android:hint="نام کاربری"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    tools:layout_editor_absoluteY="47dp" />
+                    tools:layout_editor_absoluteY="47dp"
+                    tools:ignore="MissingConstraints" />
             </android.support.constraint.ConstraintLayout>
         </LinearLayout>
 

@@ -71,8 +71,8 @@ public class adapterRcycleMain extends RecyclerView.Adapter<adapterRcycleMain.My
         final GameMenu data_service = data_services_list.get(position);
 
         holder.tv.setText(data_service.getTitle());
-        //holder.img.setImageResource(data_service.getImg());
-         Glide.with(context).load("http://10.0.2.2/my_trivia/img/campus-quest-map.png").into(holder.iv);
+        holder.iv.setImageResource(R.drawable.transaction);
+        Glide.with(context).load(getImage(data_service.getImg())).into(holder.iv);
         holder.cv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -93,5 +93,11 @@ public class adapterRcycleMain extends RecyclerView.Adapter<adapterRcycleMain.My
 
     public void setOnCardClickListner(OnCardClickListner onCardClickListner) {
         this.onCardClickListner = onCardClickListner;
+    }
+    public int getImage(String imageName) {
+
+        int drawableResourceId = context.getResources().getIdentifier(imageName, "drawable", context.getPackageName());
+
+        return drawableResourceId;
     }
 }

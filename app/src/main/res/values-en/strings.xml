@@ -32,4 +32,12 @@
     <string name="hard">hard</string>
     <string name="medium">medium</string>
     <string name="easy">easy</string>
+    <string name="descriptive">descriptive</string>
+    <string name="short_answer">short answer</string>
+    <string name="multiple_choice">multiple choice</string>
+
+    <string name="events">events</string>
+    <string name="messgaes">messgaes</string>
+    <string name="pofile">pofile</string>
+
 </resources>

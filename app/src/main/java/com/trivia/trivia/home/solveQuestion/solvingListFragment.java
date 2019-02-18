@@ -12,6 +12,8 @@ import android.view.ViewGroup;
 
 import com.trivia.trivia.R;
 import com.trivia.trivia.adapter.adapterAnswerList;
+import com.trivia.trivia.home.gameActivity.Fragment_main_event;
+import com.trivia.trivia.util.Event;
 import com.trivia.trivia.util.Question;
 
 import java.util.ArrayList;
@@ -20,8 +22,10 @@ import java.util.ArrayList;
 public class solvingListFragment extends Fragment {
     protected String mTitle;
     private String state;
+    Question question;
     RecyclerView rv_questions;
     FragmentActivity c;
+    private static final String EVENT_KEY = "question_key";
     ArrayList<Question> g_list2;
 SolvingListFragmentPresenter solvingListFragmentPresenter;
     public static solvingListFragment getInstance(String title, String state) {
@@ -30,7 +34,13 @@ SolvingListFragmentPresenter solvingListFragmentPresenter;
         sf.state = state;
         return sf;
     }
-
+    public static solvingListFragment newInstance(Question question) {
+        solvingListFragment fragment=new solvingListFragment();
+        Bundle bundle = new Bundle();
+        bundle.putSerializable(EVENT_KEY, question);
+        fragment.setArguments(bundle);
+        return fragment;
+    }
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,6 +51,8 @@ SolvingListFragmentPresenter solvingListFragmentPresenter;
         View v = inflater.inflate(R.layout.fr_simple_card, null);
         solvingListFragmentPresenter=new SolvingListFragmentPresenter(this);
         c = getActivity();
+        question = (Question) getArguments().getSerializable(
+                EVENT_KEY);
         rv_questions = (RecyclerView) v.findViewById(R.id.recycle_);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(c);
         rv_questions.setLayoutManager(mLayoutManager);

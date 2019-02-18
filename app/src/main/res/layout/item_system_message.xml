@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_gravity="fill"
+    android:id="@+id/cardview_be_intelligent"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="10dp"
+    android:foreground="?android:attr/selectableItemBackground"
+    android:clickable="true"
+    android:layout_margin="10dp"
+    app:cardPreventCornerOverlap="false">
+
+        <LinearLayout
+            android:padding="8dp"
+            android:layout_gravity="fill"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TableRow
+                android:layout_gravity="fill"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                >
+
+                <com.uncopt.android.widget.text.justify.JustifiedTextView
+                    android:id="@+id/card_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal|center"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    android:justificationMode="inter_word"
+
+                    android:paddingBottom="3dp"
+                    android:paddingLeft="8dp"
+                    android:paddingRight="8dp"
+                    android:paddingTop="8dp"
+                    android:text="عملکرد کلی شما :"
+                    android:textAlignment="textStart"
+                    android:textColor="@color/red"
+                    android:textSize="18dp"
+                    tools:ignore="RtlCompat" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+
+                <TextView
+
+                    android:id="@+id/card_info"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="fill_vertical"
+                    android:layout_weight="1"
+                    android:baselineAligned="false"
+                    android:includeFontPadding="false"
+                    android:justificationMode="inter_word"
+
+                    android:paddingLeft="8dp"
+                    android:paddingRight="8dp"
+
+                    android:paddingBottom="8dp"
+                    android:text="عملکرد کلی شما :"
+                    android:textAlignment="textStart"
+                    android:textColor="@color/toolbarTXT"
+                    android:textSize="15dp"
+                    tools:ignore="RtlCompat" />
+            </TableRow>
+
+
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
+

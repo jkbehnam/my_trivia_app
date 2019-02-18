@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
+    <include
+        android:id="@+id/toolbar"
+
+        layout="@layout/toolbar_main"
+        android:layout_above="@+id/tabs"
+        tools:ignore="IncludeLayoutParam"></include>
+    <LinearLayout
+        android:padding="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/fragment_multi_choice_tv_score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:text="امتیاز سوال:300"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/fragment_multi_choice_cv_question"
+            android:layout_width="match_parent"
+            android:layout_height="137dp"
+            android:layout_margin="10dp"
+            app:cardCornerRadius="20dp"
+            android:layout_gravity="center"
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:background="@color/questionBackColor"
+
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/fragment_short_answer_tv_question"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="25dp"
+
+                    android:textColor="@color/white"
+                    android:text="TextView" />
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+
+        <com.trivia.trivia.home.gameActivity.Bank.PinEntryEditText
+            android:id="@+id/txt_pin_entry"
+            android:padding="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:cursorVisible="false"
+            android:itemBackground="@color/blue"
+
+
+
+            android:backgroundTint="@color/colorPrimaryDark"
+            android:background="@drawable/button_main_chat"
+            android:inputType="textMultiLine"
+            android:singleLine="false"
+            android:textIsSelectable="false"
+            android:textSize="20sp" />
+
+
+    </LinearLayout>
+
+</LinearLayout>

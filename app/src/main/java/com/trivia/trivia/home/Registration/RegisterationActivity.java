@@ -17,13 +17,11 @@ import com.trivia.trivia.R;
 
 import com.trivia.trivia.base.BaseActivity2;
 import com.shuhart.stepview.StepView;
-import com.trivia.trivia.home.HomeBase.Home;
 import com.trivia.trivia.login.LoginActivity;
-import com.trivia.trivia.util.Gamer;
-import com.trivia.trivia.webservice.connectToServer;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import es.dmoral.toasty.Toasty;
 
 public class RegisterationActivity extends BaseActivity2 implements View.OnClickListener, IRegisterationView {
     StepView stepView;
@@ -51,10 +49,15 @@ public class RegisterationActivity extends BaseActivity2 implements View.OnClick
     PinView pinView;
     @BindView(R.id.activity_register_et_username)
     EditText et_username;
+    @BindView(R.id.activity_register_et_password)
+    EditText et_password;
+    @BindView(R.id.activity_register_et_password_rep)
+    EditText et_password_rep;
     @BindView(R.id.activity_register_btn_username)
     Button btn_username;
     private int currentStep = 0;
-
+    public String phoneNumTxt;
+    int checktime=0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,9 +67,10 @@ public class RegisterationActivity extends BaseActivity2 implements View.OnClick
         stepView.setStepsNumber(3);
         stepView.go(0, true);
         layout1.setVisibility(View.VISIBLE);
-
-
+        this.setToolbar("ثبت نام");
         registrationPresenter = new RegistrationPresenter(this);
+
+
     }
 
     @Override
@@ -86,6 +90,14 @@ public class RegisterationActivity extends BaseActivity2 implements View.OnClick
         btnSendPhone.setOnClickListener(this);
         btnSendCode.setOnClickListener(this);
         btn_username.setOnClickListener(this);
+
+        et_username.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean b) {
+               if (checktime++!=0){
+                registrationPresenter.username_check(et_username.getText().toString());}
+            }
+        });
     }
 
     @Override
@@ -113,9 +125,9 @@ public class RegisterationActivity extends BaseActivity2 implements View.OnClick
                             stepView.done(true);
                         }
 
-
+                        phoneNumTxt = ccp.getSelectedCountryCodeWithPlus() + phoneNumber;
                         //send to server
-                          registrationPresenter.sendPhoneNumber(ccp.getSelectedCountryCodeWithPlus() + phoneNumber);
+                        registrationPresenter.sendPhoneNumber(phoneNumTxt);
                     }
                     break;
                 }
@@ -127,15 +139,12 @@ public class RegisterationActivity extends BaseActivity2 implements View.OnClick
 
             case R.id.activity_reg_btn_sendCode:
 
-                registrationPresenter.sendOptCode(pinView.getText().toString());
+                registrationPresenter.sendOptCode(pinView.getText().toString(), phoneNumTxt);
                 break;
 
             case R.id.activity_register_btn_username:
-                checkUserName();
 
-                Gamer g = new Gamer("behan", "dfdsf", "sdfdfds", "sdfds");
-                connectToServer.sendGamerData(connectToServer.createjArrayGamer(g), this);
-
+                registrationPresenter.setUserPass(et_username.getText().toString(), et_password.getText().toString(), et_password_rep.getText().toString(), phoneNumTxt);
 
                 break;
 
@@ -144,8 +153,22 @@ public class RegisterationActivity extends BaseActivity2 implements View.OnClick
     }
 
     @Override
-    public void toastMessage(String message) {
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+    public void toastSuccessMessage(String message) {
+
+        Toasty.success(this, message, Toast.LENGTH_SHORT, true).show();
+    }
+
+    @Override
+    public void toastFailMessage(String message) {
+        Toasty.error(this, message, Toast.LENGTH_SHORT, true).show();
+    }
+
+
+    @Override
+    public void gotoNextPage() {
+        Intent i = new Intent(this, LoginActivity.class);
+        startActivity(i);
+        finish();
     }
 
     @Override
@@ -170,7 +193,7 @@ public class RegisterationActivity extends BaseActivity2 implements View.OnClick
     public void EnterCodePage() {
         layout1.setVisibility(View.GONE);
         layout2.setVisibility(View.VISIBLE);
-
+        layout3.setVisibility(View.GONE);
     }
 
     @Override
@@ -180,9 +203,12 @@ public class RegisterationActivity extends BaseActivity2 implements View.OnClick
 
     @Override
     public void optVerified() {
-        Intent i=new Intent(this,Home.class);
-        startActivity(i);
-        finish();
+
+
+        layout1.setVisibility(View.GONE);
+        layout2.setVisibility(View.GONE);
+        layout3.setVisibility(View.VISIBLE);
+        stepView.go(2, true);
     }
 
     @Override
@@ -194,12 +220,21 @@ public class RegisterationActivity extends BaseActivity2 implements View.OnClick
     public void numberNotExist() {
         layout2.setVisibility(View.VISIBLE);
         layout1.setVisibility(View.GONE);
+        layout3.setVisibility(View.GONE);
+        stepView.go(1, true);
     }
 
-    public void checkUserName() {
+    public void uniqueUsername() {
         Drawable myIcon = getResources().getDrawable(R.drawable.ok);
         myIcon.setBounds(0, 0, myIcon.getIntrinsicWidth(), myIcon.getIntrinsicHeight());
-        et_username.setError("Good", myIcon);
+        et_username.setError("unique", myIcon);
 
     }
+    public void repetitiousUsername() {
+        Drawable myIcon = getResources().getDrawable(R.drawable.cancel);
+        myIcon.setBounds(0, 0, myIcon.getIntrinsicWidth(), myIcon.getIntrinsicHeight());
+        et_username.setError("repetitious", myIcon);
+
+    }
+
 }

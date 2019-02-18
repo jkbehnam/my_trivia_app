@@ -8,12 +8,14 @@ public class ResponseLogin {
 
     @SerializedName("Name")
     @Expose
-    private String id;
+    private String username;
 
     @SerializedName("phone")
     @Expose
-    private String nickname;
-
+    private String phone;
+    @SerializedName("u_id")
+    @Expose
+    private String u_id;
 
 
     /**
@@ -21,35 +23,40 @@ public class ResponseLogin {
      * @return
      * The id
      */
-    public String getId() {
-        return id;
-    }
 
-    /**
-     *
-     * @param id
-     * The id
-     */
-    public void setId(String id) {
-        this.id = id;
-    }
 
     /**
      *
      * @return
-     * The nickname
+     * The phone
      */
-    public String getNickname() {
-        return nickname;
+    public String getPhone() {
+        return phone;
     }
 
     /**
      *
-     * @param nickname
-     * The nickname
+     * @param phone
+     * The phone
      */
-    public void setNickname(String nickname) {
-        this.nickname = nickname;
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getU_id() {
+        return u_id;
+    }
+
+    public void setU_id(String u_id) {
+        this.u_id = u_id;
     }
 
     /**
