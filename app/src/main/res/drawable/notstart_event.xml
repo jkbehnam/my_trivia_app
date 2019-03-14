@@ -4,9 +4,8 @@
     android:color="#fff">
     <item android:id="@+id/mask">
         <shape android:shape="rectangle">
-            <gradient android:endColor="#f09A9A9A" android:centerColor="#00F8F8F6" android:startColor="#0f9A9A9A" android:type="linear" android:angle="90"></gradient>
 
-
+<solid android:color="#a09A9A9A"></solid>
         </shape>
     </item>
     

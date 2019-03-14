@@ -82,7 +82,7 @@ public class getlocation {
             @Override
             public void onLocationChanged(Location location) {
 
-               // ad.dismiss();
+                ad.dismiss();
 
                 try {
                     locationManager.removeUpdates(this);

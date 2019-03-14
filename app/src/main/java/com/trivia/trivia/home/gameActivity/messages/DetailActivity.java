@@ -11,12 +11,22 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.trivia.trivia.R;
 import com.trivia.trivia.base.BaseActivity2;
+import com.trivia.trivia.util.DownloadImageTask;
 import com.trivia.trivia.util.NewsArticle;
+import com.trivia.trivia.webservice.connectToServer;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import saman.zamani.persiandate.PersianDate;
 
 public class DetailActivity extends BaseActivity2 {
     public static final String PARAM_ARTICLE = "param-article";
@@ -26,6 +36,8 @@ public class DetailActivity extends BaseActivity2 {
 
     @BindView(R.id.tv_news_title)
     TextView tv_news_title;
+    @BindView(R.id.tv_news_source)
+    TextView tv_news_source;
     @BindView(R.id.tv_time)
     TextView tv_time;
     @BindView(R.id.tv_news_desc)
@@ -45,15 +57,29 @@ public class DetailActivity extends BaseActivity2 {
 
         makeUiFullscreen();
         setupToolbar();
-          setupArticleAndListener();
-
         news = (NewsArticle) getIntent().getSerializableExtra(
                 EVENT_KEY);
+        show_loading();
+        connectToServer.getnewsitem(this,news.getId());
+
+
+
 
     }
 
 
+public void reciveRequeset(String response) throws JSONException {
+hide_Loading();
+    final GsonBuilder builder = new GsonBuilder();
 
+    final Gson gson = builder.create();
+    // final Reader data = new InputStreamReader(LoginActivity.class.getResourceAsStream("user"), "UTF-8");
+    JSONObject obj = new JSONObject(response);
+    ArrayList<NewsArticle> questions2 = new ArrayList<>();
+    final NewsArticle[] questions = gson.fromJson(obj.getString("news"), NewsArticle[].class);
+
+    setupArticleAndListener(questions[0]);
+}
     private void makeUiFullscreen() {
         // When applying fullscreen layout, transparent bar works only for VERSION < 21
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
@@ -69,13 +95,18 @@ public class DetailActivity extends BaseActivity2 {
     /**
      * Extracts Article from Arguments and Adds button listeners
      */
-    private void setupArticleAndListener() {
-        news = (NewsArticle) getIntent().getSerializableExtra(
-                EVENT_KEY);
+    private void setupArticleAndListener(NewsArticle news) {
 
-        Glide.with(this).load("https://moviemag.ir/cache/36a0e5e057055fb027ad0f66d1f2a265_w150_h150_cp.jpg").into(iv_news_image);
+
+        Glide.with(this).load(news.getUrlToImage()).into(iv_news_image);
+
+        new DownloadImageTask((ImageView) iv_news_image)
+                .execute(news.getUrlToImage());
         tv_news_title.setText(news.getTitle());
         tv_news_content.setText(news.getContent());
+        PersianDate p=new PersianDate(Long.parseLong(news.getPublishedAt())*1000);
+        tv_time.setText(p.toString());
+        tv_news_source.setText(news.getAuthor());
         setupShareButton(news);
 
 

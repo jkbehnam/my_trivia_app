@@ -94,9 +94,10 @@ public class RegisterationActivity extends BaseActivity2 implements View.OnClick
         et_username.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View view, boolean b) {
+               if( et_username.getText().length() > 0){
                if (checktime++!=0){
                 registrationPresenter.username_check(et_username.getText().toString());}
-            }
+            }}
         });
     }
 

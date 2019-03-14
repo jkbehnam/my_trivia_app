@@ -10,7 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-import com.alexfu.countdownview.CountDownView;
+
 import com.github.aakira.expandablelayout.ExpandableLinearLayout;
 import com.trivia.trivia.R;
 import com.trivia.trivia.base.myFragment;
@@ -30,8 +30,7 @@ public class Fragment_event_notstart extends myFragment {
     @BindView(R.id.event_detail_btn)
     Button detail_btn;
     Event event;
-    @BindView(R.id.count_down)
-    CountDownView cdt;
+
 
     private static final String EVENT_KEY = "event_key";
 
@@ -41,7 +40,6 @@ public class Fragment_event_notstart extends myFragment {
         View rootView = inflater.inflate(R.layout.item_event_notstart, container, false);
         ButterKnife.bind(this, rootView);
         setRetainInstance(true);
-        cdt.start();
 
         event = (Event) getArguments().getSerializable(
                 EVENT_KEY);

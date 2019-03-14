@@ -1,11 +1,15 @@
 
 package com.trivia.trivia.home.profile;
 
+import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.BottomSheetBehavior;
+import android.support.design.widget.BottomSheetDialog;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -29,39 +33,39 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 
-public class Fragment_profile extends myFragment {
-    @BindView(R.id.iv_exit)
-    ImageView iv_exit;
+public class Fragment_profile extends myFragment implements View.OnClickListener {
+
     @BindView(R.id.pb1)
     TextRoundCornerProgressBar pb;
     @BindView(R.id.MyGameMainActivity_recycle)
     RecyclerView rv_rank;
     @BindView(R.id.chart1)
     my_BarChart chart_1;
+    @BindView(R.id.iv_exit)
+    ImageView iv_exit;
+    @BindView(R.id.iv_setting)
+    ImageView iv_setting;
+    private BottomSheetBehavior mBehavior;
+    private BottomSheetDialog mBottomSheetDialog;
+    private View bottom_sheet;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.activity_profile, container, false);
+        View rootView = inflater.inflate(R.layout.activity_profile_freelancer, container, false);
         ButterKnife.bind(this, rootView);
         setRetainInstance(true);
         setToolbar(rootView, "صفحه شخصی");
         pb.setProgress(66);
         pb.setProgressColor(Color.parseColor("#9370DB"));
         get_step_data();
-        iv_exit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                PrefManager pm = new PrefManager(getActivity());
-                pm.clearSession();
-                getActivity().finish();
-            }
-        });
 
-
+        iv_setting.setOnClickListener(this);
+        iv_exit.setOnClickListener(this);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
         rv_rank.setLayoutManager(mLayoutManager);
         rv_rank.setNestedScrollingEnabled(false);
+
         show_list();
         return rootView;
 
@@ -140,17 +144,60 @@ public class Fragment_profile extends myFragment {
 
     public void show_list() {
         ArrayList<OtherGamer> dv_list = new ArrayList<>();
-dv_list.add(new OtherGamer("behnam","099594","50","2"));
-        dv_list.add(new OtherGamer("بهنام","099594","50","2"));
-        dv_list.add(new OtherGamer("hamid","099594","50","2"));
-        dv_list.add(new OtherGamer("حسین","099594","50","2"));
-        dv_list.add(new OtherGamer("علی","099594","50","2"));
-        dv_list.add(new OtherGamer("behzad","099594","50","2"));
+        dv_list.add(new OtherGamer("behnam", "099594", "50", "2"));
+        dv_list.add(new OtherGamer("بهنام", "099594", "50", "2"));
+        dv_list.add(new OtherGamer("hamid", "099594", "50", "2"));
+        dv_list.add(new OtherGamer("حسین", "099594", "50", "2"));
+        dv_list.add(new OtherGamer("علی", "099594", "50", "2"));
+        dv_list.add(new OtherGamer("behzad", "099594", "50", "2"));
         String p_code = "";
         adapter_gamers_list madapter;
         madapter = new adapter_gamers_list(dv_list, p_code);
 
 
         rv_rank.setAdapter(madapter);
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.iv_exit:
+                PrefManager pm = new PrefManager(getActivity());
+                pm.clearSession();
+                getActivity().finish();
+                break;
+            case R.id.iv_setting:
+                Fragment_setting fragment = new Fragment_setting();
+                fragment.show( ((AppCompatActivity) getActivity()).getSupportFragmentManager(), fragment.getTag());
+                break;
+        }
+    }
+
+    public void showSettingBottomSheetDialog() {
+        if (mBehavior.getState() == BottomSheetBehavior.STATE_EXPANDED) {
+            mBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
+        }
+
+        final View view = getLayoutInflater().inflate(R.layout.activity_setting_sectioned, null);
+        ((ImageView) view.findViewById(R.id.bt_close)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mBottomSheetDialog.dismiss();
+            }
+        });
+
+
+        mBottomSheetDialog = new BottomSheetDialog(getActivity());
+        mBottomSheetDialog.setContentView(view);
+        mBottomSheetDialog.getWindow().findViewById(R.id.design_bottom_sheet).setBackgroundResource(android.R.color.transparent);
+
+
+        mBottomSheetDialog.show();
+        mBottomSheetDialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+            @Override
+            public void onDismiss(DialogInterface dialog) {
+                mBottomSheetDialog = null;
+            }
+        });
     }
 }

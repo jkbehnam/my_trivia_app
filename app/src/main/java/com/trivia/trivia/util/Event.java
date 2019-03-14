@@ -1,7 +1,6 @@
 package com.trivia.trivia.util;
 
 
-
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
@@ -56,7 +55,10 @@ public class Event implements Serializable {
     @Expose
     private
     String e_img;
-
+    @SerializedName("e_end_type")
+    @Expose
+    private
+    String e_end_type;
     @SerializedName("e_duration")
     @Expose
     private
@@ -81,6 +83,10 @@ public class Event implements Serializable {
     @Expose
     private
     String e_description;
+    @SerializedName("e_goup_members")
+    @Expose
+    private String e_goup_members;
+
 
 
     public String getE_id() {
@@ -217,5 +223,21 @@ public class Event implements Serializable {
 
     public void setE_description(String e_description) {
         this.e_description = e_description;
+    }
+
+    public String getE_goup_members() {
+        return e_goup_members;
+    }
+
+    public void setE_goup_members(String e_goup_members) {
+        this.e_goup_members = e_goup_members;
+    }
+
+    public String getE_end_type() {
+        return e_end_type;
+    }
+
+    public void setE_end_type(String e_end_type) {
+        this.e_end_type = e_end_type;
     }
 }

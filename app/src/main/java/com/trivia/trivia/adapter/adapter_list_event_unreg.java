@@ -2,12 +2,14 @@ package com.trivia.trivia.adapter;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -34,6 +36,7 @@ public class adapter_list_event_unreg extends RecyclerView.Adapter<adapter_list_
         public TextView card_name;
         public ImageView img;
         public CardView cv;
+        public LinearLayout layout;
 
 
         public MyViewHolder(View view) {
@@ -42,6 +45,7 @@ public class adapter_list_event_unreg extends RecyclerView.Adapter<adapter_list_
             card_name = (TextView) view.findViewById(R.id.item_event_tv_3);
             img = (ImageView) view.findViewById(R.id.item_event_iv_2);
             cv = (CardView) view.findViewById(R.id.item_event_card);
+            layout = (LinearLayout) view.findViewById(R.id.lay);
         }
     }
 
@@ -65,16 +69,34 @@ public class adapter_list_event_unreg extends RecyclerView.Adapter<adapter_list_
         final list_item data_service = data_services_list.get(position);
         holder.card_title.setText(data_service.getContent());
         holder.card_name.setText(data_service.getName());
+        int color = 0;
       //  holder.img.setImageResource(R.drawable.clock);
        // Glide.with(context).load("android.resource://" + com.example.behnam.myapplication.activities.MainActivity.PACKAGE_NAME + "/" + String.valueOf(data_service.getImg())).into(holder.img);
         Glide.with(context).load(getImage(data_service.getImg())).into(holder.img);
+        switch (data_service.getColor()){
+            case 1:
+                color=R.drawable.lay_stock_green;
+                holder.img.setColorFilter(ContextCompat.getColor(context, R.color.q_color_green), android.graphics.PorterDuff.Mode.SRC_IN);
 
-        holder.cv.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onCardClickListner.OnCardClicked(v, position);
-            }
-        });
+                break;
+            case 2:
+                color=R.drawable.lay_stock_green;
+                holder.img.setColorFilter(ContextCompat.getColor(context, R.color.q_color_yellow), android.graphics.PorterDuff.Mode.SRC_IN);
+
+                break;
+            case 3:
+                color=R.drawable.lay_stock_green;
+                holder.img.setColorFilter(ContextCompat.getColor(context, R.color.q_color_red), android.graphics.PorterDuff.Mode.SRC_IN);
+
+                break;
+        }
+      /*  if(color!=0){
+        final int sdk = android.os.Build.VERSION.SDK_INT;
+        if(sdk < android.os.Build.VERSION_CODES.JELLY_BEAN) {
+            holder. layout.setBackgroundDrawable(ContextCompat.getDrawable(context, color) );
+        } else {
+            holder. layout.setBackground(ContextCompat.getDrawable(context,color));
+        }}*/
 
     }
 

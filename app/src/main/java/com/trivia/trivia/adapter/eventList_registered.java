@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.codesgood.views.JustifiedTextView;
 import com.trivia.trivia.R;
 import com.trivia.trivia.util.Event;
 import com.trivia.trivia.util.list_item;
@@ -36,7 +37,7 @@ public class eventList_registered extends RecyclerView.Adapter<eventList_registe
 
 
         @BindView(R.id.item_event_tv_main)
-        TextView tv_main;
+        JustifiedTextView tv_main;
         @BindView(R.id.item_event_iv_main)
         ImageView iv_main;
         @BindView(R.id.event_list_rcle)
@@ -77,7 +78,7 @@ public class eventList_registered extends RecyclerView.Adapter<eventList_registe
         holder.rv_event.setLayoutManager(layoutManager);
         ArrayList<list_item> uel=new ArrayList<list_item>();
         uel.add(new list_item(data_event.getE_type(),"game","نوع رویداد"));
-        uel.add(new list_item(data_event.getE_city(),"placeholder","شهر برگزاری"));
+        uel.add(new list_item(data_event.getE_city(),"placeholder","محل برگزاری"));
         adapter_list_event_unreg madapter = new adapter_list_event_unreg(uel);
         // SlideInBottomAnimationAdapter alphaAdapter = new SlideInBottomAnimationAdapter(madapter);
         // alphaAdapter.setFirstOnly(true);

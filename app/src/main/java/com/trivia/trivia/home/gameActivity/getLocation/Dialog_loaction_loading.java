@@ -21,39 +21,12 @@ public class Dialog_loaction_loading {
     @SuppressLint("ResourceAsColor")
     public AlertDialog qrcode_reader(Context context) {
         this.context = context;
-
         // ald_insert.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-
-
         builder = new AlertDialog.Builder(context);
         ald_exit = builder.create();
         view_alert_dialog_exit = LayoutInflater.from(context).inflate(R.layout.alert_location_searching, null);
         ald_exit.setView(view_alert_dialog_exit);
         ald_exit.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-
-
-     /*   dialog = new Dialog(context, android.R.style.Theme_Translucent);
-        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        dialog.setContentView(R.layout.alert_location_searching);
-        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
-        dialog.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);
-        dialog.getWindow().getAttributes().windowAnimations = R.style.PauseDialogAnimation;
-
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            Window window = dialog.getWindow();
-            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-            window.setStatusBarColor(ContextCompat.getColor(context, R.color.primarydark_dark));
-        }
-*/
-        //  ald_insert.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
-
-
-
-
-
-
-
 
         return ald_exit;
     }

@@ -7,22 +7,15 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.trivia.trivia.R;
 import com.trivia.trivia.base.myFragment;
-import com.trivia.trivia.home.Events.Ieventview;
-import com.trivia.trivia.home.gameActivity.Fragment_event_notstart;
-import com.trivia.trivia.home.gameActivity.Fragment_main_event;
-import com.trivia.trivia.home.gameActivity.MultipleChoiceFragment;
-import com.trivia.trivia.home.gameActivity.ShortAnswerFragment;
-import com.trivia.trivia.home.solveQuestion.solvingListFragment;
-import com.trivia.trivia.util.Event;
+import com.trivia.trivia.home.gameActivity.answerQuestion.MultipleChoiceFragment;
+import com.trivia.trivia.home.gameActivity.answerQuestion.ShortAnswerFragment;
 import com.trivia.trivia.util.Question;
 import com.trivia.trivia.webservice.connectToServer;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 
 public class FragmentQuestionsPresenter {
     Iquestionview fragment_event;

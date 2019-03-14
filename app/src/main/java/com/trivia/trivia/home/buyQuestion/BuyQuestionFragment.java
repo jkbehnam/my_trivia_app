@@ -13,6 +13,7 @@ import com.trivia.trivia.home.gameActivity.getLocation.getlocation;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import co.ceryle.radiorealbutton.RadioRealButtonGroup;
 
 
 public class BuyQuestionFragment extends myFragment {
@@ -24,13 +25,16 @@ public class BuyQuestionFragment extends myFragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-    /* @BindView(R.id.radioRealButtonGroup_1)
-     RadioRealButtonGroup radioRealButtonGroup_level;
-     @BindView(R.id.radioRealButtonGroup_2)
-     RadioRealButtonGroup radioRealButtonGroup_type;
-     */
+    @BindView(R.id.radioRealButtonGroup_1)
+    RadioRealButtonGroup radioRealButtonGroup_level;
+    @BindView(R.id.radioRealButtonGroup_2)
+    RadioRealButtonGroup radioRealButtonGroup_type;
+
     @BindView(R.id.buy_question_score_tv)
     TextView tv_score;
+    @BindView(R.id.buy_question_inflation_tv)
+    TextView tv_inflation;
+
     @BindView(R.id.buy_question_btn)
     Button btn_buy;
     @BindView(R.id.buy_question_get_location_btn)
@@ -68,12 +72,13 @@ public class BuyQuestionFragment extends myFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+
         View view = inflater.inflate(R.layout.activity_buy_question, container, false);
         ButterKnife.bind(this, view);
+        setFragmentActivity(getActivity());
         buyQuestionPresenter = new BuyQuestionPresenter(this);
-
+        buyQuestionPresenter.getScore();
         init();
-        setToolbar(view, "خرید سوال");
 
         return view;
     }
@@ -83,19 +88,27 @@ public class BuyQuestionFragment extends myFragment {
         btn_buy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //buyQuestionPresenter.buyQuestion(radioRealButtonGroup_level.getPosition(), radioRealButtonGroup_type.getPosition());
+                buyQuestionPresenter.buyQuestion(radioRealButtonGroup_level.getPosition(), radioRealButtonGroup_type.getPosition());
             }
         });
+        btn_location.setVisibility(View.GONE);
         btn_location.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 get_location();
+
             }
         });
     }
 
-    void setPlayerScore(int i) {
-        tv_score.setText(String.valueOf(i));
+    void setPlayerScore(String i) {
+        tv_score.setText("موجودی حساب: " + i);
+
+    }
+
+    void setinflation(String i) {
+        tv_inflation.setText("نرخ تورم: " + i);
 
     }
 

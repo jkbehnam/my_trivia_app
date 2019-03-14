@@ -1,39 +1,38 @@
 package com.trivia.trivia.base;
 
+import android.annotation.TargetApi;
 import android.content.Context;
+import android.content.res.Configuration;
 import android.content.res.Resources;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-
-
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 import android.widget.TextView;
 
-
 import com.trivia.trivia.R;
+import com.trivia.trivia.home.gameActivity.LoadingMain.Dialog_loading;
 import com.trivia.trivia.util.App;
 import com.trivia.trivia.util.LocaleManager;
 import com.trivia.trivia.util.Utils;
 
 import java.util.Locale;
 
-
-import butterknife.ButterKnife;
 import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 
 public abstract class BaseActivity2 extends AppCompatActivity {
-
+    AlertDialog ad;
     private static final String TAG = "BaseActivity2";
 
     @Override
     protected void attachBaseContext(Context base) {
         App.localeManager = new LocaleManager(base);
-
         super.attachBaseContext(CalligraphyContextWrapper.wrap(App.localeManager.setLocale(base)));
         Log.d(TAG, "attachBaseContext");
     }
@@ -42,7 +41,10 @@ public abstract class BaseActivity2 extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(getLayout());
-
+        Dialog_loading aa;
+        aa = new Dialog_loading();
+        ad = aa.qrcode_reader(this);
+        //   mProgressDialog =new ProgressDialog(a);
         Log.d(TAG, "onCreate");
         Utils.resetActivityTitle(this);
         CalligraphyConfig.initDefault(new CalligraphyConfig.Builder()
@@ -68,31 +70,31 @@ public abstract class BaseActivity2 extends AppCompatActivity {
         super.onResume();
         showResourcesInfo();
 
-     //   TextView tv = findViewById(R.id.cache);
-      //  tv.setText(Utility.getTitleCache());
+        //   TextView tv = findViewById(R.id.cache);
+        //  tv.setText(Utility.getTitleCache());
     }
 
     private void showResourcesInfo() {
         Resources topLevelRes = Utils.getTopLevelResources(this);
-       // updateInfo("Top level  ", findViewById(R.id.tv1), topLevelRes);
+        // updateInfo("Top level  ", findViewById(R.id.tv1), topLevelRes);
 
         Resources appRes = getApplication().getResources();
-      //  updateInfo("Application  ", findViewById(R.id.tv2), appRes);
+        //  updateInfo("Application  ", findViewById(R.id.tv2), appRes);
 
         Resources actRes = getResources();
-      //  updateInfo("Activity  ", findViewById(R.id.tv3), actRes);
+        //  updateInfo("Activity  ", findViewById(R.id.tv3), actRes);
 
-      //  TextView tv4 = findViewById(R.id.tv4);
+        //  TextView tv4 = findViewById(R.id.tv4);
         String defLanguage = Locale.getDefault().getLanguage();
-      //  tv4.setText(String.format("Locale.getDefault() - %s", defLanguage));
-      //  tv4.setCompoundDrawablesWithIntrinsicBounds(null, null, getLanguageDrawable(defLanguage), null);
+        //  tv4.setText(String.format("Locale.getDefault() - %s", defLanguage));
+        //  tv4.setCompoundDrawablesWithIntrinsicBounds(null, null, getLanguageDrawable(defLanguage), null);
     }
 
     private void updateInfo(String title, TextView tv, Resources res) {
         Locale l = LocaleManager.getLocale(res);
-       // tv.setText(title + Utility.hexString(res) + String.format(" - %s", l.getLanguage()));
-      //  Drawable icon = getLanguageDrawable(l.getLanguage());
-       // tv.setCompoundDrawablesWithIntrinsicBounds(null, null, icon, null);
+        // tv.setText(title + Utility.hexString(res) + String.format(" - %s", l.getLanguage()));
+        //  Drawable icon = getLanguageDrawable(l.getLanguage());
+        // tv.setCompoundDrawablesWithIntrinsicBounds(null, null, icon, null);
     }
 
    /* private Drawable getLanguageDrawable(String language) {
@@ -110,10 +112,53 @@ public abstract class BaseActivity2 extends AppCompatActivity {
     public abstract int getLayout();
 
     public abstract void init();
-public void setToolbar(String title){
-    Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-    this.setSupportActionBar(toolbar);
-    TextView tvToolbarTitle = (TextView) findViewById(R.id.tvToolbarAllPage);
-    tvToolbarTitle.setText(title);
-}
+
+    public void setToolbar(String title) {
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        this.setSupportActionBar(toolbar);
+        TextView tvToolbarTitle = (TextView) findViewById(R.id.tvToolbarAllPage);
+        tvToolbarTitle.setText(title);
+    }
+
+    public void show_loading() {
+        try {
+            ad.show();
+        }catch (Exception e){}
+
+    }
+
+    public void hide_Loading() {
+       /* if (mProgressDialog != null && mProgressDialog.isShowing())
+            mProgressDialog.dismiss();*/
+        ad.hide();
+    }
+
+
+    private Context updateBaseContextLocale(Context context) {
+        // String language = SharedPrefUtils.getSavedLanguage(); // Helper method to get saved language from SharedPreferences
+        Locale locale = new Locale("fa");
+        Locale.setDefault(locale);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            return updateResourcesLocale(context, locale);
+        }
+
+        return updateResourcesLocaleLegacy(context, locale);
+    }
+
+    @TargetApi(Build.VERSION_CODES.N)
+    private Context updateResourcesLocale(Context context, Locale locale) {
+        Configuration configuration = context.getResources().getConfiguration();
+        configuration.setLocale(locale);
+        return context.createConfigurationContext(configuration);
+    }
+
+    @SuppressWarnings("deprecation")
+    private Context updateResourcesLocaleLegacy(Context context, Locale locale) {
+        Resources resources = context.getResources();
+        Configuration configuration = resources.getConfiguration();
+        configuration.locale = locale;
+        resources.updateConfiguration(configuration, resources.getDisplayMetrics());
+        return context;
+    }
 }

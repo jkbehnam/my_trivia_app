@@ -37,7 +37,7 @@ public class LocaleManager {
     }
 
     public String getLanguage() {
-        return prefs.getString(LANGUAGE_KEY, LANGUAGE_ENGLISH);
+        return prefs.getString(LANGUAGE_KEY, LANGUAGE_FARSI);
     }
 
     @SuppressLint("ApplySharedPref")

@@ -74,8 +74,8 @@ public class my_question_list extends RecyclerView.Adapter<my_question_list.MyVi
         GridLayoutManager layoutManager = new GridLayoutManager(context1, 2);
         holder.rv_event.setLayoutManager(layoutManager);
         ArrayList<list_item> uel=new ArrayList<list_item>();
-        uel.add(new list_item("آسان","effort","سطح سوال"));
-        uel.add(new list_item(data_event.getQ_type(),"question","نوع سوال"));
+        uel.add(new list_item(data_event.getQ_score(),"effort", "امتیاز" ,0) );
+        uel.add(new list_item(data_event.getQ_type(),"question","نوع سوال",Integer.parseInt(data_event.getQ_level())));
         adapter_list_event_unreg madapter = new adapter_list_event_unreg(uel);
         // SlideInBottomAnimationAdapter alphaAdapter = new SlideInBottomAnimationAdapter(madapter);
         // alphaAdapter.setFirstOnly(true);

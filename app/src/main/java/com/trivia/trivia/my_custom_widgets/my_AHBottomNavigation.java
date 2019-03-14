@@ -30,8 +30,9 @@ public class my_AHBottomNavigation extends AHBottomNavigation {
     }
     private void createNavItems() {
 
+
         //CREATE ITEMS
-        AHBottomNavigationItem infoItem = new AHBottomNavigationItem(R.string.events, R.drawable.ic_dashboard_black_24dp, R.color.colorBottomNavigationInactive);
+        AHBottomNavigationItem infoItem = new AHBottomNavigationItem(R.string.events, R.drawable.gamepad, R.color.colorBottomNavigationInactive);
         AHBottomNavigationItem profileItem = new AHBottomNavigationItem(R.string.messgaes, R.drawable.ic_notifications_black_24dp, R.color.colorBottomNavigationAccent);
         AHBottomNavigationItem homeItem = new AHBottomNavigationItem(R.string.pofile, R.drawable.ic_person_black_24dp, R.color.colorBottomNavigationAccent);
 
@@ -47,22 +48,22 @@ public class my_AHBottomNavigation extends AHBottomNavigation {
         //set properties
 
 
-        this.setAccentColor(getContext().getResources().getColor(R.color.colorPrimary));
-        this.setInactiveColor(Color.parseColor("#747474"));
+       // this.setAccentColor(getContext().getResources().getColor(R.color.toolbar_color));
+        this.setAccentColor(getContext().getResources().getColor(R.color.bottonNav));
+        this.setInactiveColor(Color.parseColor("#C5C5C5"));
         //set current item
 
-        this.setForceTint(true);
-        this.setTranslucentNavigationEnabled(false);
-        this.setTitleState(TitleState.ALWAYS_SHOW);
+        this.setForceTint(false);
+        this.setTranslucentNavigationEnabled(true);
 
         //this.setNotification("1", 3);
 
 
 
-        this.setBehaviorTranslationEnabled(false);
+        this.setBehaviorTranslationEnabled(true);
         this.setBackgroundColor(Color.parseColor("#f5f5f5"));
         this.setDefaultBackgroundColor(Color.parseColor("#f5f5f5"));
-
+        this.setTitleState(TitleState.ALWAYS_HIDE);
     }
 
 }

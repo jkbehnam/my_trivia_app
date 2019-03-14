@@ -1,6 +1,9 @@
 package com.trivia.trivia.util;
 
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 import java.io.Serializable;
 import java.sql.Timestamp;
 
@@ -8,14 +11,35 @@ import java.sql.Timestamp;
  * A News Article content and it's details
  */
 public class NewsArticle implements Serializable {
+    @SerializedName("id")
+    @Expose
     private int id;
+    @SerializedName("author")
+    @Expose
     private  String author;
+    @SerializedName("title")
+    @Expose
     private  String title;
+    @SerializedName("description")
+    @Expose
     private  String description;
+    @SerializedName("url")
+    @Expose
     private  String url;
-    private  Timestamp publishedAt;
+    @SerializedName("timestamp")
+    @Expose
+    private  String publishedAt;
+    @SerializedName("urlToImage")
+    @Expose
     private  String urlToImage;
+    @SerializedName("urlToImage_small")
+    @Expose
+    private  String urlToImage_small;
+    @SerializedName("content")
+    @Expose
     private  String content;
+    @SerializedName("category")
+    @Expose
     private String category;
     private Timestamp saveDate = new Timestamp(System.currentTimeMillis());
     public NewsArticle() {
@@ -27,7 +51,7 @@ public class NewsArticle implements Serializable {
         this.setUrlToImage(null);
         this.setContent(null);
     }
-    public NewsArticle(String author, String title, String description, String url, Timestamp publishedAt, String urlToImage, String content) {
+    public NewsArticle(String author, String title, String description, String url, String publishedAt, String urlToImage, String content) {
         this.setAuthor(author);
         this.setTitle(title);
         this.setDescription(description);
@@ -78,11 +102,11 @@ public class NewsArticle implements Serializable {
         this.url = url;
     }
 
-    public Timestamp getPublishedAt() {
+    public String getPublishedAt() {
         return publishedAt;
     }
 
-    public void setPublishedAt(Timestamp publishedAt) {
+    public void setPublishedAt(String publishedAt) {
         this.publishedAt = publishedAt;
     }
 
@@ -116,5 +140,13 @@ public class NewsArticle implements Serializable {
 
     public void setSaveDate(Timestamp saveDate) {
         this.saveDate = saveDate;
+    }
+
+    public String getUrlToImage_small() {
+        return urlToImage_small;
+    }
+
+    public void setUrlToImage_small(String urlToImage_small) {
+        this.urlToImage_small = urlToImage_small;
     }
 }

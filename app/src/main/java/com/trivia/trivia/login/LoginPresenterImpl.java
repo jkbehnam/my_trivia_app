@@ -32,7 +32,7 @@ public class LoginPresenterImpl implements ILoginPresenter {
     @Override
     public void callLogin(String username, String password) {
         mILoginView.showLoading();
-        mILoginInteractor.login(username,  HashedPassword.create(faToEn(password),"dfdf").toString(), new ILoginInteractor.IValidationErrorListener() {
+        mILoginInteractor.login(username,  password, new ILoginInteractor.IValidationErrorListener() {
             @Override
             public void emailError(ErrorCode code) {
                 mILoginView.hideLoading();

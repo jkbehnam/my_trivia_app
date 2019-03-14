@@ -1,9 +1,22 @@
 package com.trivia.trivia.util;
 
-public class OtherGamer {
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
+import java.io.Serializable;
+
+public class OtherGamer implements Serializable {
+    @SerializedName("name")
+    @Expose
     private String name;
+    @SerializedName("member")
+    @Expose
     private String members;
+    @SerializedName("score")
+    @Expose
     private String score;
+    @SerializedName("answerd_q")
+    @Expose
     private String answerd_q;
 
     public OtherGamer(String _name, String _phone_number, String _score, String _answerd_q ){
@@ -12,7 +25,9 @@ public class OtherGamer {
         setMembers(_score);
         setAnswerd_q(_answerd_q);
     }
+    public OtherGamer( ){
 
+    }
     public String getName() {
         return name;
     }

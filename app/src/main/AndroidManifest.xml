@@ -2,48 +2,57 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.trivia.trivia">
-    <uses-sdk
-        tools:overrideLibrary="co.ronash.pushe" />
+
+    <uses-sdk tools:overrideLibrary="co.ronash.pushe" />
+
     <permission
         android:name="com.trivia.trivia.permission.C2D_MESSAGE"
         android:protectionLevel="signature" />
-    <uses-permission
-        android:name="com.trivia.trivia.permission.C2D_MESSAGE" />
 
-    <!-- Optional permissions -->
-    <uses-permission android:name="com.google.android.gms.permission.ACTIVITY_RECOGNITION"/>
-    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="com.trivia.trivia.permission.C2D_MESSAGE" /> <!-- Optional permissions -->
+    <uses-permission android:name="com.google.android.gms.permission.ACTIVITY_RECOGNITION" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"></uses-permission>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
 
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="my game"
-        android:usesCleartextTraffic="true"
+        android:name=".base.aaplication"
+        android:largeHeap="true"
         android:supportsRtl="true"
-        tools:replace="android:label"
-        android:theme="@style/AppTheme">
-        <activity android:name=".login.LoginActivity">
+        android:screenOrientation="portrait"
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true"
+        tools:replace="android:label">
+
+        <activity android:name=".home.Registration.reg_data">
 
         </activity>
+        <activity android:name=".login.LoginActivity"></activity>
         <activity android:name=".home.Registration.RegisterationActivity" />
-        <activity
-            android:name=".home.HomeBase.Home"
-            >
+        <activity android:name=".home.HomeBase.Home"  android:launchMode="singleTask"  android:windowSoftInputMode="adjustPan">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
+                <action android:name="schemas.com.trivia.trivia..home.HomeBase.Home" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <category android:name="android.intent.category.ALTERNATIVE" />
+
             </intent-filter>
         </activity>
 
         <meta-data
             android:name="io.fabric.ApiKey"
             android:value="81003da3f5260307b60b3e9fa302d62ff7fa3ac9" />
-        <receiver android:name="co.ronash.pushe.receiver.UpdateReceiver" >
+
+        <receiver android:name="co.ronash.pushe.receiver.UpdateReceiver">
             <intent-filter>
                 <action android:name="android.intent.action.PACKAGE_REPLACED" />
 
@@ -52,23 +61,27 @@
                     android:scheme="package" />
             </intent-filter>
         </receiver>
-
         <receiver
             android:name="com.google.android.gms.gcm.GcmReceiver"
             android:exported="true"
-            android:permission="com.google.android.c2dm.permission.SEND" >
+            android:permission="com.google.android.c2dm.permission.SEND">
             <intent-filter>
                 <action android:name="com.google.android.c2dm.intent.RECEIVE" />
-
                 <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
 
                 <category android:name="com.trivia.trivia" />
             </intent-filter>
         </receiver>
 
-        <meta-data android:name="co.ronash.pushe.token" android:value="PUSHE_786234695798"/>
-        <meta-data android:name="co.ronash.pushe.cr" android:value="Tm9uZQ=="/>
-        <activity android:name=".home.gameActivity.messages.DetailActivity"></activity>
+        <meta-data
+            android:name="co.ronash.pushe.token"
+            android:value="PUSHE_786234695798" />
+        <meta-data
+            android:name="co.ronash.pushe.cr"
+            android:value="Tm9uZQ==" />
+
+        <activity android:name=".home.gameActivity.messages.DetailActivity" />
+<activity android:name=".home.source.PlayerActivity"></activity>
     </application>
 
 </manifest>

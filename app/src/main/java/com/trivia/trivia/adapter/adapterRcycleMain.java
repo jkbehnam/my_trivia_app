@@ -59,7 +59,7 @@ public class adapterRcycleMain extends RecyclerView.Adapter<adapterRcycleMain.My
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.item_recycler_view_main_game, parent, false);
+                .inflate(R.layout.item_main_event, parent, false);
 
         this.context = parent.getContext();
         return new MyViewHolder(itemView);
@@ -73,6 +73,7 @@ public class adapterRcycleMain extends RecyclerView.Adapter<adapterRcycleMain.My
         holder.tv.setText(data_service.getTitle());
         holder.iv.setImageResource(R.drawable.transaction);
         Glide.with(context).load(getImage(data_service.getImg())).into(holder.iv);
+
         holder.cv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

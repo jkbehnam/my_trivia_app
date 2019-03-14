@@ -9,6 +9,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.trivia.trivia.helper.HashedPassword;
 import com.trivia.trivia.util.ErrorCode;
 import com.trivia.trivia.util.URLs;
 import com.trivia.trivia.util.Utils;
@@ -58,8 +59,9 @@ public class LoginInteractorImpl implements ILoginInteractor {
                 @Override
                 protected Map<String, String> getParams() throws AuthFailureError {
                     Map<String, String> params = new HashMap<>();
+
                     params.put("Username", faToEn(userName));
-                    params.put("Password", faToEn(passWord));
+                    params.put("Password", HashedPassword.create(faToEn(passWord),"dfdf").toString());
                     return params;
                 }
             };

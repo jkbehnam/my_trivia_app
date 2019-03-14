@@ -16,7 +16,7 @@
     <string name="activity_login_password_wrong">Password is wrong.</string>
 
     <string name="activity_login_alert_ok">OK</string>
-
+    <string name="cache_status">Playing Online: Downloaded %d%%</string>
     <string name="connection_issue_msg">No internet connection.</string>
     <string name="username">نام کاربری</string>
     <string name="password">رمز عبور</string>
@@ -45,7 +45,7 @@
     <string name="hard">سخت</string>
     <string name="medium">متوسط</string>
     <string name="easy">آسان</string>
-    
+
     <string name="descriptive">تشریحی</string>
     <string name="short_answer">جواب کوتاه</string>
     <string name="multiple_choice">چند گزینه ای</string>
@@ -55,15 +55,6 @@
     <string name="events">رویداد ها</string>
     <string name="messgaes">خبر ها</string>
     <string name="pofile">صفحه شخصی</string>
-
-
-
-
-
-
-
-
-
 
 
     <string name="sample_source">BBC News • 1h</string>

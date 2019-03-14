@@ -12,7 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
-import com.alexfu.countdownview.CountDownView;
+
 import com.trivia.trivia.R;
 import com.trivia.trivia.adapter.adapterRcycleMain;
 import com.trivia.trivia.base.myFragment;

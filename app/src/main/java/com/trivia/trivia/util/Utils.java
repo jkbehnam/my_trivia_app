@@ -100,7 +100,7 @@ public class Utils {
             android.support.v7.app.AlertDialog.Builder builder = new android.support.v7.app.AlertDialog.Builder(mContext, R.style.StyleAppCompatAlertDialog);
             builder.setTitle(mContext.getResources().getString(R.string.app_name));
             builder.setMessage(alertMessage);
-            builder.setPositiveButton(mContext.getResources().getString(R.string.activity_login_alert_ok), null);
+            builder.setPositiveButton("باشه", null);
             builder.show();
         } catch (Exception e) {
             e.printStackTrace();

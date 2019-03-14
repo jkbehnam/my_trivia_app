@@ -6,6 +6,9 @@ import com.google.gson.annotations.SerializedName;
 import java.io.Serializable;
 
 public class Question implements Serializable {
+    @SerializedName("id")
+    @Expose
+    private String id;
     @SerializedName("q_id")
     @Expose
     private String Q_id;
@@ -99,5 +102,13 @@ public class Question implements Serializable {
 
     public void setQ_score(String q_score) {
         Q_score = q_score;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 }

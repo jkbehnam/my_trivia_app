@@ -1,26 +1,25 @@
 package com.trivia.trivia.adapter;
 
 import android.content.Context;
-import android.graphics.Color;
-import android.graphics.Typeface;
-import android.provider.ContactsContract;
-import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 
-import com.bumptech.glide.Glide;
 import com.trivia.trivia.R;
-import com.trivia.trivia.util.Daily_system_massage;
+import com.trivia.trivia.util.DownloadImageTask;
 import com.trivia.trivia.util.NewsArticle;
-import com.uncopt.android.widget.text.justify.JustifiedTextView;
+
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
+
+import saman.zamani.persiandate.PersianDate;
 
 /**
  * Created by behnam_b on 7/5/2016.
@@ -32,22 +31,20 @@ public class adapter_system_message_recycle extends RecyclerView.Adapter<adapter
     OnCardClickListner onCardClickListner;
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        public JustifiedTextView card_title;
+        public TextView card_title;
        // TextView card_info;
-        TextView card_date;
+        TextView time,author;
 ImageView iv_title;
-        public CardView CV;
+        public FrameLayout CV;
 
         public MyViewHolder(View view) {
             super(view);
-            card_title = (JustifiedTextView) view.findViewById(R.id.tv_news_title);
-           // card_info = (TextView) view.findViewById(R.id.card_info);
-            //  card_date = (TextView) view.findViewById(R.id.card_date);
-            CV = (CardView) view.findViewById(R.id.cardview_be_intelligent);
-            iv_title=(ImageView)view.findViewById(R.id.iv_news_image);
+            card_title = (TextView) view.findViewById(R.id.title);
+            time = (TextView) view.findViewById(R.id.time);
+            author = (TextView) view.findViewById(R.id.author);
+            CV = (FrameLayout) view.findViewById(R.id.main_lay);
+            iv_title=(ImageView)view.findViewById(R.id.imageView_news);
             // Toast.makeText(view.getContext(),"تست", Toast.LENGTH_SHORT).show();
-
-
         }
     }
 
@@ -59,7 +56,7 @@ ImageView iv_title;
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.aanews_item, parent, false);
+                .inflate(R.layout.row_news4, parent, false);
         context = parent.getContext();
 
         return new MyViewHolder(itemView);
@@ -70,13 +67,22 @@ ImageView iv_title;
         final NewsArticle data_service = data_services_list.get(position);
        // String s = data_service.getAnswer().replace("ss", "");
         holder.card_title.setText(data_service.getTitle());
-
+       /* SpannableStringBuilder str = new SpannableStringBuilder(data_service.getTitle());
+        str.setSpan(new android.text.style.StyleSpan(Typeface.BOLD), 0, str.length() , Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        holder.card_title.setText(str);
         //holder.card_info.setText(s);
+        */
       /*  if (data_service.getCode() == 0) {
             holder.CV.setBackgroundColor(Color.parseColor("#d8d9d8"));
         }
         */
-        Glide.with(context).load(data_service.getUrlToImage()).into(holder.iv_title);
+       // Glide.with(context).load("http://blackfish5.org/img/cognitive.png").into(holder.iv_title);
+        //Calendar c=Calendar.getInstance();
+        PersianDate p=new PersianDate(Long.parseLong(data_service.getPublishedAt())*1000);
+        holder.time.setText(p.toString());
+        holder.author.setText(data_service.getAuthor());
+        new DownloadImageTask((ImageView) holder.iv_title)
+                .execute(data_service.getUrlToImage_small());
 
         holder.CV.setOnClickListener(new View.OnClickListener() {
             @Override

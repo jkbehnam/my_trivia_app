@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:theme="@style/tlb"
-    android:layoutDirection="ltr"
-    android:clipToPadding="false"
-    app:contentInsetStart="0dp"
-    android:layout_height="?attr/actionBarSize"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    >
+    android:layout_width="match_parent"
+    android:layout_height="?attr/actionBarSize"
+    android:clipToPadding="false"
+    android:layoutDirection="ltr"
+    android:theme="@style/tlb"
+    app:contentInsetStart="0dp"
+    app:contentInsetStartWithNavigation="0dp"
+    app:layout_scrollFlags="scroll|enterAlways"
+    app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
 
     <RelativeLayout
 
@@ -22,6 +23,7 @@
             android:layout_height="match_parent"
             android:layout_alignParentStart="true"
             android:scaleType="centerCrop"
+            android:tint="@color/toolbar_color"
             app:srcCompat="@drawable/backblue" />
 
         <TextView
@@ -34,9 +36,8 @@
             android:layout_marginEnd="19dp"
             android:layout_marginRight="19dp"
             android:text="تیتر تولبار"
-            android:textSize="@dimen/toolbar_all_page"
             android:textColor="@color/white"
-            />
+            android:textSize="@dimen/toolbar_all_page" />
 
     </RelativeLayout>
 

@@ -1,0 +1,406 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:background="@color/grey_5"
+
+    android:layout_height="fill_parent"
+    android:orientation="vertical">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+        <include layout="@layout/toolbar_main" />
+    </android.support.design.widget.AppBarLayout>
+
+    <com.shuhart.stepview.StepView
+        android:id="@+id/step_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingBottom="5dp"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:paddingTop="5dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:sv_animationType="All"
+        app:sv_doneCircleColor="@color/toolbar_color"
+        app:sv_doneStepLineColor="@color/colorPrimary"
+        app:sv_doneStepMarkColor="@color/white"
+        app:sv_doneTextColor="@color/colorPrimary"
+        app:sv_nextStepLineColor="@color/toolbar_color"
+        app:sv_nextTextColor="@color/colorPrimary"
+        app:sv_selectedCircleColor="@color/toolbar_color"
+        app:sv_selectedStepNumberColor="@color/white"
+        app:sv_selectedTextColor="@color/colorPrimary"
+        app:sv_textSize="14dp"
+        app:sv_typeface="@font/iran_sans_mobile" />
+
+    <RelativeLayout
+        android:id="@+id/RfirstDate"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <android.support.v4.widget.NestedScrollView
+            android:id="@+id/first_data"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/bt_submit"
+            android:background="@color/grey_5"
+            android:clipToPadding="false"
+            android:padding="@dimen/spacing_mlarge"
+            android:scrollbars="none"
+            android:scrollingCache="true"
+            android:visibility="visible"
+
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/spacing_medium"
+                    android:text="نام"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:textColor="@color/grey_60" />
+
+                <EditText
+                    style="@style/EditText.Flat.Grey"
+                    android:layout_width="fill_parent"
+                    android:layout_height="@dimen/spacing_xmlarge"
+                    android:background="@drawable/edit_text_round_bg_white"
+                    android:minHeight="@dimen/spacing_xmlarge"
+                    android:paddingLeft="@dimen/spacing_middle"
+                    android:paddingRight="@dimen/spacing_middle" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_large"
+                    android:layout_marginBottom="@dimen/spacing_medium"
+                    android:text="نام خانوادگی"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:textColor="@color/grey_60" />
+
+                <EditText
+                    style="@style/EditText.Flat.Grey"
+                    android:layout_width="fill_parent"
+                    android:layout_height="@dimen/spacing_xmlarge"
+                    android:background="@drawable/edit_text_round_bg_white"
+                    android:minHeight="@dimen/spacing_xmlarge"
+                    android:paddingLeft="@dimen/spacing_middle"
+                    android:paddingRight="@dimen/spacing_middle" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_large"
+                    android:layout_marginBottom="@dimen/spacing_medium"
+                    android:text="کد ملی"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:textColor="@color/grey_60" />
+
+                <EditText
+                    style="@style/EditText.Flat.Grey"
+                    android:layout_width="fill_parent"
+                    android:layout_height="@dimen/spacing_xmlarge"
+                    android:background="@drawable/edit_text_round_bg_white"
+                    android:minHeight="@dimen/spacing_xmlarge"
+                    android:paddingLeft="@dimen/spacing_middle"
+                    android:paddingRight="@dimen/spacing_middle" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_large"
+                    android:layout_marginBottom="@dimen/spacing_medium"
+                    android:text="ایمیل"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:textColor="@color/grey_60" />
+
+                <EditText
+                    style="@style/EditText.Flat.Grey"
+                    android:layout_width="fill_parent"
+                    android:layout_height="@dimen/spacing_xmlarge"
+                    android:background="@drawable/edit_text_round_bg_white"
+                    android:minHeight="@dimen/spacing_xmlarge"
+                    android:paddingLeft="@dimen/spacing_middle"
+                    android:paddingRight="@dimen/spacing_middle" />
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_large"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="0.0dip"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.0"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="@dimen/spacing_medium"
+                            android:text="جنسیت"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                            android:textColor="@color/grey_60" />
+
+                        <EditText
+                            android:id="@+id/et_gender"
+                            style="@style/EditText.Flat.Grey"
+                            android:layout_width="fill_parent"
+                            android:layout_height="@dimen/spacing_xmlarge"
+                            android:background="@drawable/edit_text_round_bg_white"
+                            android:drawableEnd="@drawable/ic_expand_arrow"
+                            android:drawableRight="@drawable/ic_expand_arrow"
+                            android:editable="false"
+                            android:focusable="false"
+                            android:minHeight="@dimen/spacing_xmlarge"
+                            android:paddingLeft="@dimen/spacing_middle"
+                            android:paddingRight="@dimen/spacing_middle" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="@dimen/spacing_large"
+                        android:layout_height="0.0dip" />
+
+                    <LinearLayout
+                        android:layout_width="0.0dip"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.0"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="@dimen/spacing_medium"
+                            android:text="تاریخ تولد"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                            android:textColor="@color/grey_60" />
+
+                        <EditText
+                            android:id="@+id/et_bdate"
+                            style="@style/EditText.Flat.Grey"
+                            android:focusable="false"
+                            android:layout_width="fill_parent"
+                            android:layout_height="@dimen/spacing_xmlarge"
+                            android:background="@drawable/edit_text_round_bg_white"
+                            android:minHeight="@dimen/spacing_xmlarge"
+                            android:paddingLeft="@dimen/spacing_middle"
+                            android:paddingRight="@dimen/spacing_middle" />
+                    </LinearLayout>
+                </LinearLayout>
+
+            </LinearLayout>
+        </android.support.v4.widget.NestedScrollView>
+
+        <Button
+            android:id="@+id/bt_submit"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+
+            android:layout_alignParentBottom="true"
+
+            android:layout_marginStart="@dimen/spacing_mlarge"
+            android:layout_marginTop="@dimen/spacing_large"
+            android:layout_marginEnd="@dimen/spacing_mlarge"
+            android:layout_marginBottom="@dimen/spacing_mlarge"
+            android:background="@drawable/button_blue_gradiant"
+            android:text="تایید و ادامه"
+            android:textAllCaps="false"
+
+            android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+            android:textColor="@android:color/white" />
+
+    </RelativeLayout>
+
+    <!--  app:sv_doneCircleColor="@color/selected_cardview_text"
+        app:sv_doneStepLineColor="@color/selected_cardview_text"
+
+        app:sv_doneTextColor="@color/text_color"
+        app:sv_nextStepLineColor="@color/selected_cardview_text"
+        app:sv_nextTextColor="@color/text_color"
+        app:sv_selectedCircleColor="@color/selected_cardview_text"
+        app:sv_selectedTextColor="@color/text_color"
+        -->
+
+
+    <RelativeLayout
+        android:id="@+id/RsecondData"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:visibility="visible">
+
+        <android.support.v4.widget.NestedScrollView
+            android:id="@+id/second_data"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_above="@+id/bt_submit2"
+            android:background="@color/grey_5"
+            android:clipToPadding="false"
+            android:padding="@dimen/spacing_mlarge"
+            android:scrollbars="none"
+            android:scrollingCache="true"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            tools:visibility="visible">
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/spacing_medium"
+                    android:text="کشور"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:textColor="@color/grey_60" />
+
+                <EditText
+                    style="@style/EditText.Flat.Grey"
+                    android:layout_width="fill_parent"
+                    android:layout_height="@dimen/spacing_xmlarge"
+                    android:background="@drawable/edit_text_round_bg_white"
+                    android:minHeight="@dimen/spacing_xmlarge"
+                    android:paddingLeft="@dimen/spacing_middle"
+                    android:paddingRight="@dimen/spacing_middle" />
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_large"
+                    android:layout_marginBottom="@dimen/spacing_medium"
+                    android:text="استان"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:textColor="@color/grey_60" />
+
+                <EditText
+                    android:id="@+id/province"
+                    style="@style/EditText.Flat.Grey"
+                    android:layout_width="fill_parent"
+                    android:editable="false"
+                    android:focusable="false"
+                    android:layout_height="@dimen/spacing_xmlarge"
+                    android:background="@drawable/edit_text_round_bg_white"
+                    android:minHeight="@dimen/spacing_xmlarge"
+                    android:paddingLeft="@dimen/spacing_middle"
+                    android:paddingRight="@dimen/spacing_middle" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_large"
+                    android:layout_marginBottom="@dimen/spacing_medium"
+                    android:text="شهر"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:textColor="@color/grey_60" />
+
+                <EditText
+                    android:id="@+id/et_city"
+                    style="@style/EditText.Flat.Grey"
+                    android:editable="false"
+                    android:focusable="false"
+                    android:layout_width="fill_parent"
+                    android:layout_height="@dimen/spacing_xmlarge"
+                    android:background="@drawable/edit_text_round_bg_white"
+                    android:minHeight="@dimen/spacing_xmlarge"
+                    android:paddingLeft="@dimen/spacing_middle"
+                    android:paddingRight="@dimen/spacing_middle" />
+
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_large"
+                    android:layout_marginBottom="@dimen/spacing_medium"
+                    android:text="مقطع تحصیلی"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:textColor="@color/grey_60" />
+
+                <EditText
+                    style="@style/EditText.Flat.Grey"
+                    android:layout_width="fill_parent"
+                    android:layout_height="@dimen/spacing_xmlarge"
+                    android:background="@drawable/edit_text_round_bg_white"
+                    android:minHeight="@dimen/spacing_xmlarge"
+                    android:paddingLeft="@dimen/spacing_middle"
+                    android:paddingRight="@dimen/spacing_middle" />
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_large"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="0.0dip"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.0"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="@dimen/spacing_medium"
+                            android:text="پایه تحصیلی"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                            android:textColor="@color/grey_60" />
+
+                        <EditText
+                            android:id="@+id/et_gender"
+                            style="@style/EditText.Flat.Grey"
+                            android:layout_width="fill_parent"
+                            android:layout_height="@dimen/spacing_xmlarge"
+                            android:background="@drawable/edit_text_round_bg_white"
+                            android:drawableEnd="@drawable/ic_expand_arrow"
+                            android:drawableRight="@drawable/ic_expand_arrow"
+                            android:editable="false"
+                            android:focusable="false"
+                            android:minHeight="@dimen/spacing_xmlarge"
+                            android:paddingLeft="@dimen/spacing_middle"
+                            android:paddingRight="@dimen/spacing_middle" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="@dimen/spacing_large"
+                        android:layout_height="0.0dip" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+        </android.support.v4.widget.NestedScrollView>
+
+        <Button
+            android:id="@+id/bt_submit2"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+
+            android:layout_alignParentBottom="true"
+
+            android:layout_marginStart="@dimen/spacing_mlarge"
+            android:layout_marginTop="@dimen/spacing_large"
+            android:layout_marginEnd="@dimen/spacing_mlarge"
+            android:layout_marginBottom="@dimen/spacing_mlarge"
+
+            android:background="@drawable/button_blue_gradiant"
+            android:text="تایید و پایان"
+            android:textAllCaps="false"
+            android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+            android:textColor="@android:color/white" />
+
+    </RelativeLayout>
+</LinearLayout>

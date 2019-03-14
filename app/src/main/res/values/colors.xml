@@ -10,14 +10,46 @@
     <color name="questionBackColor">#806DFF</color>
     <color name="navigationItem">#A33E60</color>
 
+
+    <color name="q_color_red">#DD3F3F</color>
+    <color name="q_color_yellow">#E0D402</color>
+    <color name="q_color_green">#50B784</color>
+
+    <color name="boxStrokeColor">#03aced</color>
+
+    <color name="grey_40">#ff999999</color>
+    <color name="grey_5">#fff2f2f2</color>
+
+    <color name="deep_purple_700">#ff512da8</color>
+    <color name="grey_10">#ffe6e6e6</color>
+    <color name="grey_3">#fff7f7f7</color>
+
+
+    <color name="grey_60">#ff666666</color>
+
+
+    <color name="grey_80">#ff37474f</color>
+
+    <color name="grey_90">#ff263238</color>
+
     <color name="radiobuttonback">#C4C6C9</color>
     <color name="mainBackground">#cacaca</color>
     <color name="colorPrimary">#C5C5C5</color>
     <color name="colorPrimaryDark">#9A9A9A</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="toolbar_color">#cc0203</color>
+    <color name="statusbar_color">#a50202</color>
+    <color name="activity17timeline">#d7d7d7</color>
+    <color name="activity17Splitter">#5ed7d7d7</color>
 
+    <!--  <color name="toolbar_color">#03A9F4</color>
+     <color name="statusbar_color">#004863</color>-->
     <color name="colorPrimaryLight">#6d6d6d</color>
-
+    <color name="bottonNav">#727272</color>
+    <color name="overlay_dark_10">#1A000000</color>
+    <color name="grey_20">#cccccc</color>
+    <color name="overlay_dark_30">#4D000000</color>
+    <color name="overlay_dark_40">#66000000</color>
     <color name="colorTextPrimary">#ffffff</color>
     <color name="colorTextSecondary">#000000</color>
     <color name="cardBackground">#ddd</color>

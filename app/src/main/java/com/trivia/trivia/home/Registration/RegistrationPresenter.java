@@ -119,6 +119,7 @@ public class RegistrationPresenter {
     }
 
     public void username_check(String username) {
+
         connectToServer.check_username(username, context, new checkUserName() {
             @Override
             public void exist() {

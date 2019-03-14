@@ -3,11 +3,18 @@ package com.trivia.trivia.login;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.Typeface;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.design.widget.TextInputEditText;
+import android.text.Spannable;
+import android.text.SpannableStringBuilder;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -20,13 +27,11 @@ import com.trivia.trivia.helper.PrefManager;
 import com.trivia.trivia.home.HomeBase.Home;
 import com.trivia.trivia.home.Registration.RegisterationActivity;
 import com.trivia.trivia.util.App;
-
 import com.trivia.trivia.util.Constant;
 import com.trivia.trivia.util.ErrorCode;
 import com.trivia.trivia.util.Languages;
 import com.trivia.trivia.util.Utils;
 import com.trivia.trivia.webservice.model.response.ResponseLogin;
-
 
 import java.util.Arrays;
 import java.util.List;
@@ -37,12 +42,12 @@ import io.fabric.sdk.android.Fabric;
 public class LoginActivity extends BaseActivity2 implements ILoginView, View.OnClickListener {
     public static Context maincontext;
 
-    private EditText etEmail;
-    private EditText etPassword;
+    private TextInputEditText etEmail;
+    private TextInputEditText etPassword;
     private Button btnLogin;
     private TextView tvRegister;
     private Spinner spinner;
-
+    TextView tv_title;
     private SpinnerAdapter spinnerAdapter;
     private ProgressDialog mProgressDialog;
     private LoginPresenterImpl mPresenter;
@@ -64,7 +69,7 @@ public class LoginActivity extends BaseActivity2 implements ILoginView, View.OnC
         setContentView(getLayout());
         maincontext = this;
         ButterKnife.bind(this);
-
+        Fabric.with(this, new Crashlytics());
         init();
 
         // TODO: Move this to where you establish a user session
@@ -72,7 +77,7 @@ public class LoginActivity extends BaseActivity2 implements ILoginView, View.OnC
 
         String lng = App.localeManager.getLanguage();
         for (Languages l : langList
-                ) {
+        ) {
             if (l.getCode().equals(lng)) {
                 spinner.setSelection(langList.indexOf(l));
                 break;
@@ -81,8 +86,10 @@ public class LoginActivity extends BaseActivity2 implements ILoginView, View.OnC
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                if (++check > 1)
-                    setNewLocale(langList.get(i).getCode(), true);
+                if (++check > 1){
+                   // setNewLocale(langList.get(i).getCode(), true);
+                    Toast.makeText(LoginActivity.this, "زبان های دریگر برنامه به زودی ارائه می شوند.", Toast.LENGTH_SHORT).show();
+                    }
 
             }
 
@@ -94,7 +101,16 @@ public class LoginActivity extends BaseActivity2 implements ILoginView, View.OnC
 
 
         Toast.makeText(this, App.localeManager.getLanguage(), Toast.LENGTH_SHORT).show();
-        Fabric.with(this, new Crashlytics());
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            Window window = getWindow();
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            window.setStatusBarColor(Color.WHITE);
+        }
+
+        SpannableStringBuilder str = new SpannableStringBuilder("شهر ریاضی");
+        str.setSpan(new android.text.style.StyleSpan(Typeface.BOLD), 0, str.length() , Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        tv_title.setText(str);
     }
 
     @Override
@@ -105,9 +121,9 @@ public class LoginActivity extends BaseActivity2 implements ILoginView, View.OnC
     @Override
     public void init() {
 
-        etEmail = (EditText) findViewById(R.id.activity_login_et_email);
-        etPassword = (EditText) findViewById(R.id.activity_login_et_password);
-        btnLogin = (Button) findViewById(R.id.activity_login_btn_login);
+        etEmail = (TextInputEditText) findViewById(R.id.activity_login_et_username);
+        etPassword = (TextInputEditText) findViewById(R.id.activity_login_et_password);
+        btnLogin = (Button) findViewById(R.id.alert_btn_ok);
         mProgressDialog = new ProgressDialog(LoginActivity.this);
         btnLogin.setOnClickListener(this);
         mPresenter = new LoginPresenterImpl(this, new LoginInteractorImpl());
@@ -117,21 +133,26 @@ public class LoginActivity extends BaseActivity2 implements ILoginView, View.OnC
         langList = Arrays.asList(new Languages("فارسی", "fa", 11), new Languages("English", "en", 11));
         spinnerAdapter = new SpinnerAdapter(this, langList);
         spinner.setAdapter(spinnerAdapter);
-
+        tv_title = (TextView) findViewById(R.id.tvToolbarAllPage);
 
     }
 
     @Override
     public void showLoading() {
-        mProgressDialog.setTitle(null);
+        show_loading();
+      /*  mProgressDialog.setTitle(null);
         mProgressDialog.setMessage(getResources().getString(R.string.activity_login_loading_msg));
         mProgressDialog.show();
+        */
     }
 
     @Override
     public void hideLoading() {
-        if (mProgressDialog != null && mProgressDialog.isShowing())
+
+        hide_Loading();
+       /* if (mProgressDialog != null && mProgressDialog.isShowing())
             mProgressDialog.dismiss();
+            */
     }
 
     @Override
@@ -159,12 +180,12 @@ public class LoginActivity extends BaseActivity2 implements ILoginView, View.OnC
     @Override
     public void loginSuccess(ResponseLogin responseLogin) {
 
-        PrefManager pm=new PrefManager(this);
-        pm.createLogin(responseLogin.getUsername(),responseLogin.getPhone(),responseLogin.getU_id());
+        PrefManager pm = new PrefManager(this);
+        pm.createLogin(responseLogin.getUsername(), responseLogin.getPhone(), responseLogin.getU_id());
         Intent openHomeScreen = new Intent(LoginActivity.this, Home.class);
         openHomeScreen.putExtra(Constant.PASS_TO_HOME_MSG, "This is HOME");
         startActivity(openHomeScreen);
-        finish();
+        this.finish();
     }
 
     @Override
@@ -184,13 +205,13 @@ public class LoginActivity extends BaseActivity2 implements ILoginView, View.OnC
     public void onClick(View view) {
 
         switch (view.getId()) {
-            case R.id.activity_login_btn_login:
+            case R.id.alert_btn_ok:
 
                 if (etEmail != null && etPassword != null) {
                     if (Utils.isNetworkAvailable(LoginActivity.this)) {
                         mPresenter.callLogin(etEmail.getText().toString(), etPassword.getText().toString());
                     } else {
-                        Utils.displayCommonAlertDialog(LoginActivity.this, LoginActivity.this.getResources().getString(R.string.connection_issue_msg));
+                        Utils.displayCommonAlertDialog(LoginActivity.this, "اتصال به اینترنت برقرار نمیباشد");
                     }
                 }
                 break;

@@ -98,7 +98,7 @@
                 android:fontFamily="sans-serif"
                 android:text="@string/Tap_Next_to_verify_your_account_with_your_phone_number"/>
             <Button
-                android:background="@drawable/button_main_background"
+                android:background="@drawable/button_blue_gradiant"
                 android:textColor="#fff"
                 android:textStyle="bold"
                 android:id="@+id/activity_reg_btn_sendPhone"
@@ -161,13 +161,13 @@
                 app:itemRadius="4dp"
                 app:itemSpacing="5dp"
                 app:itemWidth="36dp"
-                app:lineColor="#2f64ba"
+                app:lineColor="#03aced"
                 app:lineWidth="2dp"
                 app:viewType="rectangle" />
 
             <Button
                 android:layout_marginTop="25dp"
-                android:background="@drawable/button_main_background"
+                android:background="@drawable/button_blue_gradiant"
                 android:textStyle="bold"
                 android:textColor="#fff"
                 android:id="@+id/activity_reg_btn_sendCode"
@@ -190,75 +190,115 @@
 
         <LinearLayout
             android:id="@+id/layout3"
-            android:visibility="visible"
-            android:gravity="center"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
             android:orientation="vertical">
-            <android.support.constraint.ConstraintLayout
-                xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:app="http://schemas.android.com/apk/res-auto"
-                xmlns:tools="http://schemas.android.com/tools"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
 
-                <Button
-                    android:id="@+id/activity_register_btn_username"
-                    android:layout_width="0dp"
+            <android.support.v4.widget.NestedScrollView
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:background="@color/grey_5"
+                android:clipToPadding="false"
+                android:padding="@dimen/spacing_mlarge"
+                android:scrollbars="none"
+                android:scrollingCache="true"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="40dp"
-                    android:background="@drawable/button_main_background"
-                    android:text="ثبت"
-                    android:textColor="@color/white"
-                    android:textSize="18dp"
-                    app:layout_constraintEnd_toEndOf="@+id/activity_register_et_password_rep"
-                    app:layout_constraintStart_toStartOf="@+id/activity_register_et_password_rep"
-                    app:layout_constraintTop_toBottomOf="@+id/activity_register_et_password_rep" />
+                    android:orientation="vertical">
 
-                <EditText
-                    android:id="@+id/activity_register_et_password_rep"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="32dp"
-                    android:ems="10"
-                    android:inputType="textPersonName"
-                    android:hint="تکرار رمز عبور"
-                    app:layout_constraintEnd_toEndOf="@+id/activity_register_et_password"
-                    app:layout_constraintStart_toStartOf="@+id/activity_register_et_password"
-                    app:layout_constraintTop_toBottomOf="@+id/activity_register_et_password" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/spacing_medium"
+                        android:text="نام کاربری"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                        android:textColor="@color/grey_60" />
 
-                <EditText
-                    android:id="@+id/activity_register_et_password"
-                    android:layout_width="0dp"
-                    android:layout_height="49dp"
-                    android:layout_marginTop="32dp"
-                    android:ems="10"
-                    android:inputType="textPersonName"
-                    android:hint="رمز عبور"
-                    app:layout_constraintEnd_toEndOf="@+id/activity_register_et_username"
-                    app:layout_constraintStart_toStartOf="@+id/activity_register_et_username"
-                    app:layout_constraintTop_toBottomOf="@+id/activity_register_et_username" />
+                    <EditText
+                        android:id="@+id/activity_register_et_username"
+                        style="@style/EditText.Flat.Grey"
+                        android:layout_width="fill_parent"
+                        android:layout_height="@dimen/spacing_xmlarge"
+                        android:background="@drawable/edit_text_round_bg_white"
+                        android:minHeight="@dimen/spacing_xmlarge"
+                        android:paddingLeft="@dimen/spacing_middle"
+                        android:paddingRight="@dimen/spacing_middle"
+                         />
 
-                <EditText
-                    android:id="@+id/activity_register_et_username"
-                    android:layout_width="0dp"
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/spacing_large"
+                        android:layout_marginBottom="@dimen/spacing_medium"
+                        android:text="رمز عبور"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                        android:textColor="@color/grey_60" />
 
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="30dp"
-                    android:layout_marginRight="30dp"
+                    <EditText
+                        android:id="@+id/activity_register_et_password"
+                        style="@style/EditText.Flat.Grey"
+                        android:layout_width="fill_parent"
+                        android:inputType="textPassword"
+                        android:layout_height="@dimen/spacing_xmlarge"
+                        android:background="@drawable/edit_text_round_bg_white"
+                        android:minHeight="@dimen/spacing_xmlarge"
+                        android:paddingLeft="@dimen/spacing_middle"
+                        android:paddingRight="@dimen/spacing_middle"
+                         />
 
-                    android:ems="10"
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/spacing_large"
+                        android:layout_marginBottom="@dimen/spacing_medium"
+                        android:text="تکرار رمز عبور"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                        android:textColor="@color/grey_60" />
 
-                    android:inputType="textPersonName"
-                    android:hint="نام کاربری"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    tools:layout_editor_absoluteY="47dp"
-                    tools:ignore="MissingConstraints" />
-            </android.support.constraint.ConstraintLayout>
+                    <EditText
+                        android:id="@+id/activity_register_et_password_rep"
+                        style="@style/EditText.Flat.Grey"
+                        android:layout_width="fill_parent"
+                        android:inputType="textPassword"
+
+                        android:layout_height="@dimen/spacing_xmlarge"
+                        android:background="@drawable/edit_text_round_bg_white"
+                        android:minHeight="@dimen/spacing_xmlarge"
+                        android:paddingLeft="@dimen/spacing_middle"
+                        android:paddingRight="@dimen/spacing_middle"
+                         />
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/spacing_large"
+                        android:orientation="horizontal">
+
+                        <View
+                            android:layout_width="@dimen/spacing_large"
+                            android:layout_height="0.0dip" />
+
+                    </LinearLayout>
+
+                    <Button
+                        android:id="@+id/activity_register_btn_username"
+                        style="@style/Widget.AppCompat.Button.Borderless"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+
+                        android:layout_marginTop="@dimen/spacing_large"
+
+                        android:background="@drawable/button_blue_gradiant"
+                        android:text="@string/next"
+                        android:textAllCaps="false"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+                        android:textColor="@android:color/white" />
+                </LinearLayout>
+            </android.support.v4.widget.NestedScrollView>
         </LinearLayout>
-
     </LinearLayout>
 
 

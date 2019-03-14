@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "205982894914",
+    "firebase_url": "https://my-game-75c27.firebaseio.com",
+    "project_id": "my-game-75c27",
+    "storage_bucket": "my-game-75c27.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:205982894914:android:8cf919ed935fc813",
+        "android_client_info": {
+          "package_name": "com.trivia.trivia"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "205982894914-l4p3eku03djgs7nmh31tvop7puu37l7h.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.trivia.trivia",
+            "certificate_hash": "c02daf535f611095ff2e4fa6c86b2fd25f1b6c73"
+          }
+        },
+        {
+          "client_id": "205982894914-6kq9a7g9m27v2g7a81hcg9adrpsnk0ma.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDOWeF3SA6XHJONewvFl82lmQkAUs2cGns"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "205982894914-6kq9a7g9m27v2g7a81hcg9adrpsnk0ma.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

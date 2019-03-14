@@ -81,14 +81,15 @@ public class eventList_unregistered extends RecyclerView.Adapter<eventList_unreg
         holder.rv_event.setLayoutManager(layoutManager);
         ArrayList<list_item> uel = new ArrayList<list_item>();
         uel.add(new list_item(data_event.getE_type(), "game", "نوع رویداد"));
-        uel.add(new list_item(data_event.getE_city(), "placeholder", "شهر برگزاری"));
-        uel.add(new list_item(data_event.getE_duration(), "clock", "مدت زمان"));
+        uel.add(new list_item(data_event.getE_price()+" ريال", "coin", "هزینه"));
+        uel.add(new list_item(data_event.getE_city(), "placeholder", "محل برگزاری"));
+        uel.add(new list_item(data_event.getE_duration()+" ساعت", "clock", "مدت زمان"));
         PersianDate pd=new PersianDate(Long.parseLong(data_event.getE_start_time())*1000);
         String date=String.valueOf(pd.getShYear()+"/"+pd.getShMonth()+"/"+pd.getShDay());
         String date2=String.valueOf(pd.getHour()+":"+pd.getMinute());
-        uel.add(new list_item(date, "clock", "تاریخ شروع"));
-        uel.add(new list_item(date2, "clock", "ساعت شروع"));
-        uel.add(new list_item(data_event.getE_price(), "coin", "هزینه"));
+        uel.add(new list_item("دلخواه", "clock", "زمان شروع"));
+       // uel.add(new list_item(date2, "clock", "ساعت شروع"));
+
         adapter_list_event_unreg madapter = new adapter_list_event_unreg(uel);
         // SlideInBottomAnimationAdapter alphaAdapter = new SlideInBottomAnimationAdapter(madapter);
         // alphaAdapter.setFirstOnly(true);

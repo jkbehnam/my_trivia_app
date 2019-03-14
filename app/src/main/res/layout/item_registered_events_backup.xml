@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<android.support.v7.widget.CardView
+    android:id="@+id/item_event_card"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="10dp"
+    android:foreground="?android:attr/selectableItemBackground"
+    android:clickable="true"
+    android:layout_margin="10dp"
+    app:cardPreventCornerOverlap="false"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <android.support.constraint.ConstraintLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layoutDirection="rtl"
+            android:background="?selectableItemBackground"
+            android:paddingStart="@dimen/rv_horizontal_offset"
+            android:paddingTop="@dimen/rv_vertical_offset"
+            android:paddingEnd="@dimen/rv_horizontal_offset"
+            android:paddingBottom="@dimen/rv_vertical_offset"
+            >
+
+
+            <com.codesgood.views.JustifiedTextView
+                android:id="@+id/item_event_tv_main"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:maxLines="3"
+                android:minLines="3"
+                android:textAppearance="@style/AppTheme.Headline.Title"
+                android:textColor="@color/colorPrimaryLight"
+                android:textSize="14sp"
+
+                app:layout_constraintEnd_toStartOf="@id/iv_options"
+                app:layout_constraintTop_toTopOf="@id/iv_news_image"
+                tools:text="fdfsd" />
+
+            <ImageView
+                android:id="@+id/item_event_iv_main"
+                android:layout_width="82dp"
+                android:layout_height="82dp"
+
+                android:scaleType="fitXY"
+                android:contentDescription="heloo"
+                android:src="@color/colorPrimary"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                />
+
+
+
+            <ImageButton
+                android:id="@+id/iv_options"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="?selectableItemBackgroundBorderless"
+                android:contentDescription="Image for the News Post"
+                android:padding="4dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/tv_news_title"
+                />
+        </android.support.constraint.ConstraintLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:descendantFocusability="afterDescendants">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/event_list_rcle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scrollbars="vertical">
+
+            </android.support.v7.widget.RecyclerView>
+
+        </RelativeLayout>
+
+
+
+    </LinearLayout>
+</android.support.v7.widget.CardView>

@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="Gradle: com.github.thomper:sweet-alert-dialog:v1.4.0@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/sweet-alert-dialog-v1.4.0.aar/8c16705438dd942748422dc01468f884/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/sweet-alert-dialog-v1.4.0.aar/8c16705438dd942748422dc01468f884/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

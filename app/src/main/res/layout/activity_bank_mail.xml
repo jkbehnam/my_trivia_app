@@ -54,20 +54,15 @@
                     android:paddingStart="20dp"
                     android:paddingEnd="20dp">
 
-                    <com.makeramen.roundedimageview.RoundedImageView
+                    <ImageView
                         android:id="@+id/imageView1"
                         android:layout_width="@dimen/item_img_height"
                         android:layout_height="@dimen/item_img_height"
                         android:scaleType="fitXY"
                         android:src="@drawable/wallet"
-                        app:riv_border_color="#333333"
-                        app:riv_border_width="0dip"
-                        app:riv_corner_radius_top_left="10sp"
-                        app:riv_corner_radius_top_right="10dp"
-                        app:riv_mutate_background="true"
 
-                        app:riv_oval="true"
-                        app:riv_tile_mode="clamp" />
+
+                        />
 
                     <TableRow
                         android:layout_width="match_parent"

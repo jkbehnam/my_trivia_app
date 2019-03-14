@@ -1,6 +1,7 @@
 
 package com.trivia.trivia.home.gameActivity.messages;
 
+import android.annotation.SuppressLint;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -18,6 +19,7 @@ import android.widget.TextView;
 import com.trivia.trivia.R;
 import com.trivia.trivia.adapter.ViewPagerAdapter;
 import com.trivia.trivia.base.myFragment;
+import com.trivia.trivia.home.Events.FragmentEvent;
 
 import java.util.ArrayList;
 
@@ -26,10 +28,11 @@ public class Fragment_message extends myFragment {
 
     private TabLayout tabLayout;
     private ViewPager viewPager;
-    ViewPager pager;
     FragmentActivity c;
     static Fragment_message fh;
-    private ArrayList<Fragment> mFragments = new ArrayList<>();
+
+    @SuppressLint("ResourceAsColor")
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -48,12 +51,23 @@ public class Fragment_message extends myFragment {
 
         setupViewPager(viewPager);
         viewPager.setCurrentItem(1);
+
         setCustomFont();
-        setCustomFont();
-        TabLayout.Tab tab = tabLayout.getTabAt(1);
+        TabLayout.Tab tab = tabLayout.getTabAt(0);
+        tab.select();
+
         return rootView;
     }
-
+    public static Fragment_message newInstance() {
+        if (fh == null) {
+            synchronized(Fragment_message.class) {
+                if (fh == null) {
+                    fh = new Fragment_message();
+                }
+            }
+        }
+        return fh;
+    }
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getActivity().getSupportFragmentManager());
         adapter.addFragment(new Fragment_system_message(), "خبر ها");

@@ -13,6 +13,8 @@ import com.trivia.trivia.home.Events.Fragment_registered_event;
 import com.trivia.trivia.home.Events.main_event_frame;
 import com.trivia.trivia.home.gameActivity.FragmentChat.FragmentGroupMessage;
 import com.trivia.trivia.home.gameActivity.messages.Fragment_message;
+import com.trivia.trivia.home.gameActivity.messages.Fragment_my_message;
+import com.trivia.trivia.home.gameActivity.messages.main_message_frame;
 import com.trivia.trivia.home.profile.Fragment_profile;
 
 import java.util.ArrayList;
@@ -25,7 +27,7 @@ import java.util.ArrayList;
 
 public  class adapter_main_ViewPager extends FragmentStatePagerAdapter {
     main_event_frame FragmentEvent = new main_event_frame();
-    Fragment_message fragmentGroupMessage=new Fragment_message();
+    main_message_frame fragmentGroupMessage=new main_message_frame();
     Fragment_profile fragment_registered_event = new Fragment_profile();
 
 

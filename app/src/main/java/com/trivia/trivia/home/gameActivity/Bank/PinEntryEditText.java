@@ -1,5 +1,6 @@
 package com.trivia.trivia.home.gameActivity.Bank;
 
+import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.ColorStateList;
@@ -17,16 +18,14 @@ import android.view.View;
 import android.widget.EditText;
 
 import com.trivia.trivia.R;
-import com.trivia.trivia.home.gameActivity.ShortAnswerFragment;
 
-import static com.trivia.trivia.home.gameActivity.ShortAnswerFragment.lenght;
-
+@SuppressLint("AppCompatCustomView")
 public class PinEntryEditText extends EditText {
     public static final String XML_NAMESPACE_ANDROID = "http://schemas.android.com/apk/res/android";
 
     private float mSpace = 24; //24 dp by default, space between the lines
     private float mCharSize;
-    public float mNumChars = 6;
+   static public float mNumChars = 8;
     private float mLineSpacing = 8; //8dp by default, height of the text from our lines
  //  public static int mMaxLength = lenght;
 
@@ -146,34 +145,52 @@ public class PinEntryEditText extends EditText {
     protected void onDraw(Canvas canvas) {
         //super.onDraw(canvas);
         int availableWidth = getWidth() - getPaddingRight() - getPaddingLeft();
+
+        if(mNumChars>=8){
         if (mSpace < 0) {
-            mCharSize = (availableWidth / (mNumChars * 2 - 1));
+            mCharSize = (availableWidth / (8 * 2 - 1));
         } else {
-            mCharSize = (availableWidth - (mSpace * (mNumChars - 1))) / mNumChars;
+            mCharSize = (availableWidth - (mSpace * (8 - 1))) / 8;
+        }}else {
+            if (mSpace < 0) {
+                mCharSize = (availableWidth / (mNumChars * 2 - 1));
+            } else {
+                mCharSize = (availableWidth - (mSpace * (mNumChars - 1))) / mNumChars;
+            }
         }
 
-        int startX = getPaddingLeft();
-        int bottom = getHeight() - getPaddingBottom();
+        int startX = availableWidth-getPaddingRight();
+        int bottom = 0 + 100;
 
         //Text Width
         Editable text = getText();
         int textLength = text.length();
         float[] textWidths = new float[textLength];
         getPaint().getTextWidths(getText(), 0, textLength, textWidths);
+        //getPaint().setColor(getResources().getColor(R.color.colorToSet));
+
+       Paint textp = new Paint(getPaint());
+       
+        textp.setColor(getResources().getColor(R.color.blue_600));
 
         for (int i = 0; i < mNumChars; i++) {
+
             updateColorForLines(i == textLength);
-            canvas.drawLine(startX, bottom, startX + mCharSize, bottom, mLinesPaint);
+            canvas.drawLine(startX, bottom, startX - mCharSize, bottom, mLinesPaint);
 
             if (getText().length() > i) {
-                float middle = startX + mCharSize / 2;
-                canvas.drawText(text, i, i + 1, middle - textWidths[0] / 2, bottom - mLineSpacing, getPaint());
+                float middle = startX - mCharSize / 2;
+                canvas.drawText(text, i, i + 1, middle - textWidths[0] / 2, bottom - mLineSpacing, textp);
             }
 
             if (mSpace < 0) {
-                startX += mCharSize * 2;
+                startX -= mCharSize * 2;
             } else {
-                startX += mCharSize + mSpace;
+                startX -= mCharSize + mSpace;
+            }
+            if(i!=0&&i%7==0){
+                startX= availableWidth-getPaddingRight();
+               bottom+=100;
             }
         }
     }
