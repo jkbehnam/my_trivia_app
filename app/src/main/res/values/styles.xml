@@ -1,4 +1,4 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
@@ -6,9 +6,11 @@
         <item name="colorPrimary">@color/triviaColorPrimary</item>
         <item name="colorPrimaryDark">@color/statusbar_color</item>
         <item name="colorAccent">@color/triviaColorAccent</item>
-
+        <item name="android:windowLightStatusBar">true</item>
     </style>
-
+    <style name="ToolbarColoredBackArrow" parent="AppTheme">
+        <item name="android:textColorSecondary">#ffffff</item>
+    </style>
     <style name="tlb"  parent="ThemeOverlay.AppCompat.ActionBar">
         ....
         <item name="colorControlNormal">@color/triviaColorPrimaryDark</item>
@@ -16,30 +18,8 @@
 
         <item name="contentInsetEnd">0dp</item>
     </style>
-
-    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
-        <style name="BottomSheetDialogTheme" parent="BaseBottomSheetDialog">
-            <item name="android:statusBarColor" tools:targetApi="lollipop">@android:color/transparent</item>
-            <item name="android:navigationBarColor" tools:targetApi="lollipop">@color/white</item>
-        </style>
-    <style name="BottomSheet" parent="@style/Widget.Design.BottomSheet.Modal">
-        <item name="android:background">@drawable/filter_toolbar</item>
-    </style>
-
-    <style name="BaseBottomSheetDialog" parent="@style/Theme.Design.Light.BottomSheetDialog">
-        <item name="android:windowIsFloating">false</item>
-        <item name="bottomSheetStyle">@style/BottomSheet</item>
-    </style>
-
-
-    <style name="CustomBottomSheetDialogTheme" parent="Theme.Design.Light.BottomSheetDialog">
-        <item name="bottomSheetStyle">@style/CustomBottomSheetStyle</item>
-    </style>
-
-    <style name="CustomBottomSheetStyle" parent="Widget.Design.BottomSheet.Modal">
-        <item name="android:background">@android:color/transparent</item>
-    </style>
-
+    <style name="ThemeOverlay.AppCompat.Light" parent="Base.ThemeOverlay.AppCompat.Light"/>
+    <style name="ThemeOverlay.AppCompat.Dark.ActionBar" parent="Base.ThemeOverlay.AppCompat.Dark.ActionBar"/>
     <style name="RippleStyleWhite">
         <item name="mrl_rippleOverlay">true</item>
         <item name="mrl_rippleColor">#80FFFFFF</item>
@@ -51,17 +31,11 @@
         <item name="android:textColor">@color/grey_90</item>
         <item name="android:textColorHint">@color/grey_40</item>
     </style>
-    <style name="News4TabLayout" parent="Widget.Design.TabLayout">
-        <item name="tabBackground">?attr/selectableItemBackground</item>
-        <item name="tabIndicatorColor">@android:color/white</item>
-        <item name="tabSelectedTextColor">@android:color/white</item>
-        <item name="tabIndicatorHeight">3dp</item>
-    </style>
+
     <style name="Toolbar.Light" parent="@style/AppTheme">
         <item name="colorControlNormal">@color/grey_60</item>
         <item name="android:textColorPrimary">@color/grey_60</item>
     </style>
-    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
     <!-- App Compat Alert Dialog Style -->
     <style name="StyleAppCompatAlertDialog" parent="Theme.AppCompat.Light.Dialog.Alert">
         <item name="colorAccent">@color/colorPrimary</item>
@@ -70,42 +44,6 @@
         <item name="android:colorBackgroundCacheHint">@android:color/white</item>
         <item name="android:backgroundDimEnabled">true</item>
     </style>
-    <style name="MyCustomTabLayout" parent="Widget.Design.TabLayout">
-
-        <item name="tabIndicatorColor">@color/white</item>
-        <item name="tabIndicatorHeight">2dp</item>
-        <item name="tabTextAppearance">@style/MyCustomTabTextAppearance</item>
-        <item name="tabSelectedTextColor">@color/white</item>
-    </style>
-
-    <style name="MyCustomTabTextAppearance" parent="TextAppearance.Design.Tab">
-        <item name="android:textSize">25dp</item>
-        <item name="android:textColor">@color/white</item>
-        <item name="textAllCaps">false</item>
-        <item name="android:textStyle">normal</item>
-
-    </style>
-
-    <style name="AppTheme.Headline.Title" parent="TextAppearance.AppCompat.Title">
-        <item name="android:textStyle">bold</item>
-    </style>
-    <style name="AppTheme.OptionsBottomSheetButton">
-        <item name="android:layout_width">0dp</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:gravity">center_vertical</item>
-        <item name="android:padding">@dimen/options_bottom_sheet_medium</item>
-        <item name="android:background">?selectableItemBackground</item>
-        <item name="android:textColor">@color/option_item_tint_color</item>
-        <item name="android:textSize">@dimen/options_bottom_sheet_text</item>
-        <item name="android:drawablePadding">@dimen/options_bottom_sheet_medium</item>
-    </style>
-
-    <style name="TextLabel" parent="TextAppearance.Design.Hint">
-        <item name="android:textSize">16sp</item>
-        <item name="android:textColor">@color/white</item>
-
-    </style>
-
 
 
 </resources>

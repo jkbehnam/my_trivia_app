@@ -8,7 +8,10 @@ import java.io.Serializable;
 public class UserDetail implements Serializable {
     @SerializedName("u_id")
     @Expose
-    private int u_id;
+    private String u_id;
+    @SerializedName("ud_name")
+    @Expose
+    private String ud_name;
     @SerializedName("ud_email")
     @Expose
     private String ud_email;
@@ -38,11 +41,11 @@ public class UserDetail implements Serializable {
     private String ud_province;
 
 
-    public int getU_id() {
+    public String getU_id() {
         return u_id;
     }
 
-    public void setU_id(int u_id) {
+    public void setU_id(String u_id) {
         this.u_id = u_id;
     }
 
@@ -116,5 +119,13 @@ public class UserDetail implements Serializable {
 
     public void setUd_province(String ud_province) {
         this.ud_province = ud_province;
+    }
+
+    public String getUd_name() {
+        return ud_name;
+    }
+
+    public void setUd_name(String ud_name) {
+        this.ud_name = ud_name;
     }
 }

@@ -2,20 +2,75 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:chatview="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-android:layoutDirection="ltr"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+android:background="@color/white"
+    android:layoutDirection="ltr"
     style="@style/Widget.AppCompat.ButtonBar"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center_horizontal"
     android:orientation="vertical"
     tools:context="co.intentservice.chatui.sample.MainActivity">
-    <include
-        android:id="@+id/toolbar"
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/app_bar_layout"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:background="@color/transparent"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:contentInsetStartWithNavigation="0dp"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        app:theme="@style/Toolbar.Light"
+        android:layout_height="?attr/actionBarSize">
 
-        layout="@layout/toolbar_main"
-        android:layout_above="@+id/tabs"
-        tools:ignore="IncludeLayoutParam"></include>
-    <co.intentservice.chatui.ChatView
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/bt_close"
+                android:layout_width="?attr/actionBarSize"
+                android:layout_height="?attr/actionBarSize"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:tint="@android:color/white"
+                />
+
+            <View
+                android:layout_width="30dp"
+                android:layout_height="0dp" />
+
+            <TextView
+                android:id="@+id/name_toolbar"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="خرید سوال"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Title"
+                android:textColor="@color/black" />
+
+            <ImageButton
+                android:id="@+id/bt_close2"
+                android:layout_width="?attr/actionBarSize"
+                android:layout_height="?attr/actionBarSize"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:tint="@android:color/white"
+                />
+
+            <ImageView
+                android:id="@+id/bt_filter"
+                android:padding="15dp"
+                android:visibility="invisible"
+                android:layout_width="?attr/actionBarSize"
+                android:layout_height="?attr/actionBarSize"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:tint="@color/toolbar_color"
+                app:srcCompat="@drawable/filter_results_button" />
+
+        </LinearLayout>
+
+    </androidx.appcompat.widget.Toolbar>
+    <com.trivia.trivia.custom_widgets.ChatView
         android:id="@+id/chat_view"
 
         android:layout_width="match_parent"

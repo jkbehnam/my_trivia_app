@@ -65,6 +65,15 @@ public class PrefManager {
         editor.putBoolean(KEY_IS_LOGGED_IN, true);
         editor.commit();
     }
+    public void user_details(String user) {
+        editor.putString("user_detail", user);
+        editor.commit();
+    }
+    public void set_prof_toman(String prof_toman) {
+        editor.putString("prof_toman", prof_toman);
+
+        editor.commit();
+    }
 
     public boolean isLoggedIn() {
         return pref.getBoolean(KEY_IS_LOGGED_IN, false);
@@ -74,7 +83,19 @@ public class PrefManager {
         editor.clear();
         editor.commit();
     }
+    public HashMap<String, String> get_user() {
+        HashMap<String, String> profile = new HashMap<>();
+        profile.put("user_detail", pref.getString("user_detail", ""));
 
+        return profile;
+    }
+
+    public HashMap<String, String> get_setting() {
+        HashMap<String, String> profile = new HashMap<>();
+        profile.put("prof_toman", pref.getString("prof_toman", ""));
+
+        return profile;
+    }
     public HashMap<String, String> getUserDetails() {
         HashMap<String, String> profile = new HashMap<>();
         profile.put("name", pref.getString(KEY_NAME, null));

@@ -8,12 +8,12 @@
     android:layout_height="fill_parent"
     android:orientation="vertical">
 
-    <android.support.design.widget.AppBarLayout
+    <com.google.android.material.appbar.AppBarLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content">
 
-        <include layout="@layout/toolbar_main" />
-    </android.support.design.widget.AppBarLayout>
+        <include layout="@layout/toolbar_main2" />
+    </com.google.android.material.appbar.AppBarLayout>
 
     <com.shuhart.stepview.StepView
         android:id="@+id/step_view"
@@ -43,9 +43,9 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:visibility="gone">
+        android:visibility="visible">
 
-        <android.support.v4.widget.NestedScrollView
+        <androidx.core.widget.NestedScrollView
             android:id="@+id/first_data"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -64,35 +64,23 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/spacing_medium"
-                    android:text="نام"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                    android:textColor="@color/grey_60" />
 
-                <EditText
-                    style="@style/EditText.Flat.Grey"
-                    android:layout_width="fill_parent"
-                    android:layout_height="@dimen/spacing_xmlarge"
-                    android:background="@drawable/edit_text_round_bg_white"
-                    android:minHeight="@dimen/spacing_xmlarge"
-                    android:paddingLeft="@dimen/spacing_middle"
-                    android:paddingRight="@dimen/spacing_middle" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/spacing_large"
                     android:layout_marginBottom="@dimen/spacing_medium"
-                    android:text="نام خانوادگی"
+
+                    android:text="نام و نام خانوادگی"
                     android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                     android:textColor="@color/grey_60" />
 
                 <EditText
                     style="@style/EditText.Flat.Grey"
                     android:layout_width="fill_parent"
+                    android:id="@+id/ud_name"
+                    android:tag="ud_name"
                     android:layout_height="@dimen/spacing_xmlarge"
                     android:background="@drawable/edit_text_round_bg_white"
                     android:minHeight="@dimen/spacing_xmlarge"
@@ -111,6 +99,8 @@
                 <EditText
                     style="@style/EditText.Flat.Grey"
                     android:layout_width="fill_parent"
+                    android:id="@+id/ud_national_code"
+                    android:tag="ud_national_code"
                     android:layout_height="@dimen/spacing_xmlarge"
                     android:background="@drawable/edit_text_round_bg_white"
                     android:minHeight="@dimen/spacing_xmlarge"
@@ -130,6 +120,8 @@
                     style="@style/EditText.Flat.Grey"
                     android:layout_width="fill_parent"
                     android:layout_height="@dimen/spacing_xmlarge"
+                    android:id="@+id/ud_email"
+                    android:tag="ud_email"
                     android:background="@drawable/edit_text_round_bg_white"
                     android:minHeight="@dimen/spacing_xmlarge"
                     android:paddingLeft="@dimen/spacing_middle"
@@ -156,7 +148,8 @@
                             android:textColor="@color/grey_60" />
 
                         <EditText
-                            android:id="@+id/et_gender"
+                            android:id="@+id/ud_sex"
+                            android:tag="ud_sex"
                             style="@style/EditText.Flat.Grey"
                             android:layout_width="fill_parent"
                             android:layout_height="@dimen/spacing_xmlarge"
@@ -189,7 +182,8 @@
                             android:textColor="@color/grey_60" />
 
                         <EditText
-                            android:id="@+id/et_bdate"
+                            android:id="@+id/ud_birthday"
+                            android:tag="ud_birthday"
                             style="@style/EditText.Flat.Grey"
                             android:focusable="false"
                             android:layout_width="fill_parent"
@@ -202,7 +196,7 @@
                 </LinearLayout>
 
             </LinearLayout>
-        </android.support.v4.widget.NestedScrollView>
+        </androidx.core.widget.NestedScrollView>
 
         <Button
             android:id="@+id/bt_submit"
@@ -241,9 +235,9 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:visibility="visible">
+        android:visibility="gone">
 
-        <android.support.v4.widget.NestedScrollView
+        <androidx.core.widget.NestedScrollView
             android:id="@+id/second_data"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
@@ -271,8 +265,12 @@
 
                 <EditText
                     style="@style/EditText.Flat.Grey"
+                    android:id="@+id/ud_country"
+                    android:tag="ud_country"
                     android:layout_width="fill_parent"
                     android:layout_height="@dimen/spacing_xmlarge"
+                    android:text="ایران"
+                    android:focusable="false"
                     android:background="@drawable/edit_text_round_bg_white"
                     android:minHeight="@dimen/spacing_xmlarge"
                     android:paddingLeft="@dimen/spacing_middle"
@@ -288,7 +286,8 @@
                     android:textColor="@color/grey_60" />
 
                 <EditText
-                    android:id="@+id/province"
+                    android:id="@+id/ud_province"
+                    android:tag="ud_province"
                     style="@style/EditText.Flat.Grey"
                     android:layout_width="fill_parent"
                     android:editable="false"
@@ -308,7 +307,8 @@
                     android:textColor="@color/grey_60" />
 
                 <EditText
-                    android:id="@+id/et_city"
+                    android:id="@+id/ud_city"
+                    android:tag="ud_city"
                     style="@style/EditText.Flat.Grey"
                     android:editable="false"
                     android:focusable="false"
@@ -332,13 +332,33 @@
 
                 <EditText
                     style="@style/EditText.Flat.Grey"
+                    android:id="@+id/ud_grade"
+                    android:tag="ud_grade"
                     android:layout_width="fill_parent"
                     android:layout_height="@dimen/spacing_xmlarge"
                     android:background="@drawable/edit_text_round_bg_white"
                     android:minHeight="@dimen/spacing_xmlarge"
                     android:paddingLeft="@dimen/spacing_middle"
                     android:paddingRight="@dimen/spacing_middle" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_large"
+                    android:layout_marginBottom="@dimen/spacing_medium"
+                    android:text="محل تحصیل"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:textColor="@color/grey_60" />
 
+                <EditText
+                    style="@style/EditText.Flat.Grey"
+                    android:id="@+id/ud_school"
+                    android:tag="ud_school"
+                    android:layout_width="fill_parent"
+                    android:layout_height="@dimen/spacing_xmlarge"
+                    android:background="@drawable/edit_text_round_bg_white"
+                    android:minHeight="@dimen/spacing_xmlarge"
+                    android:paddingLeft="@dimen/spacing_middle"
+                    android:paddingRight="@dimen/spacing_middle" />
                 <LinearLayout
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
@@ -349,6 +369,7 @@
                         android:layout_width="0.0dip"
                         android:layout_height="wrap_content"
                         android:layout_weight="1.0"
+                        android:visibility="gone"
                         android:orientation="vertical">
 
                         <TextView
@@ -360,7 +381,7 @@
                             android:textColor="@color/grey_60" />
 
                         <EditText
-                            android:id="@+id/et_gender"
+                            android:id="@+id/ud_"
                             style="@style/EditText.Flat.Grey"
                             android:layout_width="fill_parent"
                             android:layout_height="@dimen/spacing_xmlarge"
@@ -381,7 +402,7 @@
                 </LinearLayout>
 
             </LinearLayout>
-        </android.support.v4.widget.NestedScrollView>
+        </androidx.core.widget.NestedScrollView>
 
         <Button
             android:id="@+id/bt_submit2"

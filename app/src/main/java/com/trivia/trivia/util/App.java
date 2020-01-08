@@ -3,7 +3,12 @@ package com.trivia.trivia.util;
 import android.app.Application;
 import android.content.Context;
 import android.content.res.Configuration;
+import android.os.Build;
 import android.util.Log;
+
+import androidx.core.content.ContextCompat;
+
+import com.trivia.trivia.R;
 
 public class App extends Application {
 
@@ -17,6 +22,7 @@ public class App extends Application {
         localeManager = new LocaleManager(base);
         super.attachBaseContext(localeManager.setLocale(base));
         Log.d(TAG, "attachBaseContext");
+
     }
 
     @Override

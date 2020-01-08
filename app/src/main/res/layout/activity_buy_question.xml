@@ -5,320 +5,452 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="right"
-    android:background="@color/grey_5"
+    android:clickable="true"
+
+    android:background="@drawable/backg"
     android:orientation="vertical"
     android:layoutDirection="ltr">
-    <android.support.design.widget.AppBarLayout
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/app_bar_layout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layoutDirection="ltr"
-        android:background="@color/grey_5"
-        app:elevation="0dp">
+        android:background="@color/transparent"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:contentInsetStartWithNavigation="0dp"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        app:theme="@style/Toolbar.Light"
+        android:layout_height="?attr/actionBarSize">
 
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
+        <LinearLayout
             android:layout_width="match_parent"
-            app:title="خرید سوال"
-             app:titleTextColor="@color/indigo_900"
-            android:layout_height="?attr/actionBarSize"
-            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-            app:contentInsetStartWithNavigation="0dp"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-            app:theme="@style/Toolbar.Light" />
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
 
-    </android.support.design.widget.AppBarLayout>
+            <ImageButton
+                android:id="@+id/bt_close"
+                android:layout_width="?attr/actionBarSize"
+                android:layout_height="?attr/actionBarSize"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:tint="@android:color/white"
+                />
+
+            <View
+                android:layout_width="30dp"
+                android:layout_height="0dp" />
+
+            <TextView
+                android:id="@+id/name_toolbar"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="خرید سوال"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Title"
+                android:textColor="@color/white" />
+
+            <ImageButton
+                android:id="@+id/bt_close2"
+                android:layout_width="?attr/actionBarSize"
+                android:layout_height="?attr/actionBarSize"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:tint="@android:color/white"
+                />
+
+            <ImageView
+                android:id="@+id/bt_filter"
+                android:padding="15dp"
+                android:visibility="invisible"
+                android:layout_width="?attr/actionBarSize"
+                android:layout_height="?attr/actionBarSize"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:tint="@color/toolbar_color"
+                app:srcCompat="@drawable/filter_results_button" />
+
+        </LinearLayout>
+
+    </androidx.appcompat.widget.Toolbar>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
        >
 
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
 
-                <TableRow
-                    android:paddingLeft="@dimen/spacing_large"
-                    android:paddingRight="@dimen/spacing_large"
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
-                    <android.support.v7.widget.CardView
-                        android:id="@+id/fragment_multi_choice_cv_question"
+                    <Button
+                        android:id="@+id/buy_question_get_location_btn"
                         android:layout_width="match_parent"
-                        android:layout_height="200dp"
-                        app:cardUseCompatPadding="true"
-                        app:cardBackgroundColor="@color/light_blue_500"
-                        app:cardCornerRadius="6dp"
-                        app:cardElevation="2dp">
+                        android:layout_height="50dp"
+                        android:background="@drawable/button_gradiant_grean_background"
+                        android:text="دریافت موقعیت مکانی شما"
+                        android:textColor="#ffffff"
+                        android:textSize="18dp"
+                        app:layout_constraintBottom_toTopOf="@+id/buy_question_btn"
+                        app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
+                        tools:layout_editor_absoluteX="10dp" />
+
+                    <LinearLayout
+                        android:id="@+id/linearLayout4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:layout_marginTop="16dp"
+                        android:background="@drawable/back_white"
+                        android:orientation="vertical"
+                        android:padding="10dp"
+                        app:layout_constraintTop_toBottomOf="@+id/tableRow6"
+                        tools:layout_editor_absoluteX="10dp">
+
+                        <TableRow
+                            android:id="@+id/tableRow4"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:gravity="center">
+
+                            <TextView
+                                android:id="@+id/textView5"
+                                android:drawablePadding="5dp"
+                                android:gravity="right"
+                                android:drawableRight="@drawable/dot"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="سطح سوال" />
+                        </TableRow>
+
+                        <TableRow
+                            android:id="@+id/tableRow"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+
+                            android:paddingStart="20dp"
+                            android:paddingEnd="20dp"
+                            app:layout_constraintTop_toBottomOf="@+id/tableRow4">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="vertical">
+
+                                <co.ceryle.radiorealbutton.RadioRealButtonGroup
+                                    android:id="@+id/radioRealButtonGroup_1"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="60dp"
+                                    android:layout_gravity="center"
+                                    app:rrbg_animateDrawables_enter="cycle"
+                                    app:rrbg_animateDrawables_enterDuration="100"
+                                    app:rrbg_animateDrawables_scale="2"
+                                    app:rrbg_animateTexts_enter="overshoot"
+                                    app:rrbg_animateTexts_enterDuration="500"
+                                    app:rrbg_backgroundColor="@color/radiobuttonback"
+                                    app:rrbg_bottomLineColor="@color/white"
+                                    app:rrbg_bottomLineRadius="2dp"
+                                    app:rrbg_bottomLineSize="0dp"
+
+                                    app:rrbg_checkedPosition="0"
+                                    app:rrbg_dividerRadius="10dp"
+                                    app:rrbg_radius="2dp"
+                                    app:rrbg_selectorAboveOfBottomLine="false"
+                                    app:rrbg_selectorAnimationType="translate_y"
+                                    app:rrbg_selectorColor="#50B784"
+                                    app:rrbg_selectorDividerColor="@color/white"
+                                    app:rrbg_selectorDividerRadius="10dp"
+                                    app:rrbg_selectorDividerSize="10dp"
+                                    app:rrbg_selectorFullSize="true"
+                                    app:rrbg_selectorRadius="10dp"
+                                    app:rrbg_selectorSize="60dp">
+
+                                    <co.ceryle.radiorealbutton.RadioRealButton
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="60dp"
+                                        app:rrb_selectorColor="#DD3F3F"
+                                        app:rrb_text="@string/hard"
+
+                                        app:rrb_textColor="@color/white"
+                                        app:rrb_textSize="13dp"
+                                        app:rrb_textTypefacePath="font/iran_sans.ttf" />
+
+                                    <co.ceryle.radiorealbutton.RadioRealButton
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="60dp"
+                                        android:layoutDirection="ltr"
+
+                                        app:rrb_selectorColor="#E0D402"
+                                        app:rrb_text="@string/medium"
+                                        app:rrb_textColor="@color/white"
+                                        app:rrb_textSize="13dp"
+                                        app:rrb_textTypefacePath="font/iran_sans.ttf" />
+
+                                    <co.ceryle.radiorealbutton.RadioRealButton
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="60dp"
+                                        app:rrb_text="@string/easy"
+                                        app:rrb_textColor="@color/white"
+
+                                        app:rrb_textSize="13dp"
+                                        app:rrb_textTypefacePath="font/iran_sans.ttf"
+                                        app:rrbg_selectorColor="#50B784"
+
+                                        />
+                                </co.ceryle.radiorealbutton.RadioRealButtonGroup>
+
+                                <TableRow
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content" >
+
+                                    <TextView
+                                        android:id="@+id/textView10"
+                                        android:gravity="center"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:textColor="#65ffffff"
+                                        android:text="500" />
+
+                                    <TextView
+                                        android:id="@+id/textView9"
+                                        android:layout_weight="1"
+                                        android:gravity="center"
+                                        android:textColor="#65ffffff"
+
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:text="300" />
+
+                                    <TextView
+                                        android:id="@+id/textView7"
+                                        android:gravity="center"
+                                        android:textColor="#65ffffff"
+
+                                        android:layout_weight="1"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:text="100" />
+                                </TableRow>
+
+                            </LinearLayout>
+
+
+                        </TableRow>
+
+                    </LinearLayout>
+
+                    <Button
+                        android:id="@+id/buy_question_btn"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:layout_marginLeft="30dp"
+                        android:layout_marginRight="30dp"
+                        android:layout_marginBottom="20dp"
+                        android:background="@drawable/button_shortanswer_background"
+                        android:text="تایید"
+                        android:textColor="@color/button_text_color"
+
+                        android:textSize="18dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
+                        app:layout_constraintVertical_bias="0.542"
+                        tools:layout_editor_absoluteX="-9dp" />
+
+                    <LinearLayout
+                        android:id="@+id/linearLayout3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+
+                        android:layout_marginTop="8dp"
+                        android:background="@drawable/back_white"
+                        android:orientation="vertical"
+                        android:padding="10dp"
+                        app:layout_constraintTop_toBottomOf="@+id/linearLayout4"
+                        tools:layout_editor_absoluteX="10dp">
+
+                        <TableRow
+                            android:id="@+id/tableRow5"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+
+                            android:gravity="center"
+                            app:layout_constraintTop_toBottomOf="@+id/tableRow"
+                            tools:layout_editor_absoluteX="16dp">
+
+                            <TextView
+                                android:id="@+id/textView4"
+                                android:drawablePadding="5dp"
+                                android:gravity="right"
+                                android:drawableRight="@drawable/dot"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="نوع سوال" />
+                        </TableRow>
+
+                        <TableRow
+                            android:id="@+id/tableRow2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:paddingStart="20dp"
+                            android:paddingEnd="20dp"
+                            app:layout_constraintTop_toBottomOf="@+id/tableRow5"
+                            tools:layout_editor_absoluteX="0dp">
+
+                            <co.ceryle.radiorealbutton.RadioRealButtonGroup
+                                android:id="@+id/radioRealButtonGroup_2"
+                                android:layout_width="match_parent"
+                                android:layout_height="60dp"
+                                android:layout_gravity="center"
+                                app:rrbg_animateDrawables_enter="cycle"
+                                app:rrbg_animateDrawables_enterDuration="100"
+                                app:rrbg_animateDrawables_scale="2"
+                                app:rrbg_animateTexts_enter="overshoot"
+                                app:rrbg_animateTexts_enterDuration="500"
+                                app:rrbg_backgroundColor="@color/radiobuttonback"
+                                app:rrbg_bottomLineColor="@color/white"
+                                app:rrbg_bottomLineRadius="2dp"
+                                app:rrbg_bottomLineSize="0dp"
+
+                                app:rrbg_checkedPosition="0"
+                                app:rrbg_dividerRadius="10dp"
+                                app:rrbg_radius="2dp"
+                                app:rrbg_selectorAboveOfBottomLine="false"
+                                app:rrbg_selectorAnimationType="translate_y"
+                                app:rrbg_selectorColor="#50B784"
+                                app:rrbg_selectorDividerColor="@color/white"
+                                app:rrbg_selectorDividerRadius="10dp"
+                                app:rrbg_selectorDividerSize="10dp"
+                                app:rrbg_selectorFullSize="true"
+                                app:rrbg_selectorRadius="10dp"
+                                app:rrbg_selectorSize="60dp">
+
+                                <co.ceryle.radiorealbutton.RadioRealButton
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="60dp"
+                                    android:background="@drawable/button_red_background"
+                                    app:rrb_selectorColor="#DD3F3F"
+                                    app:rrb_text="@string/descriptive"
+                                    app:rrb_textColor="@color/white"
+                                    app:rrb_textSize="13dp"
+                                    app:rrb_textTypefacePath="font/iran_sans.ttf" />
+
+                                <co.ceryle.radiorealbutton.RadioRealButton
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="60dp"
+                                    android:layoutDirection="ltr"
+
+                                    app:rrb_selectorColor="#E0D402"
+                                    app:rrb_text="@string/short_answer"
+                                    app:rrb_textColor="@color/white"
+                                    app:rrb_textSize="13dp"
+                                    app:rrb_textTypefacePath="font/iran_sans.ttf" />
+
+                                <co.ceryle.radiorealbutton.RadioRealButton
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="60dp"
+                                    app:rrb_text="@string/multiple_choice"
+                                    app:rrb_textColor="@color/white"
+
+                                    app:rrb_textSize="13dp"
+                                    app:rrb_textTypefacePath="font/iran_sans.ttf"
+                                    app:rrbg_selectorColor="#50B784"
+
+                                    />
+                            </co.ceryle.radiorealbutton.RadioRealButtonGroup>
+                        </TableRow>
+
+                    </LinearLayout>
+
+                    <TableRow
+                        android:id="@+id/tableRow6"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:paddingLeft="@dimen/spacing_large"
+                        android:paddingRight="@dimen/spacing_large"
+                        app:layout_constraintTop_toTopOf="parent">
+
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:gravity="center"
+                            android:gravity="right"
 
                             android:orientation="vertical">
+
 
                             <TextView
                                 android:id="@+id/buy_question_score_tv"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="موجودی حساب: 500"
-                                android:textColor="@color/white"
-                                android:textSize="25dp" />
-                            <TextView
-                                android:id="@+id/buy_question_inflation_tv"
+                                android:layout_marginStart="8dp"
+
+                                android:layout_marginEnd="8dp"
+                                android:animateLayoutChanges="true"
+                                android:autoSizeTextType="uniform"
+                                android:background="@drawable/back_white_infl"
+                                android:drawableRight="@drawable/dollar"
+                                android:drawablePadding="5dp"
+                                android:layoutDirection="ltr"
+                                android:padding="5dp"
+                                android:text="3734 پروف"
+                                android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead"
+                                android:textColor="@color/new_text" />
+
+
+                            <LinearLayout
+                                android:id="@+id/infl"
+
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="موجودی حساب: 500"
-                                android:textColor="@color/white"
-                                android:textSize="18dp" />
+                                android:layout_marginStart="8dp"
+                                android:layout_marginTop="8dp"
+                                android:layout_marginEnd="8dp"
+                                android:layout_marginBottom="24dp"
+                                android:background="@drawable/back_brown"
+                                android:layoutDirection="ltr"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/cv_countdown">
+
+                                <TextView
+                                    android:id="@+id/buy_question_inflation_tv"
+                                    android:layout_width="32dp"
+                                    android:layout_height="32dp"
+
+                                    android:background="@drawable/back_white_infl"
+                                    android:gravity="center"
+                                    android:text="3"
+                                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead"
+                                    android:textColor="@color/new_text" />
+
+                                <TextView
+                                    android:id="@+id/textView3"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_marginRight="2dp"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:paddingLeft="5dp"
+                                    android:paddingRight="5dp"
+                                    android:text="نرخ تورم"
+                                    android:textColor="@color/white" />
+
+                            </LinearLayout>
                         </LinearLayout>
 
-                    </android.support.v7.widget.CardView>
-                </TableRow>
 
-                <TableRow
-                    android:id="@+id/tableRow4"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:gravity="right"
-                    tools:layout_editor_absoluteX="0dp">
-
-                    <TextView
-                        android:id="@+id/textView5"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="سطح سوال" />
-                </TableRow>
-
-                <TableRow
-                    android:id="@+id/tableRow"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:paddingStart="20dp"
-                    android:paddingEnd="20dp"
-                    app:layout_constraintTop_toBottomOf="@+id/tableRow4">
-
-                    <co.ceryle.radiorealbutton.RadioRealButtonGroup
-                        android:id="@+id/radioRealButtonGroup_1"
-                        android:layout_width="match_parent"
-                        android:layout_height="60dp"
-                        android:layout_gravity="center"
-                        app:rrbg_animateDrawables_enter="cycle"
-                        app:rrbg_animateDrawables_enterDuration="100"
-                        app:rrbg_animateDrawables_scale="2"
-                        app:rrbg_animateTexts_enter="overshoot"
-                        app:rrbg_animateTexts_enterDuration="500"
-                        app:rrbg_backgroundColor="@color/radiobuttonback"
-                        app:rrbg_bottomLineColor="@color/white"
-                        app:rrbg_bottomLineRadius="2dp"
-                        app:rrbg_bottomLineSize="0dp"
-
-                        app:rrbg_checkedPosition="0"
-                        app:rrbg_dividerRadius="10dp"
-                        app:rrbg_radius="2dp"
-                        app:rrbg_selectorAboveOfBottomLine="false"
-                        app:rrbg_selectorAnimationType="translate_y"
-                        app:rrbg_selectorColor="#50B784"
-                        app:rrbg_selectorDividerColor="@color/white"
-                        app:rrbg_selectorDividerRadius="10dp"
-                        app:rrbg_selectorDividerSize="10dp"
-                        app:rrbg_selectorFullSize="true"
-                        app:rrbg_selectorRadius="10dp"
-                        app:rrbg_selectorSize="60dp">
-
-                        <co.ceryle.radiorealbutton.RadioRealButton
-                            android:layout_width="wrap_content"
-                            android:layout_height="60dp"
-                            app:rrb_selectorColor="#DD3F3F"
-                            app:rrb_text="@string/hard"
-
-                            app:rrb_textColor="@color/white"
-                            app:rrb_textSize="13dp"
-                            app:rrb_textTypefacePath="font/iran_sans.ttf" />
-
-                        <co.ceryle.radiorealbutton.RadioRealButton
-                            android:layout_width="wrap_content"
-                            android:layout_height="60dp"
-                            android:layoutDirection="ltr"
-
-                            app:rrb_selectorColor="#E0D402"
-                            app:rrb_text="@string/medium"
-                            app:rrb_textColor="@color/white"
-                            app:rrb_textSize="13dp"
-                            app:rrb_textTypefacePath="font/iran_sans.ttf" />
-
-                        <co.ceryle.radiorealbutton.RadioRealButton
-                            android:layout_width="wrap_content"
-                            android:layout_height="60dp"
-                            app:rrb_text="@string/easy"
-                            app:rrb_textColor="@color/white"
-
-                            app:rrb_textSize="13dp"
-                            app:rrb_textTypefacePath="font/iran_sans.ttf"
-                            app:rrbg_selectorColor="#50B784"
-
-                            />
-                    </co.ceryle.radiorealbutton.RadioRealButtonGroup>
+                    </TableRow>
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-                </TableRow>
-
-                <TableRow
-                    android:id="@+id/tableRow5"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-
-                    android:gravity="right"
-                    app:layout_constraintTop_toBottomOf="@+id/tableRow"
-                    tools:layout_editor_absoluteX="16dp">
-
-                    <TextView
-                        android:id="@+id/textView4"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="نوع سوال" />
-                </TableRow>
-
-                <TableRow
-                    android:id="@+id/tableRow2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:paddingStart="20dp"
-                    android:paddingEnd="20dp"
-                    app:layout_constraintTop_toBottomOf="@+id/tableRow5"
-                    tools:layout_editor_absoluteX="0dp">
-
-                    <co.ceryle.radiorealbutton.RadioRealButtonGroup
-                        android:id="@+id/radioRealButtonGroup_2"
-                        android:layout_width="match_parent"
-                        android:layout_height="60dp"
-                        android:layout_gravity="center"
-                        app:rrbg_animateDrawables_enter="cycle"
-                        app:rrbg_animateDrawables_enterDuration="100"
-                        app:rrbg_animateDrawables_scale="2"
-                        app:rrbg_animateTexts_enter="overshoot"
-                        app:rrbg_animateTexts_enterDuration="500"
-                        app:rrbg_backgroundColor="@color/radiobuttonback"
-                        app:rrbg_bottomLineColor="@color/white"
-                        app:rrbg_bottomLineRadius="2dp"
-                        app:rrbg_bottomLineSize="0dp"
-
-                        app:rrbg_checkedPosition="0"
-                        app:rrbg_dividerRadius="10dp"
-                        app:rrbg_radius="2dp"
-                        app:rrbg_selectorAboveOfBottomLine="false"
-                        app:rrbg_selectorAnimationType="translate_y"
-                        app:rrbg_selectorColor="#50B784"
-                        app:rrbg_selectorDividerColor="@color/white"
-                        app:rrbg_selectorDividerRadius="10dp"
-                        app:rrbg_selectorDividerSize="10dp"
-                        app:rrbg_selectorFullSize="true"
-                        app:rrbg_selectorRadius="10dp"
-                        app:rrbg_selectorSize="60dp">
-
-                        <co.ceryle.radiorealbutton.RadioRealButton
-                            android:layout_width="wrap_content"
-                            android:layout_height="60dp"
-                            android:background="@drawable/button_red_background"
-                            app:rrb_selectorColor="#DD3F3F"
-                            app:rrb_text="@string/descriptive"
-                            app:rrb_textColor="@color/white"
-                            app:rrb_textSize="13dp"
-                            app:rrb_textTypefacePath="font/iran_sans.ttf" />
-
-                        <co.ceryle.radiorealbutton.RadioRealButton
-                            android:layout_width="wrap_content"
-                            android:layout_height="60dp"
-                            android:layoutDirection="ltr"
-
-                            app:rrb_selectorColor="#E0D402"
-                            app:rrb_text="@string/short_answer"
-                            app:rrb_textColor="@color/white"
-                            app:rrb_textSize="13dp"
-                            app:rrb_textTypefacePath="font/iran_sans.ttf" />
-
-                        <co.ceryle.radiorealbutton.RadioRealButton
-                            android:layout_width="wrap_content"
-                            android:layout_height="60dp"
-                            app:rrb_text="@string/multiple_choice"
-                            app:rrb_textColor="@color/white"
-
-                            app:rrb_textSize="13dp"
-                            app:rrb_textTypefacePath="font/iran_sans.ttf"
-                            app:rrbg_selectorColor="#50B784"
-
-                            />
-                    </co.ceryle.radiorealbutton.RadioRealButtonGroup>
-                </TableRow>
-
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:paddingStart="10sp"
-                    android:paddingTop="3sp"
-                    android:visibility="gone"
-                    android:paddingEnd="10sp"
-                    android:paddingBottom="3sp">
-
-
-                    <EditText
-                        android:id="@+id/editText"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:ems="2"
-                        android:inputType="number"
-
-                        android:text="1" />
-
-                    <TextView
-                        android:id="@+id/group_name"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:text="تعداد"
-                        android:textColor="@color/black" />
-
-                </TableRow>
-                <Button
-                    android:id="@+id/buy_question_get_location_btn"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_marginStart="50dp"
-                    android:layout_marginTop="30dp"
-                    android:layout_marginEnd="50dp"
-                    android:layout_marginBottom="9dp"
-                    android:background="@drawable/button_gradiant_grean_background"
-                    android:text="دریافت موقعیت مکانی شما"
-                    android:textColor="#ffffff"
-                    android:textSize="18dp"
-                    app:layout_constraintBottom_toBottomOf="parent" />
-                <Button
-                    android:id="@+id/buy_question_btn"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_marginStart="50dp"
-                    android:layout_marginTop="30dp"
-                    android:layout_marginEnd="50dp"
-                    android:layout_marginBottom="9dp"
-                    android:background="@drawable/button_blue_gradiant"
-                    android:text="خرید"
-                    android:textColor="#ffffff"
-                    android:textSize="18dp"
-                    app:layout_constraintBottom_toBottomOf="parent" />
-            </LinearLayout>
-        </ScrollView>
 
     </LinearLayout>
 

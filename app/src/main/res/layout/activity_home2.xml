@@ -21,6 +21,8 @@
             android:id="@+id/viewPagerMain"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
+
             android:layout_weight="100" >
 
         </com.aurelhubert.ahbottomnavigation.AHBottomNavigationViewPager>
@@ -30,11 +32,11 @@
             android:layout_height="1sp"
             android:background="#e3e3e3" />
 
-        <com.trivia.trivia.my_custom_widgets.my_AHBottomNavigation
+        <com.trivia.trivia.custom_widgets.my_AHBottomNavigation
             android:id="@+id/bottom_navigation"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-
+            app:layout_constraintEnd_toEndOf="parent"
 
             android:layout_weight="1"
             />

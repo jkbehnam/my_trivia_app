@@ -97,7 +97,7 @@ public class Utils {
      */
     public static void displayCommonAlertDialog(final Context mContext, final String alertMessage) {
         try {
-            android.support.v7.app.AlertDialog.Builder builder = new android.support.v7.app.AlertDialog.Builder(mContext, R.style.StyleAppCompatAlertDialog);
+            androidx.appcompat.app.AlertDialog.Builder builder = new androidx.appcompat.app.AlertDialog.Builder(mContext, R.style.StyleAppCompatAlertDialog);
             builder.setTitle(mContext.getResources().getString(R.string.app_name));
             builder.setMessage(alertMessage);
             builder.setPositiveButton("باشه", null);

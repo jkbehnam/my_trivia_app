@@ -1,19 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/item_event_card"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="6dp"
     android:clickable="true"
+    app:cardBackgroundColor="@color/transparent"
     android:foreground="?android:attr/selectableItemBackground"
     app:cardCornerRadius="6dp"
+    app:cardElevation="0dp"
     app:cardPreventCornerOverlap="false">
 
     <LinearLayout
         android:id="@+id/lyt_parent"
-        android:background="@drawable/bg_multi_selection"
+        android:background="@drawable/q_list_back"
         android:foreground="?android:attr/selectableItemBackground"
 android:clickable="true"
         android:layout_width="match_parent"
@@ -33,7 +35,7 @@ android:clickable="true"
                 android:layout_margin="10dp"
                 android:gravity="start"
                 android:text="TextView"
-                android:textColor="@color/indigo_900" />
+                android:textColor="@color/white" />
         </TableRow>
 
         <RelativeLayout
@@ -41,16 +43,17 @@ android:clickable="true"
             android:layout_height="wrap_content"
             android:descendantFocusability="afterDescendants">
 
-            <android.support.v7.widget.RecyclerView
+            <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/event_list_rcle"
+                android:padding="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:scrollbars="vertical">
 
-            </android.support.v7.widget.RecyclerView>
+            </androidx.recyclerview.widget.RecyclerView>
 
         </RelativeLayout>
 
 
     </LinearLayout>
-</android.support.v7.widget.CardView>
+</androidx.cardview.widget.CardView>

@@ -13,14 +13,8 @@
 
     <string name="activity_login_email_invalid">EmailID is invalid.</string>
 
-    <string name="activity_login_password_wrong">Password is wrong.</string>
-
-    <string name="activity_login_alert_ok">OK</string>
-
-    <string name="connection_issue_msg">No internet connection.</string>
     <string name="username">username</string>
     <string name="password">passowrd</string>
-    <string name="changeLanguage">chagne Lang</string>
     <string name="forgetPassword">forget password</string>
     <string name="signup">sign up</string>
     <string name="Login">log in</string>

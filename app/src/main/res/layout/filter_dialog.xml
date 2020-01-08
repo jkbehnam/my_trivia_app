@@ -3,12 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/lyt_parent"
+    android:layoutDirection="ltr"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/transparent"
     android:orientation="vertical">
 
-    <android.support.design.widget.AppBarLayout
+    <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/app_bar_layout"
         android:layout_width="match_parent"
 
@@ -21,13 +22,15 @@
             android:orientation="horizontal">
 
             <ImageView
-                android:id="@+id/bt_close"
-                android:padding="15dp"
                 android:layout_width="?attr/actionBarSize"
                 android:layout_height="?attr/actionBarSize"
+                android:padding="15dp"
+                android:id="@+id/bt_ok"
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:tint="@android:color/white"
-                app:srcCompat="@drawable/cancel" />
+                app:srcCompat="@drawable/ok"
+
+                />
 
             <View
                 android:layout_width="30dp"
@@ -50,21 +53,21 @@
                 android:tint="@android:color/white"
                  />
 
+
             <ImageView
+                android:id="@+id/bt_close"
+                android:padding="15dp"
                 android:layout_width="?attr/actionBarSize"
                 android:layout_height="?attr/actionBarSize"
-                android:padding="15dp"
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:tint="@android:color/white"
-                app:srcCompat="@drawable/ok"
-
-                />
+                app:srcCompat="@drawable/cancel" />
 
         </LinearLayout>
 
-    </android.support.design.widget.AppBarLayout>
+    </com.google.android.material.appbar.AppBarLayout>
 
-    <android.support.v4.widget.NestedScrollView
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fillViewport="true">
@@ -124,7 +127,6 @@
                         app:rrbg_bottomLineRadius="2dp"
                         app:rrbg_bottomLineSize="0dp"
 
-                        app:rrbg_checkedPosition="0"
                         app:rrbg_dividerRadius="10dp"
                         app:rrbg_radius="2dp"
                         app:rrbg_selectorAboveOfBottomLine="false"
@@ -216,7 +218,6 @@
                         app:rrbg_bottomLineRadius="2dp"
                         app:rrbg_bottomLineSize="0dp"
 
-                        app:rrbg_checkedPosition="0"
                         app:rrbg_dividerRadius="10dp"
                         app:rrbg_radius="2dp"
                         app:rrbg_selectorAboveOfBottomLine="false"
@@ -296,5 +297,5 @@
 
         </LinearLayout>
 
-    </android.support.v4.widget.NestedScrollView>
+    </androidx.core.widget.NestedScrollView>
 </LinearLayout>

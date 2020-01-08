@@ -2,14 +2,12 @@
 
     <string name="username">نام کاربری</string>
     <string name="password">رمز عبور</string>
-    <string name="changeLanguage">تغییر زبان</string>
     <string name="app_name">trivia_login</string>
     <string name="messageWasSend">کد ارسال شده با شماره زیر را وارد نمایید</string>
     <string name="forgetPassword">فراموشی رمز عبور</string>
     <string name="signup">ثبت نام</string>
     <string name="Login">ورود</string>
     <string name="enterYourMobileNumber">شماره موبایل خود را وارد کنید</string>
-    <string name="questionTitle">صورت سوال</string>
     <string name="Tap_Next_to_verify_your_account_with_your_phone_number">برای تایید شماره موبایل شما یک پیامک حاوی کد برایتان ارسال میشود</string>
     <string name="didntGetCode">کدی دریافت نکردم</string>
     <string name="next">ادامه</string>
@@ -33,10 +31,15 @@
     <string name="activity_login_password_err">Password should be grater than 6 characters.</string>
 
     <string name="activity_login_email_invalid">EmailID is invalid.</string>
+    <string name="error_msg">سوالات دریافت نشد.</string>
+    <string name="btn_retry">Retry</string>
+    <string name="error_msg_no_internet">Not connected to internet</string>
+    <string name="error_msg_timeout">The server took too long to respond</string>
+    <string name="error_msg_unknown">An unexpected error occurred</string>
+    <string name="tap_to_reload">Tap to reload</string>
 
-    <string name="activity_login_password_wrong">Password is wrong.</string>
 
-    <string name="activity_login_alert_ok">OK</string>
+    <string name="cache_status">Playing Online: Downloaded %d%%</string>
+    <string name="default_input_hint">به همبازی ها پیام بده...</string>
 
-    <string name="connection_issue_msg">No internet connection.</string>
 </resources>

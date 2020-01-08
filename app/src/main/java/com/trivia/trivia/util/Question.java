@@ -32,20 +32,31 @@ public class Question implements Serializable {
     @SerializedName("q_package")
     @Expose
     private String Q_package;
+    @SerializedName("q_string")
+    @Expose
+    private String Q_string;
+
+    @SerializedName("q_try_num")
+    @Expose
+    private int Q_try_num;
+    @SerializedName("q_state")
+    @Expose
+    private int q_state;
 
 
-
-    public Question(String Q_title, String Q_type, String Q_level, String Q_id, String Q_img,String Q_score) {
+    public Question(String Q_title, String Q_type, String Q_level, String Q_id, String Q_img,String Q_score,String Q_string) {
         setQ_title(Q_title);
         setQ_type(Q_type);
         setQ_level(Q_level);
         setQ_id(Q_id);
         setQ_img(Q_img);
         setQ_score(Q_score);
-
+        setQ_string(Q_string);
 
     }
+    public Question() {
 
+    }
 
     public String getQ_title() {
         return Q_title;
@@ -110,5 +121,30 @@ public class Question implements Serializable {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getQ_string() {
+        return Q_string;
+    }
+
+    public void setQ_string(String q_string) {
+        Q_string = q_string;
+    }
+
+
+    public int getQ_try_num() {
+        return Q_try_num;
+    }
+
+    public void setQ_try_num(int q_try_num) {
+        Q_try_num = q_try_num;
+    }
+
+    public int getQ_state() {
+        return q_state;
+    }
+
+    public void setQ_state(int q_state) {
+        this.q_state = q_state;
     }
 }

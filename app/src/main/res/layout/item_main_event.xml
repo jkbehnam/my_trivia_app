@@ -1,15 +1,16 @@
-<android.support.v7.widget.CardView android:layout_width="match_parent"
+<androidx.cardview.widget.CardView android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    app:cardCornerRadius="6dp"
+    app:cardCornerRadius="50dp"
     android:id="@+id/item_game_cv"
-    app:cardElevation="2dp"
+android:layout_margin="7dp"    app:cardElevation="0dp"
     android:background="@drawable/bg_multi_selection"
 android:layoutDirection="rtl"
+    app:cardBackgroundColor="@color/transparent"
     android:clickable="true"
     android:foreground="?android:attr/selectableItemBackground"
-    app:cardUseCompatPadding="true"
+    app:cardUseCompatPadding="false"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
 
@@ -20,6 +21,7 @@ android:layoutDirection="rtl"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:padding="10dp"
+                android:background="@drawable/back_white_main_btn"
                 android:orientation="horizontal"
                 android:gravity="center_horizontal">
 
@@ -57,4 +59,4 @@ android:gravity="center|start"
 
 
 
-</android.support.v7.widget.CardView>
+</androidx.cardview.widget.CardView>

@@ -1,37 +1,49 @@
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <android.support.design.widget.AppBarLayout
+    <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/toolbar_color"
+        android:background="@color/mainBackground"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
 
         <include
             android:id="@+id/toolbar"
 
-            layout="@layout/toolbar_main"
+            layout="@layout/toolbar_main2"
             android:layout_above="@+id/tabs"
             tools:ignore="IncludeLayoutParam"></include>
 
-        <android.support.design.widget.TabLayout
+        <com.flyco.tablayout.SlidingTabLayout
             android:id="@+id/tabs2"
-            style="@style/News4TabLayout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:clipToPadding="false"
+            android:layout_height="52dp"
+            android:background="@android:color/transparent"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            app:tl_textsize="16dp"
+            android:layout_gravity="center"
+            android:fillViewport="false"
             android:layoutDirection="ltr"
-            app:tabGravity="fill"
-            app:tabMode="fixed" />
-    </android.support.design.widget.AppBarLayout>
+            app:tl_textSelectColor="#1D1A48"
+            app:tl_textBold="BOTH"
+            app:tl_textUnselectColor="#B9B9B9"
+            app:tl_indicator_color="@color/toolbar_color"
+            app:tl_indicator_corner_radius="25dp"
+            app:tl_underline_height="0dp"
+            app:tl_indicator_height="4dp"
+            app:tl_tab_space_equal="true"
+            app:tl_indicator_style="NORMAL"/>
 
-    <android.support.v4.view.ViewPager
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.viewpager.widget.ViewPager
         android:id="@+id/viewpager2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior" />
-</android.support.design.widget.CoordinatorLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

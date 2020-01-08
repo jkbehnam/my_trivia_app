@@ -16,35 +16,40 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
 
     <application
+        android:name=".base.Application"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
-        android:label="my game"
-        android:name=".base.aaplication"
+        android:icon="@mipmap/ic_launcher_new"
+        android:roundIcon="@mipmap/ic_launcher_new_round"
+        android:logo="@mipmap/ic_launcher"
+        android:label="My game"
         android:largeHeap="true"
-        android:supportsRtl="true"
         android:screenOrientation="portrait"
+        android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
-        tools:replace="android:label">
+        tools:replace="android:label,android:icon">
 
-        <activity android:name=".home.Registration.reg_data">
-
-        </activity>
-        <activity android:name=".login.LoginActivity"></activity>
-        <activity android:name=".home.Registration.RegisterationActivity" />
-        <activity android:name=".home.HomeBase.Home"  android:launchMode="singleTask"  android:windowSoftInputMode="adjustPan">
-
+        <activity android:name=".activities.Profile.reg_data"></activity>
+        <activity android:name=".activities.LoginRegisteration.login.LoginActivity" />
+        <activity android:name=".activities.LoginRegisteration.Registration.RegisterationActivity" />
+        <activity
+            android:name=".activities.HomeBase.Home"
+            android:launchMode="singleTask"
+            android:windowSoftInputMode="adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
+
                 <action android:name="schemas.com.trivia.trivia..home.HomeBase.Home" />
+
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
                 <category android:name="android.intent.category.ALTERNATIVE" />
-
             </intent-filter>
         </activity>
 
@@ -80,8 +85,24 @@
             android:name="co.ronash.pushe.cr"
             android:value="Tm9uZQ==" />
 
-        <activity android:name=".home.gameActivity.messages.DetailActivity" />
-<activity android:name=".home.source.PlayerActivity"></activity>
+        <activity android:name=".activities.Messages.DetailActivity" />
+        <activity android:name=".activities.Game.GameGuideSource.PlayerActivity" />
+        <service
+            android:name=".activities.Game.GameChat.SocketIOService"
+            android:exported="true"
+            android:process=":ServiceProcess"></service>
+
+        <receiver
+            android:name=".activities.Game.GameChat.bcr_notfi"
+            android:enabled="true"
+            android:exported="true" />
+        <receiver android:name=".activities.BroadcastReceiver_notify">
+            <intent-filter>
+                <action android:name="com.hello.btnaction" />
+
+                <category android:name="com.trivia.trivia" />
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>

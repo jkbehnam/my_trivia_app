@@ -18,8 +18,10 @@ public class Group implements Serializable {
     @SerializedName("g_start_time")
     @Expose
     private String g_start_time;
-
-    public String g_id() {
+    @SerializedName("g_end_time")
+    @Expose
+    private String g_end_time;
+    public String getG_id() {
         return g_id;
     }
 
@@ -49,5 +51,13 @@ public class Group implements Serializable {
 
     public void setG_start_time(String g_start_time) {
         this.g_start_time = g_start_time;
+    }
+
+    public String getG_end_time() {
+        return g_end_time;
+    }
+
+    public void setG_end_time(String g_end_time) {
+        this.g_end_time = g_end_time;
     }
 }

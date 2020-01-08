@@ -4,23 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nested_content"
     android:layout_width="fill_parent"
+    android:layoutDirection="rtl"
     android:layout_height="fill_parent"
-    android:background="@color/grey_3"
+    android:background="@color/mainBackground"
     android:clipToPadding="false"
     android:orientation="vertical">
 
-    <android.support.design.widget.AppBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
 
         <include
             android:id="@+id/toolbar"
 
-            layout="@layout/toolbar_main"
+            layout="@layout/toolbar_main2"
             android:layout_above="@+id/tabs"
             tools:ignore="IncludeLayoutParam"></include>
-    </android.support.design.widget.AppBarLayout>
 
     <ScrollView
         android:layout_width="match_parent"
@@ -48,7 +45,7 @@
                     android:layout_width="45dp"
                     android:layout_height="45dp"
                     android:tint="@color/toolbar_color"
-                    app:srcCompat="@drawable/ic_exit_to_app" />
+                    app:srcCompat="@drawable/icons8_exit_96" />
 
                 <ImageView
 
@@ -56,7 +53,7 @@
                     android:layout_width="45dp"
                     android:layout_height="45dp"
                     android:tint="@color/toolbar_color"
-                    app:srcCompat="@drawable/settings" />
+                    app:srcCompat="@drawable/icons8_automatic_96" />
 
             </TableRow>
 
@@ -105,9 +102,10 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/tv_user_name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="بهنام بیگ زاده"
+                        android:text="کاربر تست"
                         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                         android:textColor="@color/blue_grey_800"
                         app:fontFamily="sans-serif-medium" />
@@ -134,9 +132,10 @@
                             android:background="@color/red_300" />
 
                         <TextView
+                            android:id="@+id/tv_score"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="150 پروف"
+                            android:text="_ پروف"
                             android:textAppearance="@style/TextAppearance.AppCompat.Caption"
                             android:textColor="@color/grey_40" />
                     </LinearLayout>
@@ -148,6 +147,7 @@
                 android:layout_height="@dimen/spacing_mlarge" />
 
             <TextView
+                android:visibility="gone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/spacing_mlarge"
@@ -159,6 +159,7 @@
                 app:fontFamily="sans-serif-medium" />
 
             <LinearLayout
+                android:visibility="gone"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/spacing_mlarge"
@@ -230,7 +231,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="right"
-                    android:text="سطح 15"
+                    android:text="سطح 0"
                     android:textColor="@color/black"
                     android:textSize="18sp" />
 
@@ -239,6 +240,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="15dp"
                     android:layout_margin="15dp"
+
                     android:layout_weight="1"
                     android:outlineAmbientShadowColor="@color/red">
 
@@ -260,6 +262,7 @@
 
             <LinearLayout
                 android:layout_width="fill_parent"
+                android:visibility="gone"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/spacing_mlarge"
                 android:layout_marginRight="@dimen/spacing_mlarge"
@@ -450,6 +453,7 @@
 
 
             <LinearLayout
+                android:visibility="gone"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/spacing_mlarge"
@@ -461,7 +465,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
-                    <com.trivia.trivia.my_custom_widgets.my_BarChart
+                    <com.trivia.trivia.custom_widgets.my_BarChart
                         android:id="@+id/chart1"
                         android:layout_width="match_parent"
                         android:layout_height="250sp"
@@ -478,6 +482,7 @@
             <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
+                android:visibility="gone"
                 android:layout_marginLeft="@dimen/spacing_mlarge"
                 android:layout_marginRight="@dimen/spacing_mlarge"
                 android:orientation="vertical">
@@ -490,7 +495,7 @@
                     android:textColor="@color/blue_grey_500"
                     app:fontFamily="sans-serif-medium" />
 
-                <android.support.v7.widget.RecyclerView
+                <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/MyGameMainActivity_recycle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -498,7 +503,7 @@
                     android:layout_weight="2"
                     android:scrollbars="vertical">
 
-                </android.support.v7.widget.RecyclerView>
+                </androidx.recyclerview.widget.RecyclerView>
             </LinearLayout>
 
         </LinearLayout>

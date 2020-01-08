@@ -9,7 +9,10 @@ public class OtherGamer implements Serializable {
     @SerializedName("name")
     @Expose
     private String name;
-    @SerializedName("member")
+    @SerializedName("g_id")
+    @Expose
+    private String g_id;
+    @SerializedName("Member")
     @Expose
     private String members;
     @SerializedName("score")
@@ -53,7 +56,7 @@ public class OtherGamer implements Serializable {
     }
     public String print_gamer_card(){
 
-        String card=this.getName()+"/"+this.getScore()+"/"+ String.valueOf(this.members);
+        String card=this.getName()+"/"+this.getScore()+"/"+ this.members;
            return card;
     }
 
@@ -63,5 +66,13 @@ public class OtherGamer implements Serializable {
 
     public void setAnswerd_q(String answerd_q) {
         this.answerd_q = answerd_q;
+    }
+
+    public String getG_id() {
+        return g_id;
+    }
+
+    public void setG_id(String g_id) {
+        this.g_id = g_id;
     }
 }

@@ -19,7 +19,7 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentRight="true"
             android:gravity="center"
-            android:text="هزینه ی شرکت در رویداد:" />
+            android:text="(لطفا تا بارگزاری صفحه صبر کنید)" />
 
         <WebView
             android:id="@+id/ticketline"

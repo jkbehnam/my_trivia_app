@@ -18,27 +18,12 @@ public class ResponseLogin {
     private String u_id;
 
 
-    /**
-     *
-     * @return
-     * The id
-     */
 
 
-    /**
-     *
-     * @return
-     * The phone
-     */
     public String getPhone() {
         return phone;
     }
 
-    /**
-     *
-     * @param phone
-     * The phone
-     */
     public void setPhone(String phone) {
         this.phone = phone;
     }
@@ -58,12 +43,5 @@ public class ResponseLogin {
     public void setU_id(String u_id) {
         this.u_id = u_id;
     }
-
-    /**
-     *
-     * @return
-     * The email
-     */
-
 
 }

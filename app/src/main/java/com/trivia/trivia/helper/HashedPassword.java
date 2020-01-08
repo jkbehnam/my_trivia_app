@@ -34,6 +34,7 @@ package com.trivia.trivia.helper; /**
 
 
 import java.io.UnsupportedEncodingException;
+import java.nio.charset.StandardCharsets;
 import java.security.InvalidKeyException;
 import java.security.Key;
 import java.security.NoSuchAlgorithmException;
@@ -150,16 +151,10 @@ public final class HashedPassword {
 			if (codePoint <= 255)
 				bytes[i] = codePoint.byteValue();
 			else {
-				try {
-					String nonLatin1Char = Character.toString(data.charAt(i));
-					byte[] charBytes = nonLatin1Char.getBytes("UTF-16le");
-					short unsignedByte = (short) (0x000000FF & ((int) charBytes[0]));
-					bytes[i] = (byte) unsignedByte;
-				} catch (UnsupportedEncodingException e) {
-					Log.w("Decoding error", Character.toString(data.charAt(i))
-							+ " could not be decoded as UTF-16le");
-					bytes[i] = 0x1A; // SUB
-				}
+				String nonLatin1Char = Character.toString(data.charAt(i));
+				byte[] charBytes = nonLatin1Char.getBytes(StandardCharsets.UTF_16LE);
+				short unsignedByte = (short) (0x000000FF & ((int) charBytes[0]));
+				bytes[i] = (byte) unsignedByte;
 			}
 		}
 

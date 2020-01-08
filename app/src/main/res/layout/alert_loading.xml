@@ -15,20 +15,21 @@
 
         <com.airbnb.lottie.LottieAnimationView
             android:id="@+id/av_from_code"
-            android:layout_width="200sp"
-            android:layout_height="200sp"
+            android:layout_width="400sp"
+            android:layout_height="300sp"
             app:lottie_autoPlay="true"
-            app:lottie_colorFilter="@color/colorPrimaryDark"
-            app:lottie_fileName="loading.json"
+            app:lottie_fileName="lego.json"
             app:lottie_loop="true" />
 
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:gravity="center">
+            android:gravity="center"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp">
 
             <TextView
-                android:id="@+id/textView2"
+                android:id="@+id/loading_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="لطفا صبر کنید"
