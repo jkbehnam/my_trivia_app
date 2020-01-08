@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:padding="10dp"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_height="wrap_content">
+<androidx.cardview.widget.CardView
+    android:id="@+id/item_event_card"
+    android:layout_width="200dp"
+    android:layout_height="wrap_content"
+    android:clickable="true"
+    android:foreground="?android:attr/selectableItemBackground"
+    app:cardCornerRadius="10dp"
+    app:cardElevation="0dp"
+    tools:ignore="MissingConstraints">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#ffffff"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/event_tv_member"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            android:textColor="#A7A7A7"
+
+            app:layout_constraintEnd_toEndOf="@+id/event_tv_cost"
+            app:layout_constraintTop_toBottomOf="@id/event_tv_cost" />
+
+        <ImageView
+            android:id="@+id/imageView11"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:tint="#919191"
+            app:layout_constraintBottom_toBottomOf="@+id/event_tv_cost"
+            app:layout_constraintEnd_toStartOf="@+id/event_tv_cost"
+            app:layout_constraintTop_toBottomOf="@+id/event_tv_name_2"
+            app:srcCompat="@drawable/dot" />
+
+        <TextView
+            android:id="@+id/event_tv_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:text="TextView"
+            android:textColor="#A7A7A7"
+
+            app:layout_constraintBottom_toBottomOf="@+id/event_tv_cost"
+            app:layout_constraintEnd_toStartOf="@+id/imageView11"
+            app:layout_constraintTop_toBottomOf="@+id/event_tv_name_2" />
+
+        <TextView
+            android:id="@+id/event_tv_cost"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:text="TextView"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:textColor="#A7A7A7"
+            app:layout_constraintTop_toBottomOf="@+id/event_tv_name_2" />
+
+        <TextView
+            android:id="@+id/event_tv_name_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:text="TextView"
+            android:lines="2"
+            android:autoSizeTextType="uniform"
+            android:textColor="#3D3D3D"
+            android:textSize="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tableRow7" />
+
+        <TableRow
+            android:id="@+id/tableRow7"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/item_event_img_height_main"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <ImageView
+                android:id="@+id/event_iv_main"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+
+
+                android:scaleType="centerCrop"
+                 />
+
+        </TableRow>
+        <ImageView
+            android:id="@+id/txt_message"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintRight_toRightOf="@id/tableRow7"
+            app:layout_constraintLeft_toLeftOf="@id/tableRow7"
+            app:layout_constraintBottom_toBottomOf="@id/tableRow7"
+            app:layout_constraintTop_toTopOf="@id/tableRow7"
+            android:padding="10dp"
+            android:tint="@color/white"
+            android:background="#5B000000"
+            android:visibility="visible"
+            app:srcCompat="@drawable/flag"
+            tools:ignore="NotSibling"
+            ></ImageView>
+
+        <TextView
+            android:id="@+id/event_tv_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+
+            android:background="@drawable/corner_yellow"
+            android:gravity="center"
+
+            android:paddingLeft="5dp"
+            android:paddingTop="3dp"
+            android:paddingRight="5dp"
+            android:paddingBottom="3dp"
+            android:text="مسابقه"
+            android:textColor="@color/white"
+            android:textSize="13dp"
+            app:layout_constraintBottom_toBottomOf="@+id/tableRow7"
+            app:layout_constraintRight_toRightOf="parent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+</androidx.cardview.widget.CardView>
+    </androidx.constraintlayout.widget.ConstraintLayout>

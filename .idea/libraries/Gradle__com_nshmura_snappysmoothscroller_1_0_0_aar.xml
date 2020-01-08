@@ -1,0 +1,14 @@
+<component name="libraryTable">
+  <library name="Gradle: com.nshmura:snappysmoothscroller:1.0.0@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/c08ca05f5fc777d053ff72a79d8fb174/jetified-snappysmoothscroller-1.0.0/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/c08ca05f5fc777d053ff72a79d8fb174/jetified-snappysmoothscroller-1.0.0/res" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.nshmura/snappysmoothscroller/1.0.0/bc2b0135b9fd39a26ffc549cc0ecac7d53d3cad2/snappysmoothscroller-1.0.0-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.nshmura/snappysmoothscroller/1.0.0/57a979e69a436ca410f91676b1a056729789ec2/snappysmoothscroller-1.0.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

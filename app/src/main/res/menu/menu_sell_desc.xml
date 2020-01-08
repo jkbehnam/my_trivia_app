@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/sell"
+        android:title="فروش سوال" />
+    <item android:id="@+id/obs_answer"
+        android:title="نمایش نظر داور سوال تشریحی" />
+
+</menu>

@@ -1,0 +1,53 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/laytop"
+        android:background="@color/mainBackground"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar_main2"
+            android:layout_above="@+id/tabs"
+            android:visibility="visible"
+            tools:ignore="IncludeLayoutParam"></include>
+
+        <com.flyco.tablayout.SlidingTabLayout
+            android:id="@+id/tabs3"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:layout_gravity="center"
+            android:background="@android:color/transparent"
+            android:fillViewport="false"
+            android:layoutDirection="ltr"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            app:layout_constraintTop_toBottomOf="@id/toolbar"
+            app:tl_indicator_color="@color/toolbar_color"
+            app:tl_indicator_corner_radius="25dp"
+            app:tl_indicator_height="4dp"
+            app:tl_indicator_style="NORMAL"
+            app:tl_tab_space_equal="true"
+            app:tl_textBold="BOTH"
+            app:tl_textSelectColor="#1D1A48"
+            app:tl_textUnselectColor="#B9B9B9"
+            app:tl_textsize="16dp"
+            app:tl_underline_height="0dp" />
+    </LinearLayout>
+
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewpager3"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/laytop" />
+</androidx.constraintlayout.widget.ConstraintLayout>

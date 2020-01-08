@@ -1,0 +1,14 @@
+<component name="libraryTable">
+  <library name="Gradle: com.github.ybq:Endless-RecyclerView:1.0.4@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/05cf8cc065cf0db2e0d292605d762a83/jetified-Endless-RecyclerView-1.0.4/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/05cf8cc065cf0db2e0d292605d762a83/jetified-Endless-RecyclerView-1.0.4/res" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.ybq/Endless-RecyclerView/1.0.4/f47508738d59fb5bd3f2663516a9e390c1aa5275/Endless-RecyclerView-1.0.4-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.ybq/Endless-RecyclerView/1.0.4/17609891e627894a40bf90fd8bf73f8b0fefb884/Endless-RecyclerView-1.0.4-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

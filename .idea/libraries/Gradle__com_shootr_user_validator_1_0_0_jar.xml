@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Gradle: com.shootr:user-validator:1.0.0@jar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.shootr/user-validator/1.0.0/ae18f765de6223ef84084afb4fba143eff788949/user-validator-1.0.0.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.shootr/user-validator/1.0.0/48adb0bfd156d8ed74288c6ab46389e30cca5cdc/user-validator-1.0.0-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.shootr/user-validator/1.0.0/81116099e60abd51b7446523cac604b8992646fe/user-validator-1.0.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
